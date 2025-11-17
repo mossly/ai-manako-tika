@@ -1,0 +1,2180 @@
+{
+  "documents": {
+    "ba_banking_act_2011": {
+      "file_hash": "d4352d4c83c930ef4fa9bb56eb2585eb7085f016f1683f3e3e2fc0e9ae3a8aff",
+      "act_name": "Ba Banking Act 2011",
+      "pdf_path": "data\\legislation\\ba_banking_act_2011.pdf",
+      "markdown_path": "data/markdown\\ba_banking_act_2011.md",
+      "chunks": 882,
+      "last_processed": "2025-11-17T09:28:24.196880"
+    },
+    "09pmga_2009_pacific_mini_games_act_2008": {
+      "file_hash": "f835e4da9bd3e9ab1edc21348c5cdd1075d4830701e34f363397a8c4565b793f",
+      "act_name": "09Pmga 2009 Pacific Mini Games Act 2008",
+      "pdf_path": "data\\legislation\\09pmga_2009_pacific_mini_games_act_2008.pdf",
+      "markdown_path": "data/markdown\\09pmga_2009_pacific_mini_games_act_2008.md",
+      "chunks": 60,
+      "last_processed": "2025-11-17T09:25:40.880819"
+    },
+    "aaa_arbitration_act_2014": {
+      "file_hash": "106288b79c368cab9e54d311cdef1b78b4fb259be4fad7f2cb759dd1366f6b86",
+      "act_name": "Aaa Arbitration Act 2014",
+      "pdf_path": "data\\legislation\\aaa_arbitration_act_2014.pdf",
+      "markdown_path": "data/markdown\\aaa_arbitration_act_2014.md",
+      "chunks": 471,
+      "last_processed": "2025-11-17T09:25:56.247350"
+    },
+    "acts_acts_interpretation_act_1924": {
+      "file_hash": "c6e631bead34d789799b2ff0774964300e5a7d6fd84b6183e717895814449851",
+      "act_name": "Acts Acts Interpretation Act 1924",
+      "pdf_path": "data\\legislation\\acts_acts_interpretation_act_1924.pdf",
+      "markdown_path": "data/markdown\\acts_acts_interpretation_act_1924.md",
+      "chunks": 133,
+      "last_processed": "2025-11-17T09:26:01.508529"
+    },
+    "adma_admiralty_act_2004": {
+      "file_hash": "cefec98edf097ae1c44f7ca6d2b6f6cf3a99a91af3cdbfa22b4426870e39180f",
+      "act_name": "Adma Admiralty Act 2004",
+      "pdf_path": "data\\legislation\\adma_admiralty_act_2004.pdf",
+      "markdown_path": "data/markdown\\adma_admiralty_act_2004.md",
+      "chunks": 443,
+      "last_processed": "2025-11-17T09:26:13.792465"
+    },
+    "admin_administration_act_1969": {
+      "file_hash": "8fba48c6056ff2f7010106e32b4d2cb1cc81b7e6035e601fb4091a8f5fd30457",
+      "act_name": "Admin Administration Act 1969",
+      "pdf_path": "data\\legislation\\admin_administration_act_1969.pdf",
+      "markdown_path": "data/markdown\\admin_administration_act_1969.md",
+      "chunks": 407,
+      "last_processed": "2025-11-17T09:26:26.027490"
+    },
+    "aga_agriculture_act_2021": {
+      "file_hash": "41dca598eba9051bcc5a31ce4e7397e20a914a441730b5f657d94828d0d40f3e",
+      "act_name": "Aga Agriculture Act 2021",
+      "pdf_path": "data\\legislation\\aga_agriculture_act_2021.pdf",
+      "markdown_path": "data/markdown\\aga_agriculture_act_2021.md",
+      "chunks": 847,
+      "last_processed": "2025-11-17T09:26:51.625992"
+    },
+    "airau_airport_authority_act_1985": {
+      "file_hash": "b2003054f43f5716ac9ee4aa5467b06ef0db3ab3e79eed38fd70e3e5dfd810ba",
+      "act_name": "Airau Airport Authority Act 1985",
+      "pdf_path": "data\\legislation\\airau_airport_authority_act_1985.pdf",
+      "markdown_path": "data/markdown\\airau_airport_authority_act_1985.md",
+      "chunks": 267,
+      "last_processed": "2025-11-17T09:27:00.354378"
+    },
+    "airservl_air_services_licensing_act_1984": {
+      "file_hash": "344221862e8903b3e8f6e925351366656088a6ada6bf6b7cffe3620650dcb3a0",
+      "act_name": "Airservl Air Services Licensing Act 1984",
+      "pdf_path": "data\\legislation\\airservl_air_services_licensing_act_1984.pdf",
+      "markdown_path": "data/markdown\\airservl_air_services_licensing_act_1984.md",
+      "chunks": 105,
+      "last_processed": "2025-11-17T09:27:04.239847"
+    },
+    "ampla_aitutaki_motus_prohibition_of_leases_act_1970": {
+      "file_hash": "09c98cf87a00b08b6127e7edfcd58d8cfd46b9b7a7d51b50130ec9fcdd2e6185",
+      "act_name": "Ampla Aitutaki Motus Prohibition Of Leases Act 1970",
+      "pdf_path": "data\\legislation\\ampla_aitutaki_motus_prohibition_of_leases_act_1970.pdf",
+      "markdown_path": "data/markdown\\ampla_aitutaki_motus_prohibition_of_leases_act_1970.md",
+      "chunks": 9,
+      "last_processed": "2025-11-17T09:27:05.495155"
+    },
+    "antaa_antiquities_and_artifacts_act_1994_95": {
+      "file_hash": "cac50faa41c1a2c643ccd44dbe675284f064c4a0272262af51cddd85edbb7e35",
+      "act_name": "Antaa Antiquities And Artifacts Act 1994 95",
+      "pdf_path": "data\\legislation\\antaa_antiquities_and_artifacts_act_1994_95.pdf",
+      "markdown_path": "data/markdown\\antaa_antiquities_and_artifacts_act_1994_95.md",
+      "chunks": 146,
+      "last_processed": "2025-11-17T09:27:11.083137"
+    },
+    "apm_anti_personnel_mines_act_2007": {
+      "file_hash": "116324c316f44910bda867508e5dc362a7e381d481eede6eb49100defcf6d085",
+      "act_name": "Apm Anti Personnel Mines Act 2007",
+      "pdf_path": "data\\legislation\\apm_anti_personnel_mines_act_2007.pdf",
+      "markdown_path": "data/markdown\\apm_anti_personnel_mines_act_2007.md",
+      "chunks": 118,
+      "last_processed": "2025-11-17T09:27:13.683343"
+    },
+    "app22_appropriation_act_2025": {
+      "file_hash": "611c96f5a9d6480b47f8be18280c16ab8b61929139d7f98e9cf4e3900611dbfd",
+      "act_name": "App22 Appropriation Act 2025",
+      "pdf_path": "data\\legislation\\app22_appropriation_act_2025.pdf",
+      "markdown_path": "data/markdown\\app22_appropriation_act_2025.md",
+      "chunks": 21,
+      "last_processed": "2025-11-17T09:27:15.651354"
+    },
+    "apprentice_apprenticeship_act_1978_79": {
+      "file_hash": "678a5d559e9c2f1a253f43179b1dd1267023c2ae867be4216d6804a510838c1f",
+      "act_name": "Apprentice Apprenticeship Act 1978 79",
+      "pdf_path": "data\\legislation\\apprentice_apprenticeship_act_1978_79.pdf",
+      "markdown_path": "data/markdown\\apprentice_apprenticeship_act_1978_79.md",
+      "chunks": 697,
+      "last_processed": "2025-11-17T09:27:34.914107"
+    },
+    "appwl_appropriation_westpac_loan_act_1989": {
+      "file_hash": "0da1d0403be78d59953ff5bb2a8352102b2e2d9ac14b6697f0e56cc8b148cef7",
+      "act_name": "Appwl Appropriation Westpac Loan Act 1989",
+      "pdf_path": "data\\legislation\\appwl_appropriation_westpac_loan_act_1989.pdf",
+      "markdown_path": "data/markdown\\appwl_appropriation_westpac_loan_act_1989.md",
+      "chunks": 6,
+      "last_processed": "2025-11-17T09:27:36.172998"
+    },
+    "asianb_asian_bank_act_1975": {
+      "file_hash": "a3a66481592f9100e6b49c3f3943747ec90cc66a3f9810ed5a7164859d117e08",
+      "act_name": "Asianb Asian Bank Act 1975",
+      "pdf_path": "data\\legislation\\asianb_asian_bank_act_1975.pdf",
+      "markdown_path": "data/markdown\\asianb_asian_bank_act_1975.md",
+      "chunks": 8,
+      "last_processed": "2025-11-17T09:27:37.832701"
+    },
+    "atom_atomic_energy_act_1945": {
+      "file_hash": "05c0c4a4328be40fa1fe6037ebdd1e2facc0046eb36a5a8a17ff0a598275ba31",
+      "act_name": "Atom Atomic Energy Act 1945",
+      "pdf_path": "data\\legislation\\atom_atomic_energy_act_1945.pdf",
+      "markdown_path": "data/markdown\\atom_atomic_energy_act_1945.md",
+      "chunks": 84,
+      "last_processed": "2025-11-17T09:27:41.400644"
+    },
+    "avsa_aviation_security_act_2008": {
+      "file_hash": "d9029c2e55132636f9d394fa863c2d14ed25e0860435b9d58f2adfd5d20f30be",
+      "act_name": "Avsa Aviation Security Act 2008",
+      "pdf_path": "data\\legislation\\avsa_aviation_security_act_2008.pdf",
+      "markdown_path": "data/markdown\\avsa_aviation_security_act_2008.md",
+      "chunks": 712,
+      "last_processed": "2025-11-17T09:27:58.213652"
+    },
+    "bcia03_bank_of_the_cook_islands_act_2003": {
+      "file_hash": "3096583f14b3a4e9ae89a7957e8373a181fb1cd5dc90e5486e04fe8ce29810da",
+      "act_name": "Bcia03 Bank Of The Cook Islands Act 2003",
+      "pdf_path": "data\\legislation\\bcia03_bank_of_the_cook_islands_act_2003.pdf",
+      "markdown_path": "data/markdown\\bcia03_bank_of_the_cook_islands_act_2003.md",
+      "chunks": 304,
+      "last_processed": "2025-11-17T09:28:31.602722"
+    },
+    "bills_bills_of_exchange_act_1908": {
+      "file_hash": "7aacd2e40591aa5a94a1e472d4e28ac344c15ac0d5da74000743d58608a5987e",
+      "act_name": "Bills Bills Of Exchange Act 1908",
+      "pdf_path": "data\\legislation\\bills_bills_of_exchange_act_1908.pdf",
+      "markdown_path": "data/markdown\\bills_bills_of_exchange_act_1908.md",
+      "chunks": 480,
+      "last_processed": "2025-11-17T09:28:44.457775"
+    },
+    "bio_biosecurity_act_2008": {
+      "file_hash": "ba60f13f1d670a3eb3c16ab9f95bc3727efdb2482196489c9d67174a1a6c1bc9",
+      "act_name": "Bio Biosecurity Act 2008",
+      "pdf_path": "data\\legislation\\bio_biosecurity_act_2008.pdf",
+      "markdown_path": "data/markdown\\bio_biosecurity_act_2008.md",
+      "chunks": 1137,
+      "last_processed": "2025-11-17T09:29:11.905465"
+    },
+    "birth_births_and_deaths_registration_act_1973": {
+      "file_hash": "e352133e0d868c1442f58bb7de2a2a0171614f8194182fe8feed9e0dc8fdc035",
+      "act_name": "Birth Births And Deaths Registration Act 1973",
+      "pdf_path": "data\\legislation\\birth_births_and_deaths_registration_act_1973.pdf",
+      "markdown_path": "data/markdown\\birth_births_and_deaths_registration_act_1973.md",
+      "chunks": 250,
+      "last_processed": "2025-11-17T09:29:18.959448"
+    },
+    "broad_broadcasting_act_1989": {
+      "file_hash": "225a271541f7d82967147c24e0fe337a83db13d9c5f4aad41fd2c2f711cf75dc",
+      "act_name": "Broad Broadcasting Act 1989",
+      "pdf_path": "data\\legislation\\broad_broadcasting_act_1989.pdf",
+      "markdown_path": "data/markdown\\broad_broadcasting_act_1989.md",
+      "chunks": 207,
+      "last_processed": "2025-11-17T09:29:25.275991"
+    },
+    "bucont_building_controls_and_standards_act_1991": {
+      "file_hash": "e607035e5b49883732ef0b145ea8182b34ce1e9601f85ef9738be7424a0dbfa7",
+      "act_name": "Bucont Building Controls And Standards Act 1991",
+      "pdf_path": "data\\legislation\\bucont_building_controls_and_standards_act_1991.pdf",
+      "markdown_path": "data/markdown\\bucont_building_controls_and_standards_act_1991.md",
+      "chunks": 349,
+      "last_processed": "2025-11-17T09:29:35.526465"
+    },
+    "ca79_coroners_act_1979_80": {
+      "file_hash": "5d4279fd80ce270d4769cc979b45d8502c995bb404151c3ba85315739186f983",
+      "act_name": "Ca79 Coroners Act 1979 80",
+      "pdf_path": "data\\legislation\\ca79_coroners_act_1979_80.pdf",
+      "markdown_path": "data/markdown\\ca79_coroners_act_1979_80.md",
+      "chunks": 191,
+      "last_processed": "2025-11-17T09:29:41.476191"
+    },
+    "ca86_currency_act_1986_87": {
+      "file_hash": "ce8d6a50477b611596749cbbd2f55963d5696a6d38bc5001f15e0591cff6c30d",
+      "act_name": "Ca86 Currency Act 1986 87",
+      "pdf_path": "data\\legislation\\ca86_currency_act_1986_87.pdf",
+      "markdown_path": "data/markdown\\ca86_currency_act_1986_87.md",
+      "chunks": 450,
+      "last_processed": "2025-11-17T09:29:54.321906"
+    },
+    "caa02_civil_aviation_act_2002": {
+      "file_hash": "e614cc525e8db83391c076aa3f8a49e5c4cf8fabb8c10fe8f7c01b884006192e",
+      "act_name": "Caa02 Civil Aviation Act 2002",
+      "pdf_path": "data\\legislation\\caa02_civil_aviation_act_2002.pdf",
+      "markdown_path": "data/markdown\\caa02_civil_aviation_act_2002.md",
+      "chunks": 1014,
+      "last_processed": "2025-11-17T09:30:23.456663"
+    },
+    "capia_captive_insurance_act_2013": {
+      "file_hash": "5af7228ba9d45cf3add676e5a2a50f4e858cda3cb952b0acdb2c5b339242b174",
+      "act_name": "Capia Captive Insurance Act 2013",
+      "pdf_path": "data\\legislation\\capia_captive_insurance_act_2013.pdf",
+      "markdown_path": "data/markdown\\capia_captive_insurance_act_2013.md",
+      "chunks": 555,
+      "last_processed": "2025-11-17T09:30:38.280610"
+    },
+    "cara_competition_and_regulatory_authority_act_2019": {
+      "file_hash": "aab5c15aaf2e24ae229ed3a84d7b5b47b3d90c5a255b6b4dbf186eb930f83968",
+      "act_name": "Cara Competition And Regulatory Authority Act 2019",
+      "pdf_path": "data\\legislation\\cara_competition_and_regulatory_authority_act_2019.pdf",
+      "markdown_path": "data/markdown\\cara_competition_and_regulatory_authority_act_2019.md",
+      "chunks": 791,
+      "last_processed": "2025-11-17T09:30:57.551389"
+    },
+    "carr_carriage_by_air_act_1967": {
+      "file_hash": "e4a83e1d5c0f0749a00dc7df8eec33f33b2b85419b8a360e80a640174f0f3c3f",
+      "act_name": "Carr Carriage By Air Act 1967",
+      "pdf_path": "data\\legislation\\carr_carriage_by_air_act_1967.pdf",
+      "markdown_path": "data/markdown\\carr_carriage_by_air_act_1967.md",
+      "chunks": 261,
+      "last_processed": "2025-11-17T09:31:05.474874"
+    },
+    "caw_cable_and_wireless_plc_external_telecommunications_agreement_termination_and_compulsory_acquisition_act_1991": {
+      "file_hash": "44f788fec210ff980fc9b911328467c5894bd13b6018c52346ec11487f799e72",
+      "act_name": "Caw Cable And Wireless Plc External Telecommunications Agreement Termination And Compulsory Acquisition Act 1991",
+      "pdf_path": "data\\legislation\\caw_cable_and_wireless_plc_external_telecommunications_agreement_termination_and_compulsory_acquisition_act_1991.pdf",
+      "markdown_path": "data/markdown\\caw_cable_and_wireless_plc_external_telecommunications_agreement_termination_and_compulsory_acquisition_act_1991.md",
+      "chunks": 25,
+      "last_processed": "2025-11-17T09:31:06.968203"
+    },
+    "cga_consumer_guarantees_act_2008": {
+      "file_hash": "c35dc16cc57f5e90b76f73fc5ee66efeaafd0541654477d10cae7216ef2445f4",
+      "act_name": "Cga Consumer Guarantees Act 2008",
+      "pdf_path": "data\\legislation\\cga_consumer_guarantees_act_2008.pdf",
+      "markdown_path": "data/markdown\\cga_consumer_guarantees_act_2008.md",
+      "chunks": 351,
+      "last_processed": "2025-11-17T09:31:16.888181"
+    },
+    "cha_cultural_and_historic_places_act_1994_95": {
+      "file_hash": "0246f1d349e7171cdb76b8914d21f5260b02ea3270367b8c1e4adbfbee054739",
+      "act_name": "Cha Cultural And Historic Places Act 1994 95",
+      "pdf_path": "data\\legislation\\cha_cultural_and_historic_places_act_1994_95.pdf",
+      "markdown_path": "data/markdown\\cha_cultural_and_historic_places_act_1994_95.md",
+      "chunks": 276,
+      "last_processed": "2025-11-17T09:31:24.437610"
+    },
+    "cheq_cheques_act_1960": {
+      "file_hash": "26b4a3e091f31bb0d4c3781921f1da0debbfcdb4166abd123559db594f721193",
+      "act_name": "Cheq Cheques Act 1960",
+      "pdf_path": "data\\legislation\\cheq_cheques_act_1960.pdf",
+      "markdown_path": "data/markdown\\cheq_cheques_act_1960.md",
+      "chunks": 31,
+      "last_processed": "2025-11-17T09:31:26.052915"
+    },
+    "cia1915_cook_islands_act_1915": {
+      "file_hash": "1aad601bc2942c8bb71d19d4c0b04e9487a5b2e788995a461816f5080c3d1c9a",
+      "act_name": "Cia1915 Cook Islands Act 1915",
+      "pdf_path": "data\\legislation\\cia1915_cook_islands_act_1915.pdf",
+      "markdown_path": "data/markdown\\cia1915_cook_islands_act_1915.md",
+      "chunks": 2321,
+      "last_processed": "2025-11-17T09:32:28.555688"
+    },
+    "cia_commissions_of_inquiry_act_1966": {
+      "file_hash": "c8ca917e0ec81e36481f0f4384af6132926d3f9bb03c7dd7384b4dea185ccc7e",
+      "act_name": "Cia Commissions Of Inquiry Act 1966",
+      "pdf_path": "data\\legislation\\cia_commissions_of_inquiry_act_1966.pdf",
+      "markdown_path": "data/markdown\\cia_commissions_of_inquiry_act_1966.md",
+      "chunks": 186,
+      "last_processed": "2025-11-17T09:32:34.962529"
+    },
+    "cicci_cook_islands_christian_church_incorporation_act_1968_69": {
+      "file_hash": "05634c02e88b6edfd55eebf3f2ecb23608393804ceaafe283b2c64530f628712",
+      "act_name": "Cicci Cook Islands Christian Church Incorporation Act 1968 69",
+      "pdf_path": "data\\legislation\\cicci_cook_islands_christian_church_incorporation_act_1968_69.pdf",
+      "markdown_path": "data/markdown\\cicci_cook_islands_christian_church_incorporation_act_1968_69.md",
+      "chunks": 212,
+      "last_processed": "2025-11-17T09:32:41.188711"
+    },
+    "cidbfll_cidb_former_loans_limited_dissolution_act_2007": {
+      "file_hash": "ffc767f007e33880ba7016e4521fa15f79bbb8861fe26e821986f5f3af03959a",
+      "act_name": "Cidbfll Cidb Former Loans Limited Dissolution Act 2007",
+      "pdf_path": "data\\legislation\\cidbfll_cidb_former_loans_limited_dissolution_act_2007.pdf",
+      "markdown_path": "data/markdown\\cidbfll_cidb_former_loans_limited_dissolution_act_2007.md",
+      "chunks": 15,
+      "last_processed": "2025-11-17T09:32:42.500567"
+    },
+    "cigpc_cook_islands_government_property_corporation_act_1969": {
+      "file_hash": "d8dcbb82891cd90764fb1830a412dac9273e0a2ed7083965e1c4169da3b27d9c",
+      "act_name": "Cigpc Cook Islands Government Property Corporation Act 1969",
+      "pdf_path": "data\\legislation\\cigpc_cook_islands_government_property_corporation_act_1969.pdf",
+      "markdown_path": "data/markdown\\cigpc_cook_islands_government_property_corporation_act_1969.md",
+      "chunks": 73,
+      "last_processed": "2025-11-17T09:32:45.517956"
+    },
+    "ciia_cook_islands_immigration_act_2021": {
+      "file_hash": "04fccf7c85143987e8dfcc3175691e76b551a43ad18cec5b800cbcc16890dfd1",
+      "act_name": "Ciia Cook Islands Immigration Act 2021",
+      "pdf_path": "data\\legislation\\ciia_cook_islands_immigration_act_2021.pdf",
+      "markdown_path": "data/markdown\\ciia_cook_islands_immigration_act_2021.md",
+      "chunks": 2658,
+      "last_processed": "2025-11-17T09:33:52.863892"
+    },
+    "ciica_cook_islands_investment_corporation_act_1998": {
+      "file_hash": "f2333ce8c1ccb5a24948b11fc64d563c4ecc87fd81378b21c11428a780afa791",
+      "act_name": "Ciica Cook Islands Investment Corporation Act 1998",
+      "pdf_path": "data\\legislation\\ciica_cook_islands_investment_corporation_act_1998.pdf",
+      "markdown_path": "data/markdown\\ciica_cook_islands_investment_corporation_act_1998.md",
+      "chunks": 337,
+      "last_processed": "2025-11-17T09:34:02.745286"
+    },
+    "cilrf_cook_islands_loan_repayment_fund_act_2014": {
+      "file_hash": "af078ce7ae17d3c4e61f0e81e877139b788bc058b3fdce7a8850dc4aab27efa4",
+      "act_name": "Cilrf Cook Islands Loan Repayment Fund Act 2014",
+      "pdf_path": "data\\legislation\\cilrf_cook_islands_loan_repayment_fund_act_2014.pdf",
+      "markdown_path": "data/markdown\\cilrf_cook_islands_loan_repayment_fund_act_2014.md",
+      "chunks": 84,
+      "last_processed": "2025-11-17T09:34:05.909143"
+    },
+    "cinhta99_cook_islands_natural_heritage_trust_act_1999": {
+      "file_hash": "cd4f9ef8d7a2902bffe1a33c84053a27737497957a46563a5dae2a60914ccf36",
+      "act_name": "Cinhta99 Cook Islands Natural Heritage Trust Act 1999",
+      "pdf_path": "data\\legislation\\cinhta99_cook_islands_natural_heritage_trust_act_1999.pdf",
+      "markdown_path": "data/markdown\\cinhta99_cook_islands_natural_heritage_trust_act_1999.md",
+      "chunks": 97,
+      "last_processed": "2025-11-17T09:34:09.972986"
+    },
+    "ciordam_cook_islands_ordinances_amendment_act_1966": {
+      "file_hash": "1a9e7dd2133ac7ab5e267c18bcf10b0c3e8b968d8e3d3b48001ffa00cf7296cb",
+      "act_name": "Ciordam Cook Islands Ordinances Amendment Act 1966",
+      "pdf_path": "data\\legislation\\ciordam_cook_islands_ordinances_amendment_act_1966.pdf",
+      "markdown_path": "data/markdown\\ciordam_cook_islands_ordinances_amendment_act_1966.md",
+      "chunks": 15,
+      "last_processed": "2025-11-17T09:34:11.557139"
+    },
+    "cipo_cook_islands_customs_import_prohibition_ordinance_1960": {
+      "file_hash": "3471424553cf2fc084da2ee1348f81bfba3a0c1b07560c6e66606460cc57c8b6",
+      "act_name": "Cipo Cook Islands Customs Import Prohibition Ordinance 1960",
+      "pdf_path": "data\\legislation\\cipo_cook_islands_customs_import_prohibition_ordinance_1960.pdf",
+      "markdown_path": "data/markdown\\cipo_cook_islands_customs_import_prohibition_ordinance_1960.md",
+      "chunks": 14,
+      "last_processed": "2025-11-17T09:34:13.907091"
+    },
+    "cipph_crimes_internationally_protected_persons_and_hostages_act_1982": {
+      "file_hash": "69c0a9a57ecb07b9be9daf66609f42c259e40a479b33575f97994aa7bd24db4e",
+      "act_name": "Cipph Crimes Internationally Protected Persons And Hostages Act 1982",
+      "pdf_path": "data\\legislation\\cipph_crimes_internationally_protected_persons_and_hostages_act_1982.pdf",
+      "markdown_path": "data/markdown\\cipph_crimes_internationally_protected_persons_and_hostages_act_1982.md",
+      "chunks": 109,
+      "last_processed": "2025-11-17T09:34:17.126047"
+    },
+    "circsa_cook_islands_red_cross_society_act_2002": {
+      "file_hash": "8354645c3a4622b5d8d85ebf9c90031ea6b85aab6309050e43625e98e6795da6",
+      "act_name": "Circsa Cook Islands Red Cross Society Act 2002",
+      "pdf_path": "data\\legislation\\circsa_cook_islands_red_cross_society_act_2002.pdf",
+      "markdown_path": "data/markdown\\circsa_cook_islands_red_cross_society_act_2002.md",
+      "chunks": 70,
+      "last_processed": "2025-11-17T09:34:20.290695"
+    },
+    "citmc_cook_islands_tourism_marketing_corporation_act_1998": {
+      "file_hash": "5f363f79eac14fc37266127144ef56d72d3d6e35bd21575a32b4c20880a993c2",
+      "act_name": "Citmc Cook Islands Tourism Marketing Corporation Act 1998",
+      "pdf_path": "data\\legislation\\citmc_cook_islands_tourism_marketing_corporation_act_1998.pdf",
+      "markdown_path": "data/markdown\\citmc_cook_islands_tourism_marketing_corporation_act_1998.md",
+      "chunks": 169,
+      "last_processed": "2025-11-17T09:34:26.311364"
+    },
+    "civl05_civil_list_act_2005": {
+      "file_hash": "a4770adb8bca053300d20b8238a4caa7a093a1d43494045b256595fc5328fc38",
+      "act_name": "Civl05 Civil List Act 2005",
+      "pdf_path": "data\\legislation\\civl05_civil_list_act_2005.pdf",
+      "markdown_path": "data/markdown\\civl05_civil_list_act_2005.md",
+      "chunks": 229,
+      "last_processed": "2025-11-17T09:34:33.052766"
+    },
+    "cja_criminal_justice_act_1967": {
+      "file_hash": "fe182299f481821ad5ff0b2e0fe0f13b836a224388547c510c97437cb13acfed",
+      "act_name": "Cja Criminal Justice Act 1967",
+      "pdf_path": "data\\legislation\\cja_criminal_justice_act_1967.pdf",
+      "markdown_path": "data/markdown\\cja_criminal_justice_act_1967.md",
+      "chunks": 299,
+      "last_processed": "2025-11-17T09:34:41.545612"
+    },
+    "ckiao_cook_islands_arms_ordinance_1954": {
+      "file_hash": "c9df8aa7468f62e0956b9d0339754d1e03600b7f193e2630846bfa429a06acdc",
+      "act_name": "Ckiao Cook Islands Arms Ordinance 1954",
+      "pdf_path": "data\\legislation\\ckiao_cook_islands_arms_ordinance_1954.pdf",
+      "markdown_path": "data/markdown\\ckiao_cook_islands_arms_ordinance_1954.md",
+      "chunks": 102,
+      "last_processed": "2025-11-17T09:34:45.398475"
+    },
+    "ckifo_cook_islands_fireworks_ordinance_1957": {
+      "file_hash": "c19ddfc8842c394f916f3544f68bb2c77f705c2e2175b8a42d8f08a30f4661f1",
+      "act_name": "Ckifo Cook Islands Fireworks Ordinance 1957",
+      "pdf_path": "data\\legislation\\ckifo_cook_islands_fireworks_ordinance_1957.pdf",
+      "markdown_path": "data/markdown\\ckifo_cook_islands_fireworks_ordinance_1957.md",
+      "chunks": 43,
+      "last_processed": "2025-11-17T09:34:47.865743"
+    },
+    "ckintp_cook_islands_native_timber_preservation_ordinance_1957": {
+      "file_hash": "a70cfe7b03db022cded01d2d0e14445c412291a932d1838110c36c93abc16178",
+      "act_name": "Ckintp Cook Islands Native Timber Preservation Ordinance 1957",
+      "pdf_path": "data\\legislation\\ckintp_cook_islands_native_timber_preservation_ordinance_1957.pdf",
+      "markdown_path": "data/markdown\\ckintp_cook_islands_native_timber_preservation_ordinance_1957.md",
+      "chunks": 11,
+      "last_processed": "2025-11-17T09:34:48.904565"
+    },
+    "ckirl_cook_islands_radio_licence_ordinance_1964": {
+      "file_hash": "17f9e15a57d8319cb4504d0370b41c1f460cf4f3b6c71ed9b4208602fb20020b",
+      "act_name": "Ckirl Cook Islands Radio Licence Ordinance 1964",
+      "pdf_path": "data\\legislation\\ckirl_cook_islands_radio_licence_ordinance_1964.pdf",
+      "markdown_path": "data/markdown\\ckirl_cook_islands_radio_licence_ordinance_1964.md",
+      "chunks": 32,
+      "last_processed": "2025-11-17T09:34:51.031505"
+    },
+    "ckisl_cook_islands_shipping_licence_ordinance_1963": {
+      "file_hash": "63674a7c425c4a6deb566282935b3b1d2eed604b027caaa0efe25a43eb822e50",
+      "act_name": "Ckisl Cook Islands Shipping Licence Ordinance 1963",
+      "pdf_path": "data\\legislation\\ckisl_cook_islands_shipping_licence_ordinance_1963.pdf",
+      "markdown_path": "data/markdown\\ckisl_cook_islands_shipping_licence_ordinance_1963.md",
+      "chunks": 97,
+      "last_processed": "2025-11-17T09:34:53.989054"
+    },
+    "ckiwc_cook_islands_workers_compensation_ordinance_1964": {
+      "file_hash": "3ceb371d4d579127c9a2a8a049a5f818dc6609d7f2ee3144a834e7616755831c",
+      "act_name": "Ckiwc Cook Islands Workers Compensation Ordinance 1964",
+      "pdf_path": "data\\legislation\\ckiwc_cook_islands_workers_compensation_ordinance_1964.pdf",
+      "markdown_path": "data/markdown\\ckiwc_cook_islands_workers_compensation_ordinance_1964.md",
+      "chunks": 297,
+      "last_processed": "2025-11-17T09:35:03.423277"
+    },
+    "cloa_crown_law_office_act_1980": {
+      "file_hash": "2a494b25efb7dec55eda599d7027519389cd9f9a7453cbe88fd4e6ea8a856285",
+      "act_name": "Cloa Crown Law Office Act 1980",
+      "pdf_path": "data\\legislation\\cloa_crown_law_office_act_1980.pdf",
+      "markdown_path": "data/markdown\\cloa_crown_law_office_act_1980.md",
+      "chunks": 66,
+      "last_processed": "2025-11-17T09:35:06.227201"
+    },
+    "cma_cluster_munitions_act_2011": {
+      "file_hash": "f3c9f62220d83ab433a7358f9c3c26cee81bfb1f5939a0c7fb638d863fd7f03c",
+      "act_name": "Cma Cluster Munitions Act 2011",
+      "pdf_path": "data\\legislation\\cma_cluster_munitions_act_2011.pdf",
+      "markdown_path": "data/markdown\\cma_cluster_munitions_act_2011.md",
+      "chunks": 94,
+      "last_processed": "2025-11-17T09:35:09.226236"
+    },
+    "coga_carriage_of_goods_act_1998": {
+      "file_hash": "5db558c39c6e6225e5ca9d7ac3b45a3b65942505592bbfad1cac58d2aa5e3979",
+      "act_name": "Coga Carriage Of Goods Act 1998",
+      "pdf_path": "data\\legislation\\coga_carriage_of_goods_act_1998.pdf",
+      "markdown_path": "data/markdown\\coga_carriage_of_goods_act_1998.md",
+      "chunks": 218,
+      "last_processed": "2025-11-17T09:35:15.227226"
+    },
+    "compa_companies_act_2017": {
+      "file_hash": "686fe602144d45a2f710d96e0e9fed15896afdbd293f77b92787ded20b054307",
+      "act_name": "Compa Companies Act 2017",
+      "pdf_path": "data\\legislation\\compa_companies_act_2017.pdf",
+      "markdown_path": "data/markdown\\compa_companies_act_2017.md",
+      "chunks": 4433,
+      "last_processed": "2025-11-17T09:37:14.781610"
+    },
+    "const_cook_islands_constitution_act_1964": {
+      "file_hash": "71703d7d3e94f51e0a1b361f47c43baf7ffbca6a101376610c431712fc5f8304",
+      "act_name": "Const Cook Islands Constitution Act 1964",
+      "pdf_path": "data\\legislation\\const_cook_islands_constitution_act_1964.pdf",
+      "markdown_path": "data/markdown\\const_cook_islands_constitution_act_1964.md",
+      "chunks": 1294,
+      "last_processed": "2025-11-17T09:37:51.004112"
+    },
+    "consul_consular_privileges_and_immunities_act_1971": {
+      "file_hash": "3cc5455c63844a35667d9efaadb4fc9336045dbbe17d4d30a28d14438e7595ef",
+      "act_name": "Consul Consular Privileges And Immunities Act 1971",
+      "pdf_path": "data\\legislation\\consul_consular_privileges_and_immunities_act_1971.pdf",
+      "markdown_path": "data/markdown\\consul_consular_privileges_and_immunities_act_1971.md",
+      "chunks": 257,
+      "last_processed": "2025-11-17T09:37:58.801811"
+    },
+    "cop_constitutional_and_other_polls_act_1993": {
+      "file_hash": "1398f77551eb05c8be4ed09f1072e0259898c2636286d489bb1380e59c321688",
+      "act_name": "Cop Constitutional And Other Polls Act 1993",
+      "pdf_path": "data\\legislation\\cop_constitutional_and_other_polls_act_1993.pdf",
+      "markdown_path": "data/markdown\\cop_constitutional_and_other_polls_act_1993.md",
+      "chunks": 86,
+      "last_processed": "2025-11-17T09:38:22.750450"
+    },
+    "copa70_copra_act_1970": {
+      "file_hash": "3ea99137d20e967b2ce671a1c58f3453384cd307dce2198fe43ec052df6da553",
+      "act_name": "Copa70 Copra Act 1970",
+      "pdf_path": "data\\legislation\\copa70_copra_act_1970.pdf",
+      "markdown_path": "data/markdown\\copa70_copra_act_1970.md",
+      "chunks": 36,
+      "last_processed": "2025-11-17T09:38:01.361651"
+    },
+    "copya_copyright_act_2013": {
+      "file_hash": "eb25ccbe9bef154c440f0d715ab9cd37a6aa9c02b59b91a30bef8f915b53ea81",
+      "act_name": "Copya Copyright Act 2013",
+      "pdf_path": "data\\legislation\\copya_copyright_act_2013.pdf",
+      "markdown_path": "data/markdown\\copya_copyright_act_2013.md",
+      "chunks": 591,
+      "last_processed": "2025-11-17T09:38:18.510474"
+    },
+    "covid-cins_covid_19_cook_islands_national_superannuation_act_2020": {
+      "file_hash": "d9e5281c78c6c018bf7cfe57b964db369bfb2b48fa8bbfaf6f5738128f67cc00",
+      "act_name": "Covid-Cins Covid 19 Cook Islands National Superannuation Act 2020",
+      "pdf_path": "data\\legislation\\covid-cins_covid_19_cook_islands_national_superannuation_act_2020.pdf",
+      "markdown_path": "data/markdown\\covid-cins_covid_19_cook_islands_national_superannuation_act_2020.md",
+      "chunks": 120,
+      "last_processed": "2025-11-17T09:38:27.225462"
+    },
+    "covid-er_covid_19_economic_response_act_2020": {
+      "file_hash": "5fdb52f1c56acb611b9768d88048ede375d0b169dbcb99323907681a27418474",
+      "act_name": "Covid-Er Covid 19 Economic Response Act 2020",
+      "pdf_path": "data\\legislation\\covid-er_covid_19_economic_response_act_2020.pdf",
+      "markdown_path": "data/markdown\\covid-er_covid_19_economic_response_act_2020.md",
+      "chunks": 222,
+      "last_processed": "2025-11-17T09:38:33.742336"
+    },
+    "covid-ige_covid_19_island_government_elections_act_2020": {
+      "file_hash": "95150da9d2e61eee222d27b058289b3c8714ff77f4d6ae973fd76d5975c8d441",
+      "act_name": "Covid-Ige Covid 19 Island Government Elections Act 2020",
+      "pdf_path": "data\\legislation\\covid-ige_covid_19_island_government_elections_act_2020.pdf",
+      "markdown_path": "data/markdown\\covid-ige_covid_19_island_government_elections_act_2020.md",
+      "chunks": 49,
+      "last_processed": "2025-11-17T09:38:35.872765"
+    },
+    "cpa66_control_of_prices_act_1966": {
+      "file_hash": "eb7d263ff90fcb9cf5c84b77fa104384a71ba7350125a157b56df58b7866012a",
+      "act_name": "Cpa66 Control Of Prices Act 1966",
+      "pdf_path": "data\\legislation\\cpa66_control_of_prices_act_1966.pdf",
+      "markdown_path": "data/markdown\\cpa66_control_of_prices_act_1966.md",
+      "chunks": 436,
+      "last_processed": "2025-11-17T09:38:46.977092"
+    },
+    "cra_currency_reserves_act_1987": {
+      "file_hash": "b4a37e66e61693372d76d4b0848fafd44707dc10dd0bc54023ac89c1074678c2",
+      "act_name": "Cra Currency Reserves Act 1987",
+      "pdf_path": "data\\legislation\\cra_currency_reserves_act_1987.pdf",
+      "markdown_path": "data/markdown\\cra_currency_reserves_act_1987.md",
+      "chunks": 25,
+      "last_processed": "2025-11-17T09:38:50.385042"
+    },
+    "crash_crash_fire_rescue_and_security_service_protection_against_liability_act_1973_74": {
+      "file_hash": "ddd6e5f1ee577d11df8da4b68abcefecc6bf36fcd9178216dbc96d44b17f2c98",
+      "act_name": "Crash Crash Fire Rescue And Security Service Protection Against Liability Act 1973 74",
+      "pdf_path": "data\\legislation\\crash_crash_fire_rescue_and_security_service_protection_against_liability_act_1973_74.pdf",
+      "markdown_path": "data/markdown\\crash_crash_fire_rescue_and_security_service_protection_against_liability_act_1973_74.md",
+      "chunks": 10,
+      "last_processed": "2025-11-17T09:38:48.323283"
+    },
+    "crbpa_customs_revenue_and_border_protection_act_2012": {
+      "file_hash": "2c048743a6ed43bb0b1af29c32b8ccb89ab500bd830393d973093370b2f4fea5",
+      "act_name": "Crbpa Customs Revenue And Border Protection Act 2012",
+      "pdf_path": "data\\legislation\\crbpa_customs_revenue_and_border_protection_act_2012.pdf",
+      "markdown_path": "data/markdown\\crbpa_customs_revenue_and_border_protection_act_2012.md",
+      "chunks": 4065,
+      "last_processed": "2025-11-17T09:40:46.467830"
+    },
+    "crima_crimes_act_1969": {
+      "file_hash": "4e76645f8cb7a9b311af34123fbf8db8c04b4de9317950ceeaf1a7bee6baf6de",
+      "act_name": "Crima Crimes Act 1969",
+      "pdf_path": "data\\legislation\\crima_crimes_act_1969.pdf",
+      "markdown_path": "data/markdown\\crima_crimes_act_1969.md",
+      "chunks": 1633,
+      "last_processed": "2025-11-17T09:41:28.370706"
+    },
+    "crimpa_criminal_procedure_act_1980_81": {
+      "file_hash": "e6fc1d9429fd1846785a707b64e643920ff578b45e79cdb60c8d190c35134702",
+      "act_name": "Crimpa Criminal Procedure Act 1980 81",
+      "pdf_path": "data\\legislation\\crimpa_criminal_procedure_act_1980_81.pdf",
+      "markdown_path": "data/markdown\\crimpa_criminal_procedure_act_1980_81.md",
+      "chunks": 796,
+      "last_processed": "2025-11-17T09:41:52.426018"
+    },
+    "crimrec_criminal_records_act_1991": {
+      "file_hash": "252bb091d866c299b96bd41b4be22e7c8a2d868057c07c19b17ad2f92aab4487",
+      "act_name": "Crimrec Criminal Records Act 1991",
+      "pdf_path": "data\\legislation\\crimrec_criminal_records_act_1991.pdf",
+      "markdown_path": "data/markdown\\crimrec_criminal_records_act_1991.md",
+      "chunks": 38,
+      "last_processed": "2025-11-17T09:41:53.966319"
+    },
+    "crowp_crown_proceedings_act_1950": {
+      "file_hash": "13008f6ea4f59fe7e7e78b501f4c33a1ec1e18ae4908f873f192e75ccd9d706f",
+      "act_name": "Crowp Crown Proceedings Act 1950",
+      "pdf_path": "data\\legislation\\crowp_crown_proceedings_act_1950.pdf",
+      "markdown_path": "data/markdown\\crowp_crown_proceedings_act_1950.md",
+      "chunks": 186,
+      "last_processed": "2025-11-17T09:41:59.510053"
+    },
+    "csb_cancellation_suspension_and_bar_of_registration_act_1990": {
+      "file_hash": "092a952fbdc3f7124df6ec34ea938b86fe61681cb43342018ce24709e069820c",
+      "act_name": "Csb Cancellation Suspension And Bar Of Registration Act 1990",
+      "pdf_path": "data\\legislation\\csb_cancellation_suspension_and_bar_of_registration_act_1990.pdf",
+      "markdown_path": "data/markdown\\csb_cancellation_suspension_and_bar_of_registration_act_1990.md",
+      "chunks": 14,
+      "last_processed": "2025-11-17T09:42:01.242465"
+    },
+    "cta_customs_tariff_act_2012": {
+      "file_hash": "75415b7e841568866be405aeb0b2e0912a282769092e32bd9b92f9ef88b7cc83",
+      "act_name": "Cta Customs Tariff Act 2012",
+      "pdf_path": "data\\legislation\\cta_customs_tariff_act_2012.pdf",
+      "markdown_path": "data/markdown\\cta_customs_tariff_act_2012.md",
+      "chunks": 327,
+      "last_processed": "2025-11-17T09:42:10.473342"
+    },
+    "ctzn_citizenship_act_1977": {
+      "file_hash": "0299513ab68744d5928cecaf304c54d16fe0363a4d63dcc86b2b57c0058d852f",
+      "act_name": "Ctzn Citizenship Act 1977",
+      "pdf_path": "data\\legislation\\ctzn_citizenship_act_1977.pdf",
+      "markdown_path": "data/markdown\\ctzn_citizenship_act_1977.md",
+      "chunks": 180,
+      "last_processed": "2025-11-17T09:42:15.966945"
+    },
+    "currd_currency_declaration_act_2015_16": {
+      "file_hash": "f8ff23c9127af221d463524a135f54e7e8af981fc982b42a90e6e1d7fad6a10c",
+      "act_name": "Currd Currency Declaration Act 2015 16",
+      "pdf_path": "data\\legislation\\currd_currency_declaration_act_2015_16.pdf",
+      "markdown_path": "data/markdown\\currd_currency_declaration_act_2015_16.md",
+      "chunks": 405,
+      "last_processed": "2025-11-17T09:42:29.445513"
+    },
+    "cwllla_cable_and_wireless_limited_limitation_of_liability_act_1980": {
+      "file_hash": "52d58120e235feeed8ad57d5a7c2b8c40b463d2d89b314c523b6750b2de41499",
+      "act_name": "Cwllla Cable And Wireless Limited Limitation Of Liability Act 1980",
+      "pdf_path": "data\\legislation\\cwllla_cable_and_wireless_limited_limitation_of_liability_act_1980.pdf",
+      "markdown_path": "data/markdown\\cwllla_cable_and_wireless_limited_limitation_of_liability_act_1980.md",
+      "chunks": 10,
+      "last_processed": "2025-11-17T09:42:31.186592"
+    },
+    "cwpa_chemical_weapons_prohibition_act_2007": {
+      "file_hash": "a3532078e3448c6acfb57684da78000facad745d6d41f1046fa386c2a17cfe63",
+      "act_name": "Cwpa Chemical Weapons Prohibition Act 2007",
+      "pdf_path": "data\\legislation\\cwpa_chemical_weapons_prohibition_act_2007.pdf",
+      "markdown_path": "data/markdown\\cwpa_chemical_weapons_prohibition_act_2007.md",
+      "chunks": 249,
+      "last_processed": "2025-11-17T09:42:38.605496"
+    },
+    "da70_dental_act_1970_71": {
+      "file_hash": "f2b96b7f68b3ad36779b97cf98d62c491496524b11e24f79a4b81a6c587884ab",
+      "act_name": "Da70 Dental Act 1970 71",
+      "pdf_path": "data\\legislation\\da70_dental_act_1970_71.pdf",
+      "markdown_path": "data/markdown\\da70_dental_act_1970_71.md",
+      "chunks": 28,
+      "last_processed": "2025-11-17T09:42:40.313230"
+    },
+    "da_defamation_act_1993": {
+      "file_hash": "c858731b00cab1880cfbffb70a0647b78b919d2476b625c18ed3a63521c078e9",
+      "act_name": "Da Defamation Act 1993",
+      "pdf_path": "data\\legislation\\da_defamation_act_1993.pdf",
+      "markdown_path": "data/markdown\\da_defamation_act_1993.md",
+      "chunks": 92,
+      "last_processed": "2025-11-17T09:42:42.973608"
+    },
+    "dcaa_department_of_civil_aviation_act_1986_87": {
+      "file_hash": "59c02f87a713136407bd3cf6734f24c0e138061920dea38ec56123e1d2fe03d3",
+      "act_name": "Dcaa Department Of Civil Aviation Act 1986 87",
+      "pdf_path": "data\\legislation\\dcaa_department_of_civil_aviation_act_1986_87.pdf",
+      "markdown_path": "data/markdown\\dcaa_department_of_civil_aviation_act_1986_87.md",
+      "chunks": 88,
+      "last_processed": "2025-11-17T09:42:46.261815"
+    },
+    "deata_deaths_by_accidents_compensation_act_1952": {
+      "file_hash": "d8b4b8c4da7041fec2edd6a39b5f853530b400544c6d9003473d5c389cba45c9",
+      "act_name": "Deata Deaths By Accidents Compensation Act 1952",
+      "pdf_path": "data\\legislation\\deata_deaths_by_accidents_compensation_act_1952.pdf",
+      "markdown_path": "data/markdown\\deata_deaths_by_accidents_compensation_act_1952.md",
+      "chunks": 89,
+      "last_processed": "2025-11-17T09:42:49.506502"
+    },
+    "defarat_definition_of_aratapu_rarotonga_act_1967": {
+      "file_hash": "265a4fe8f063ebba0f5353fc2383497126e3dc5781547a857f148e545c28d1fc",
+      "act_name": "Defarat Definition Of Aratapu Rarotonga Act 1967",
+      "pdf_path": "data\\legislation\\defarat_definition_of_aratapu_rarotonga_act_1967.pdf",
+      "markdown_path": "data/markdown\\defarat_definition_of_aratapu_rarotonga_act_1967.md",
+      "chunks": 6,
+      "last_processed": "2025-11-17T09:42:50.792204"
+    },
+    "demis_demise_of_the_crown_act_1908": {
+      "file_hash": "78ec0bddeacf07efb3360acf05382263704389b53011aabc8449c04b3e83caf4",
+      "act_name": "Demis Demise Of The Crown Act 1908",
+      "pdf_path": "data\\legislation\\demis_demise_of_the_crown_act_1908.pdf",
+      "markdown_path": "data/markdown\\demis_demise_of_the_crown_act_1908.md",
+      "chunks": 16,
+      "last_processed": "2025-11-17T09:42:52.803518"
+    },
+    "design_designs_act_1953": {
+      "file_hash": "09f5409df75f3d359f3e8085b1b91e5cb1d007b018f28da87e42a06551a0b878",
+      "act_name": "Design Designs Act 1953",
+      "pdf_path": "data\\legislation\\design_designs_act_1953.pdf",
+      "markdown_path": "data/markdown\\design_designs_act_1953.md",
+      "chunks": 518,
+      "last_processed": "2025-11-17T09:43:07.931516"
+    },
+    "dgoods_dangerous_goods_act_1984": {
+      "file_hash": "c3dfe0954f7922fcd33bb00df30040641f3a05b8b7c003db2474e72350aa5f7a",
+      "act_name": "Dgoods Dangerous Goods Act 1984",
+      "pdf_path": "data\\legislation\\dgoods_dangerous_goods_act_1984.pdf",
+      "markdown_path": "data/markdown\\dgoods_dangerous_goods_act_1984.md",
+      "chunks": 203,
+      "last_processed": "2025-11-17T09:43:14.935850"
+    },
+    "dia_development_investment_act_1995_96": {
+      "file_hash": "56ae98dadb211fb6274d14451bf31adbca1d8e0c2ea104f6b32c36eb2f8b799a",
+      "act_name": "Dia Development Investment Act 1995 96",
+      "pdf_path": "data\\legislation\\dia_development_investment_act_1995_96.pdf",
+      "markdown_path": "data/markdown\\dia_development_investment_act_1995_96.md",
+      "chunks": 407,
+      "last_processed": "2025-11-17T09:43:26.523262"
+    },
+    "disa_disability_act_2008": {
+      "file_hash": "b841be9ac6a93036a71b7e9495194b7e9f20a6742df1c5687ef7243057793258",
+      "act_name": "Disa Disability Act 2008",
+      "pdf_path": "data\\legislation\\disa_disability_act_2008.pdf",
+      "markdown_path": "data/markdown\\disa_disability_act_2008.md",
+      "chunks": 135,
+      "last_processed": "2025-11-17T09:43:31.088722"
+    },
+    "dja_declaratory_judgments_act_1994": {
+      "file_hash": "ec5308c25ef6c0b530a87ddb65c9933041e2a1e0753205ce6068009b1e35baf3",
+      "act_name": "Dja Declaratory Judgments Act 1994",
+      "pdf_path": "data\\legislation\\dja_declaratory_judgments_act_1994.pdf",
+      "markdown_path": "data/markdown\\dja_declaratory_judgments_act_1994.md",
+      "chunks": 36,
+      "last_processed": "2025-11-17T09:43:32.825920"
+    },
+    "dogs_dogs_registration_act_1986": {
+      "file_hash": "92cbd1633eeb44d29788534162208e14fd5e2a42085a15a666927a9eed0c013a",
+      "act_name": "Dogs Dogs Registration Act 1986",
+      "pdf_path": "data\\legislation\\dogs_dogs_registration_act_1986.pdf",
+      "markdown_path": "data/markdown\\dogs_dogs_registration_act_1986.md",
+      "chunks": 190,
+      "last_processed": "2025-11-17T09:43:37.983720"
+    },
+    "dpi_diplomatic_privileges_and_immunities_act_1968": {
+      "file_hash": "0aa059541dba3d3a386679978e54a3f000a32d24cd55082fff49bdfd368849c8",
+      "act_name": "Dpi Diplomatic Privileges And Immunities Act 1968",
+      "pdf_path": "data\\legislation\\dpi_diplomatic_privileges_and_immunities_act_1968.pdf",
+      "markdown_path": "data/markdown\\dpi_diplomatic_privileges_and_immunities_act_1968.md",
+      "chunks": 514,
+      "last_processed": "2025-11-17T09:43:54.808266"
+    },
+    "dra_digital_registers_act_2011": {
+      "file_hash": "ddb2e962727c58263d94655268c540c36eec542b01f684620f54c59318f6b508",
+      "act_name": "Dra Digital Registers Act 2011",
+      "pdf_path": "data\\legislation\\dra_digital_registers_act_2011.pdf",
+      "markdown_path": "data/markdown\\dra_digital_registers_act_2011.md",
+      "chunks": 254,
+      "last_processed": "2025-11-17T09:44:02.210607"
+    },
+    "drma_disaster_risk_management_act_2007": {
+      "file_hash": "1b83ffbb31760ebc767ea2a8895ef78300010e1ca8527f4dea86c36039fd5d10",
+      "act_name": "Drma Disaster Risk Management Act 2007",
+      "pdf_path": "data\\legislation\\drma_disaster_risk_management_act_2007.pdf",
+      "markdown_path": "data/markdown\\drma_disaster_risk_management_act_2007.md",
+      "chunks": 247,
+      "last_processed": "2025-11-17T09:44:08.417141"
+    },
+    "dta_departure_tax_act_2012": {
+      "file_hash": "a0d110a35b834af972a42006f0381129a54a1e5a5108b0c2b9bedd0bbbacaf4d",
+      "act_name": "Dta Departure Tax Act 2012",
+      "pdf_path": "data\\legislation\\dta_departure_tax_act_2012.pdf",
+      "markdown_path": "data/markdown\\dta_departure_tax_act_2012.md",
+      "chunks": 95,
+      "last_processed": "2025-11-17T09:44:11.438051"
+    },
+    "ea03_extradition_act_2003": {
+      "file_hash": "c9128ac07d802be664f3dd8115f2aa32d50072c91065f2fbdc1655639c6f2672",
+      "act_name": "Ea03 Extradition Act 2003",
+      "pdf_path": "data\\legislation\\ea03_extradition_act_2003.pdf",
+      "markdown_path": "data/markdown\\ea03_extradition_act_2003.md",
+      "chunks": 618,
+      "last_processed": "2025-11-17T09:44:28.175653"
+    },
+    "ea_evidence_act_1968": {
+      "file_hash": "c28bf3a060054b7c2ec083426efaf5e657d33382c1f9ddfd70ccfd2a0cb351b2",
+      "act_name": "Ea Evidence Act 1968",
+      "pdf_path": "data\\legislation\\ea_evidence_act_1968.pdf",
+      "markdown_path": "data/markdown\\ea_evidence_act_1968.md",
+      "chunks": 210,
+      "last_processed": "2025-11-17T09:44:34.117563"
+    },
+    "edua_education_act_2012": {
+      "file_hash": "bb14e158603b16c77956dede00511f51043e7ebd958013fc0134387a8ee0eaa8",
+      "act_name": "Edua Education Act 2012",
+      "pdf_path": "data\\legislation\\edua_education_act_2012.pdf",
+      "markdown_path": "data/markdown\\edua_education_act_2012.md",
+      "chunks": 873,
+      "last_processed": "2025-11-17T09:44:55.230092"
+    },
+    "eleca_electoral_act_2004": {
+      "file_hash": "c4e104a3d539402f0b113092154f979c6f7094411ed9b3cf34022f84abb4e2c7",
+      "act_name": "Eleca Electoral Act 2004",
+      "pdf_path": "data\\legislation\\eleca_electoral_act_2004.pdf",
+      "markdown_path": "data/markdown\\eleca_electoral_act_2004.md",
+      "chunks": 677,
+      "last_processed": "2025-11-17T09:45:12.884373"
+    },
+    "energa_energy_act_1998": {
+      "file_hash": "530c9a1708a59a0298bfc55fcc21087e7861a479361d7cdd0b96499deb5814c9",
+      "act_name": "Energa Energy Act 1998",
+      "pdf_path": "data\\legislation\\energa_energy_act_1998.pdf",
+      "markdown_path": "data/markdown\\energa_energy_act_1998.md",
+      "chunks": 688,
+      "last_processed": "2025-11-17T09:45:31.175818"
+    },
+    "enviro_environment_act_2003": {
+      "file_hash": "e13173cebc9cac9c3ad96c448425fea28f613a93be4c8d06360f5843ec72ae8d",
+      "act_name": "Enviro Environment Act 2003",
+      "pdf_path": "data\\legislation\\enviro_environment_act_2003.pdf",
+      "markdown_path": "data/markdown\\enviro_environment_act_2003.md",
+      "chunks": 2903,
+      "last_processed": "2025-11-17T09:46:41.422433"
+    },
+    "era_employment_relations_act_2012": {
+      "file_hash": "c686e3a789f5f887b989a9992a9db839ceeeba41ff02bc1b6af42c480635b91f",
+      "act_name": "Era Employment Relations Act 2012",
+      "pdf_path": "data\\legislation\\era_employment_relations_act_2012.pdf",
+      "markdown_path": "data/markdown\\era_employment_relations_act_2012.md",
+      "chunks": 624,
+      "last_processed": "2025-11-17T09:46:56.215713"
+    },
+    "fa_foundations_act_2012": {
+      "file_hash": "0629aa068a4197ce3869c57f524ff2c036e5b63606dd48a36f434d6c5bbc6878",
+      "act_name": "Fa Foundations Act 2012",
+      "pdf_path": "data\\legislation\\fa_foundations_act_2012.pdf",
+      "markdown_path": "data/markdown\\fa_foundations_act_2012.md",
+      "chunks": 809,
+      "last_processed": "2025-11-17T09:47:19.490138"
+    },
+    "fadb_finance_asian_development_bank_act_1991": {
+      "file_hash": "9fff95189e60c2aa5ba4ecdd8e6b2251a00866b56236d2fe3fdbc9b0a99a8bba",
+      "act_name": "Fadb Finance Asian Development Bank Act 1991",
+      "pdf_path": "data\\legislation\\fadb_finance_asian_development_bank_act_1991.pdf",
+      "markdown_path": "data/markdown\\fadb_finance_asian_development_bank_act_1991.md",
+      "chunks": 7,
+      "last_processed": "2025-11-17T09:46:59.635495"
+    },
+    "fadbte_finance_asian_development_bank_and_telephone_exchange_act_1982": {
+      "file_hash": "643c948438519824230b4605bebe418321f97b941d252d41d78d59d0e3f6ddbc",
+      "act_name": "Fadbte Finance Asian Development Bank And Telephone Exchange Act 1982",
+      "pdf_path": "data\\legislation\\fadbte_finance_asian_development_bank_and_telephone_exchange_act_1982.pdf",
+      "markdown_path": "data/markdown\\fadbte_finance_asian_development_bank_and_telephone_exchange_act_1982.md",
+      "chunks": 7,
+      "last_processed": "2025-11-17T09:46:58.350961"
+    },
+    "films_films_and_censorship_act_1985": {
+      "file_hash": "fbbd9d066afccdd3a96e9651781adcf513f2323adee0e4ffe95d86339ccc232b",
+      "act_name": "Films Films And Censorship Act 1985",
+      "pdf_path": "data\\legislation\\films_films_and_censorship_act_1985.pdf",
+      "markdown_path": "data/markdown\\films_films_and_censorship_act_1985.md",
+      "chunks": 172,
+      "last_processed": "2025-11-17T09:47:25.670031"
+    },
+    "finan68_finance_act_1967_68": {
+      "file_hash": "dfbea7a68ff2eb156b76ed85f19442a3bffc6215351d2ff3ea1fe4374fdc4f38",
+      "act_name": "Finan68 Finance Act 1967 68",
+      "pdf_path": "data\\legislation\\finan68_finance_act_1967_68.pdf",
+      "markdown_path": "data/markdown\\finan68_finance_act_1967_68.md",
+      "chunks": 25,
+      "last_processed": "2025-11-17T09:47:27.560405"
+    },
+    "finia_financial_institutions_provision_of_customer_information_act_2013": {
+      "file_hash": "079a9d5b8a61b14be79ab58d2fe733f9dd20a7a6ec29f6506cc9c5ecec8db92f",
+      "act_name": "Finia Financial Institutions Provision Of Customer Information Act 2013",
+      "pdf_path": "data\\legislation\\finia_financial_institutions_provision_of_customer_information_act_2013.pdf",
+      "markdown_path": "data/markdown\\finia_financial_institutions_provision_of_customer_information_act_2013.md",
+      "chunks": 35,
+      "last_processed": "2025-11-17T09:47:28.809729"
+    },
+    "fiua_financial_intelligence_unit_act_2015": {
+      "file_hash": "dadf4f351470513213641ec81ef44fdd872f0107491651a4423421fa73e80e00",
+      "act_name": "Fiua Financial Intelligence Unit Act 2015",
+      "pdf_path": "data\\legislation\\fiua_financial_intelligence_unit_act_2015.pdf",
+      "markdown_path": "data/markdown\\fiua_financial_intelligence_unit_act_2015.md",
+      "chunks": 573,
+      "last_processed": "2025-11-17T09:47:44.565673"
+    },
+    "food_food_act_1992_93": {
+      "file_hash": "c9d1e3a6a59038d6082b6feaf96ebe0d808af6277d99a5b94e8f3cf973d404fb",
+      "act_name": "Food Food Act 1992 93",
+      "pdf_path": "data\\legislation\\food_food_act_1992_93.pdf",
+      "markdown_path": "data/markdown\\food_food_act_1992_93.md",
+      "chunks": 949,
+      "last_processed": "2025-11-17T09:48:10.916681"
+    },
+    "fpasa_family_protection_and_support_act_2017": {
+      "file_hash": "1582b942db48b5b9086238c97fd3665033573d4e1af4468ece189f2c40685cbb",
+      "act_name": "Fpasa Family Protection And Support Act 2017",
+      "pdf_path": "data\\legislation\\fpasa_family_protection_and_support_act_2017.pdf",
+      "markdown_path": "data/markdown\\fpasa_family_protection_and_support_act_2017.md",
+      "chunks": 1595,
+      "last_processed": "2025-11-17T09:48:50.444904"
+    },
+    "fsca03_financial_supervisory_commission_act_2003": {
+      "file_hash": "ebf4f0d5511b53be1435ce4113490df953eae434089892b63eb284d73995d54a",
+      "act_name": "Fsca03 Financial Supervisory Commission Act 2003",
+      "pdf_path": "data\\legislation\\fsca03_financial_supervisory_commission_act_2003.pdf",
+      "markdown_path": "data/markdown\\fsca03_financial_supervisory_commission_act_2003.md",
+      "chunks": 309,
+      "last_processed": "2025-11-17T09:48:59.104587"
+    },
+    "fsda_financial_services_development_act_2009": {
+      "file_hash": "75f993f8f258e77ffcae41746c0a76ab8c77b0d07dec40f7e06db81ba7f06306",
+      "act_name": "Fsda Financial Services Development Act 2009",
+      "pdf_path": "data\\legislation\\fsda_financial_services_development_act_2009.pdf",
+      "markdown_path": "data/markdown\\fsda_financial_services_development_act_2009.md",
+      "chunks": 168,
+      "last_processed": "2025-11-17T09:49:04.977778"
+    },
+    "fta_fair_trading_act_2008": {
+      "file_hash": "4811f8e3e6b9639ca7c0106abfa15a83845eb048ee2803c85ba72647ddd7f8ef",
+      "act_name": "Fta Fair Trading Act 2008",
+      "pdf_path": "data\\legislation\\fta_fair_trading_act_2008.pdf",
+      "markdown_path": "data/markdown\\fta_fair_trading_act_2008.md",
+      "chunks": 429,
+      "last_processed": "2025-11-17T09:49:15.708804"
+    },
+    "ftra_financial_transactions_reporting_act_2017": {
+      "file_hash": "dbff55bc9f155bc421e65ab65bc70b6dde9f94cc9b024834bcc445030482914f",
+      "act_name": "Ftra Financial Transactions Reporting Act 2017",
+      "pdf_path": "data\\legislation\\ftra_financial_transactions_reporting_act_2017.pdf",
+      "markdown_path": "data/markdown\\ftra_financial_transactions_reporting_act_2017.md",
+      "chunks": 903,
+      "last_processed": "2025-11-17T09:49:37.128861"
+    },
+    "ga_gaming_act_1967": {
+      "file_hash": "f0bb31af493eab16e9b38d8b9eda1870c5a1f66dd68c4fb7720f14a0e8b7b17c",
+      "act_name": "Ga Gaming Act 1967",
+      "pdf_path": "data\\legislation\\ga_gaming_act_1967.pdf",
+      "markdown_path": "data/markdown\\ga_gaming_act_1967.md",
+      "chunks": 125,
+      "last_processed": "2025-11-17T09:49:41.376039"
+    },
+    "gcap02_geneva_conventions_and_additional_protocols_act_2002": {
+      "file_hash": "b3bccd75f7ca6a1a3ead6ddd13dbcc5b1e7c109f5f98e4cb5f5ba22f2ece3868",
+      "act_name": "Gcap02 Geneva Conventions And Additional Protocols Act 2002",
+      "pdf_path": "data\\legislation\\gcap02_geneva_conventions_and_additional_protocols_act_2002.pdf",
+      "markdown_path": "data/markdown\\gcap02_geneva_conventions_and_additional_protocols_act_2002.md",
+      "chunks": 119,
+      "last_processed": "2025-11-17T09:49:45.058759"
+    },
+    "glc_government_loans_and_contracts_act_1968": {
+      "file_hash": "00f3cf50458b46f33a91717b9c474a7e284f45749ff7b492ac308b2c40b024c6",
+      "act_name": "Glc Government Loans And Contracts Act 1968",
+      "pdf_path": "data\\legislation\\glc_government_loans_and_contracts_act_1968.pdf",
+      "markdown_path": "data/markdown\\glc_government_loans_and_contracts_act_1968.md",
+      "chunks": 20,
+      "last_processed": "2025-11-17T09:49:46.405672"
+    },
+    "ha66_house_of_ariki_act_1966": {
+      "file_hash": "82a2ee9599f99d52e9e2e5675ee8ea1ab43b14a6055195ac32b56e393294e607",
+      "act_name": "Ha66 House Of Ariki Act 1966",
+      "pdf_path": "data\\legislation\\ha66_house_of_ariki_act_1966.pdf",
+      "markdown_path": "data/markdown\\ha66_house_of_ariki_act_1966.md",
+      "chunks": 461,
+      "last_processed": "2025-11-17T09:50:00.049683"
+    },
+    "harra_harassment_act_2017": {
+      "file_hash": "5a113b90232f9c13e5912d0d1969a9b75728d946a0800cdac2cdf16229c79c61",
+      "act_name": "Harra Harassment Act 2017",
+      "pdf_path": "data\\legislation\\harra_harassment_act_2017.pdf",
+      "markdown_path": "data/markdown\\harra_harassment_act_2017.md",
+      "chunks": 293,
+      "last_processed": "2025-11-17T09:50:09.652109"
+    },
+    "ica81_international_companies_act_1981_82": {
+      "file_hash": "746ed7c81dd9d3fb6f832132558abe7373daef2e5b993c847234fc4dbba26dc7",
+      "act_name": "Ica81 International Companies Act 1981 82",
+      "pdf_path": "data\\legislation\\ica81_international_companies_act_1981_82.pdf",
+      "markdown_path": "data/markdown\\ica81_international_companies_act_1981_82.md",
+      "chunks": 2588,
+      "last_processed": "2025-11-17T09:51:13.554669"
+    },
+    "ica87_illegal_contracts_act_1987": {
+      "file_hash": "2ed9c6a253c23f45d2c8a3c151e4ee91d54e23e2935405673951d5d3db09cc4a",
+      "act_name": "Ica87 Illegal Contracts Act 1987",
+      "pdf_path": "data\\legislation\\ica87_illegal_contracts_act_1987.pdf",
+      "markdown_path": "data/markdown\\ica87_illegal_contracts_act_1987.md",
+      "chunks": 44,
+      "last_processed": "2025-11-17T09:51:15.851147"
+    },
+    "iga12_island_government_act_2012_13": {
+      "file_hash": "af92a8a1ed104f112eec81c091d78d9b2395e4a0727e18e57be94f95f3b71f4a",
+      "act_name": "Iga12 Island Government Act 2012 13",
+      "pdf_path": "data\\legislation\\iga12_island_government_act_2012_13.pdf",
+      "markdown_path": "data/markdown\\iga12_island_government_act_2012_13.md",
+      "chunks": 1570,
+      "last_processed": "2025-11-17T09:51:58.315707"
+    },
+    "ilr_insurance_law_reform_act_1994_95": {
+      "file_hash": "8712d25e9dff836bacade8254dc9de0d7c3decaea7696a5eaa412f6f06009973",
+      "act_name": "Ilr Insurance Law Reform Act 1994 95",
+      "pdf_path": "data\\legislation\\ilr_insurance_law_reform_act_1994_95.pdf",
+      "markdown_path": "data/markdown\\ilr_insurance_law_reform_act_1994_95.md",
+      "chunks": 68,
+      "last_processed": "2025-11-17T09:52:01.450224"
+    },
+    "imperial_imperial_legislation": {
+      "file_hash": "a10eb5030b9f53ed329018ed54a89f5a02c3413f7aecb8931fe93708ac4ad690",
+      "act_name": "Imperial Imperial Legislation",
+      "pdf_path": "data\\legislation\\imperial_imperial_legislation.pdf",
+      "markdown_path": "data/markdown\\imperial_imperial_legislation.md",
+      "chunks": 55,
+      "last_processed": "2025-11-17T09:52:04.349276"
+    },
+    "imv_importation_of_motor_vehicles_south_pacific_forum_act_1997": {
+      "file_hash": "393a70f321f5a7706916b9afafb42bd3d59e291f6d3546b3ade59e0e5770e24c",
+      "act_name": "Imv Importation Of Motor Vehicles South Pacific Forum Act 1997",
+      "pdf_path": "data\\legislation\\imv_importation_of_motor_vehicles_south_pacific_forum_act_1997.pdf",
+      "markdown_path": "data/markdown\\imv_importation_of_motor_vehicles_south_pacific_forum_act_1997.md",
+      "chunks": 20,
+      "last_processed": "2025-11-17T09:52:06.049241"
+    },
+    "indups_industrial_and_provident_societies_act_1908": {
+      "file_hash": "ab9b9c0a208da08aa6eb6867ed4172c583b5001416b3ff3a840a4105c20763a3",
+      "act_name": "Indups Industrial And Provident Societies Act 1908",
+      "pdf_path": "data\\legislation\\indups_industrial_and_provident_societies_act_1908.pdf",
+      "markdown_path": "data/markdown\\indups_industrial_and_provident_societies_act_1908.md",
+      "chunks": 348,
+      "last_processed": "2025-11-17T09:52:16.362087"
+    },
+    "infan_infants_act_1908": {
+      "file_hash": "423256dc06321bae19c3edd0aa2d8e836fd13ce0929f498606ec4c05096696e8",
+      "act_name": "Infan Infants Act 1908",
+      "pdf_path": "data\\legislation\\infan_infants_act_1908.pdf",
+      "markdown_path": "data/markdown\\infan_infants_act_1908.md",
+      "chunks": 21,
+      "last_processed": "2025-11-17T09:52:17.946162"
+    },
+    "infra_infrastructure_act_2019": {
+      "file_hash": "a6bba748e4cad50bf49c702963ffb301f7789ed2f2cb6904da0c74fd6c2a1f6c",
+      "act_name": "Infra Infrastructure Act 2019",
+      "pdf_path": "data\\legislation\\infra_infrastructure_act_2019.pdf",
+      "markdown_path": "data/markdown\\infra_infrastructure_act_2019.md",
+      "chunks": 788,
+      "last_processed": "2025-11-17T09:52:39.152126"
+    },
+    "innkeep_innkeepers_act_1984": {
+      "file_hash": "6a1ea6cc7d1b1533bca441d5447feb9b24cfbe269f55e2b606a12cd5ff5720f8",
+      "act_name": "Innkeep Innkeepers Act 1984",
+      "pdf_path": "data\\legislation\\innkeep_innkeepers_act_1984.pdf",
+      "markdown_path": "data/markdown\\innkeep_innkeepers_act_1984.md",
+      "chunks": 41,
+      "last_processed": "2025-11-17T09:52:41.201113"
+    },
+    "insa_insurance_act_2008": {
+      "file_hash": "b96942154008891e9139da5f09902c93e84b9d2d315841500ca506677e621645",
+      "act_name": "Insa Insurance Act 2008",
+      "pdf_path": "data\\legislation\\insa_insurance_act_2008.pdf",
+      "markdown_path": "data/markdown\\insa_insurance_act_2008.md",
+      "chunks": 1626,
+      "last_processed": "2025-11-17T09:53:24.082199"
+    },
+    "intefaa_international_finance_agreements_act_1961": {
+      "file_hash": "507530bc4cfb4e662ea432e75e262a19348e3599d500608e745ca380b71f3caa",
+      "act_name": "Intefaa International Finance Agreements Act 1961",
+      "pdf_path": "data\\legislation\\intefaa_international_finance_agreements_act_1961.pdf",
+      "markdown_path": "data/markdown\\intefaa_international_finance_agreements_act_1961.md",
+      "chunks": 1128,
+      "last_processed": "2025-11-17T09:53:54.871978"
+    },
+    "intpar_international_partnership_act_1984": {
+      "file_hash": "80fb079839bad786f16c81c281a5d20a6922fe369460702c23d4b3c31f151a4a",
+      "act_name": "Intpar International Partnership Act 1984",
+      "pdf_path": "data\\legislation\\intpar_international_partnership_act_1984.pdf",
+      "markdown_path": "data/markdown\\intpar_international_partnership_act_1984.md",
+      "chunks": 343,
+      "last_processed": "2025-11-17T09:54:04.911095"
+    },
+    "intra_international_trusts_act_1984": {
+      "file_hash": "3f04551622b79692084c4acb01853fc920eb538d41be8d02c33113252088954c",
+      "act_name": "Intra International Trusts Act 1984",
+      "pdf_path": "data\\legislation\\intra_international_trusts_act_1984.pdf",
+      "markdown_path": "data/markdown\\intra_international_trusts_act_1984.md",
+      "chunks": 477,
+      "last_processed": "2025-11-17T09:54:18.368787"
+    },
+    "irpta_international_relationship_property_trusts_act_2021": {
+      "file_hash": "b3a49201f40b0dcef6c859c34f823231ea2f33b2abde574c8202bbb0d0301422",
+      "act_name": "Irpta International Relationship Property Trusts Act 2021",
+      "pdf_path": "data\\legislation\\irpta_international_relationship_property_trusts_act_2021.pdf",
+      "markdown_path": "data/markdown\\irpta_international_relationship_property_trusts_act_2021.md",
+      "chunks": 878,
+      "last_processed": "2025-11-17T09:54:41.773403"
+    },
+    "isa94_incorporated_societies_act_1994": {
+      "file_hash": "2e8d4bf5c462b255ace47b171f5c6e8069fdfef3f35d60854fc27bf3ffdbb895",
+      "act_name": "Isa94 Incorporated Societies Act 1994",
+      "pdf_path": "data\\legislation\\isa94_incorporated_societies_act_1994.pdf",
+      "markdown_path": "data/markdown\\isa94_incorporated_societies_act_1994.md",
+      "chunks": 433,
+      "last_processed": "2025-11-17T09:54:54.978349"
+    },
+    "isa_international_shipping_act_1999": {
+      "file_hash": "9fd4f4e03db38ac64c709b5235c12879462d855a3310060720dea9cf3ab73e1b",
+      "act_name": "Isa International Shipping Act 1999",
+      "pdf_path": "data\\legislation\\isa_international_shipping_act_1999.pdf",
+      "markdown_path": "data/markdown\\isa_international_shipping_act_1999.md",
+      "chunks": 187,
+      "last_processed": "2025-11-17T09:55:00.825003"
+    },
+    "ita_income_tax_act_1997": {
+      "file_hash": "f32cabd72bcece62fc2a3bd75db1be4a5e30da0c06706fe50f7c4779a50acb54",
+      "act_name": "Ita Income Tax Act 1997",
+      "pdf_path": "data\\legislation\\ita_income_tax_act_1997.pdf",
+      "markdown_path": "data/markdown\\ita_income_tax_act_1997.md",
+      "chunks": 1925,
+      "last_processed": "2025-11-17T09:55:49.277893"
+    },
+    "ja68_juries_act_1968": {
+      "file_hash": "50f03a520cdd3cdebaf66eeda9a9ee0286a41f6b4d94bc93fa71e814d989acd2",
+      "act_name": "Ja68 Juries Act 1968",
+      "pdf_path": "data\\legislation\\ja68_juries_act_1968.pdf",
+      "markdown_path": "data/markdown\\ja68_juries_act_1968.md",
+      "chunks": 135,
+      "last_processed": "2025-11-17T09:55:54.310308"
+    },
+    "jp_justices_of_the_peace_act_2017": {
+      "file_hash": "c38c2b6c77b8b35e9e97c870c856106f3438f8b1b514885c6f78ce2e3a54886f",
+      "act_name": "Jp Justices Of The Peace Act 2017",
+      "pdf_path": "data\\legislation\\jp_justices_of_the_peace_act_2017.pdf",
+      "markdown_path": "data/markdown\\jp_justices_of_the_peace_act_2017.md",
+      "chunks": 164,
+      "last_processed": "2025-11-17T09:55:59.589207"
+    },
+    "juda_judicature_act_1980_81": {
+      "file_hash": "c9edf0ab495e5111fcf155383fd0de2ff86dec7f031dee63d96377e3aaaf93e7",
+      "act_name": "Juda Judicature Act 1980 81",
+      "pdf_path": "data\\legislation\\juda_judicature_act_1980_81.pdf",
+      "markdown_path": "data/markdown\\juda_judicature_act_1980_81.md",
+      "chunks": 2588,
+      "last_processed": "2025-11-17T09:57:09.300588"
+    },
+    "jvnlda_judicature_validation_of_notification_of_land_division_applications_act_2021": {
+      "file_hash": "272550110b5ebd91accd4b0280b8f41021fbbc7abbb9716838d9333e5002ee38",
+      "act_name": "Jvnlda Judicature Validation Of Notification Of Land Division Applications Act 2021",
+      "pdf_path": "data\\legislation\\jvnlda_judicature_validation_of_notification_of_land_division_applications_act_2021.pdf",
+      "markdown_path": "data/markdown\\jvnlda_judicature_validation_of_notification_of_land_division_applications_act_2021.md",
+      "chunks": 10,
+      "last_processed": "2025-11-17T09:57:10.739850"
+    },
+    "land_land_agents_registration_act_2009": {
+      "file_hash": "133d9a9c492b09207171180832af77d07ff5ef8605aa128596945092faac8557",
+      "act_name": "Land Land Agents Registration Act 2009",
+      "pdf_path": "data\\legislation\\land_land_agents_registration_act_2009.pdf",
+      "markdown_path": "data/markdown\\land_land_agents_registration_act_2009.md",
+      "chunks": 401,
+      "last_processed": "2025-11-17T09:57:24.542687"
+    },
+    "landuse_land_use_act_1969": {
+      "file_hash": "2825bbd878c4c0160b765b62d9f82bfc17e953e6edc3dfa66fe8ff15feb22afb",
+      "act_name": "Landuse Land Use Act 1969",
+      "pdf_path": "data\\legislation\\landuse_land_use_act_1969.pdf",
+      "markdown_path": "data/markdown\\landuse_land_use_act_1969.md",
+      "chunks": 68,
+      "last_processed": "2025-11-17T09:57:13.628200"
+    },
+    "lappa_legislative_assembly_powers_and_privileges_act_1967": {
+      "file_hash": "6e13cd325e37326b116e1cf7a7f5a2aacb1ea199abaa0afe75c8e2e702d81be4",
+      "act_name": "Lappa Legislative Assembly Powers And Privileges Act 1967",
+      "pdf_path": "data\\legislation\\lappa_legislative_assembly_powers_and_privileges_act_1967.pdf",
+      "markdown_path": "data/markdown\\lappa_legislative_assembly_powers_and_privileges_act_1967.md",
+      "chunks": 135,
+      "last_processed": "2025-11-17T09:57:29.088385"
+    },
+    "lca_law_commission_act_2007": {
+      "file_hash": "9ba56c357eb1eb1c790c5fdda564ee583bea373ee239f5c150bf1b54d78b4a31",
+      "act_name": "Lca Law Commission Act 2007",
+      "pdf_path": "data\\legislation\\lca_law_commission_act_2007.pdf",
+      "markdown_path": "data/markdown\\lca_law_commission_act_2007.md",
+      "chunks": 98,
+      "last_processed": "2025-11-17T09:57:32.256373"
+    },
+    "legaid_legal_aid_act_2004": {
+      "file_hash": "ed6771148638c9b359bde46279512292070d73896e615b6b4404b68f61299e66",
+      "act_name": "Legaid Legal Aid Act 2004",
+      "pdf_path": "data\\legislation\\legaid_legal_aid_act_2004.pdf",
+      "markdown_path": "data/markdown\\legaid_legal_aid_act_2004.md",
+      "chunks": 227,
+      "last_processed": "2025-11-17T09:57:37.674933"
+    },
+    "legica_legislation_commencement_act_2007": {
+      "file_hash": "a58e203da27b35983a96af0530f36691a9047ba22031678bf05141ed46c1717b",
+      "act_name": "Legica Legislation Commencement Act 2007",
+      "pdf_path": "data\\legislation\\legica_legislation_commencement_act_2007.pdf",
+      "markdown_path": "data/markdown\\legica_legislation_commencement_act_2007.md",
+      "chunks": 13,
+      "last_processed": "2025-11-17T09:57:39.053955"
+    },
+    "legsa_legislative_service_act_1968_69": {
+      "file_hash": "f5de2762f42c6cc72e63b166964e53214f20b532557ef1caa9ec74f7f06862d1",
+      "act_name": "Legsa Legislative Service Act 1968 69",
+      "pdf_path": "data\\legislation\\legsa_legislative_service_act_1968_69.pdf",
+      "markdown_path": "data/markdown\\legsa_legislative_service_act_1968_69.md",
+      "chunks": 256,
+      "last_processed": "2025-11-17T09:57:46.426332"
+    },
+    "lfd70_land_facilitation_of_dealings_act_1970": {
+      "file_hash": "5ab09619aff8324c8f3a564e303d8fd90ab8a96f68ea63762fc2445f8f9befbc",
+      "act_name": "Lfd70 Land Facilitation Of Dealings Act 1970",
+      "pdf_path": "data\\legislation\\lfd70_land_facilitation_of_dealings_act_1970.pdf",
+      "markdown_path": "data/markdown\\lfd70_land_facilitation_of_dealings_act_1970.md",
+      "chunks": 386,
+      "last_processed": "2025-11-17T09:57:55.678633"
+    },
+    "lifeins_life_insurance_act_1970_71": {
+      "file_hash": "8395233b6a4efb013ddb29321518213957a184488e6be1e7d2422fb8bd1c40ec",
+      "act_name": "Lifeins Life Insurance Act 1970 71",
+      "pdf_path": "data\\legislation\\lifeins_life_insurance_act_1970_71.pdf",
+      "markdown_path": "data/markdown\\lifeins_life_insurance_act_1970_71.md",
+      "chunks": 246,
+      "last_processed": "2025-11-17T09:58:01.937472"
+    },
+    "limit_limitation_act_1950": {
+      "file_hash": "3b4e4998054387e1e7d7fc1f641ec8ccebf87e75d3d4ef5ac87acb00bb1fec4b",
+      "act_name": "Limit Limitation Act 1950",
+      "pdf_path": "data\\legislation\\limit_limitation_act_1950.pdf",
+      "markdown_path": "data/markdown\\limit_limitation_act_1950.md",
+      "chunks": 171,
+      "last_processed": "2025-11-17T09:58:06.711342"
+    },
+    "llca_limited_liability_companies_act_2008": {
+      "file_hash": "0cbb8bfb1c1777e4f8641e33cf55a4b9675c36768f3622d0712839a8d5d8ebee",
+      "act_name": "Llca Limited Liability Companies Act 2008",
+      "pdf_path": "data\\legislation\\llca_limited_liability_companies_act_2008.pdf",
+      "markdown_path": "data/markdown\\llca_limited_liability_companies_act_2008.md",
+      "chunks": 422,
+      "last_processed": "2025-11-17T09:58:19.438792"
+    },
+    "loanaut_loan_authorisation_act_1975": {
+      "file_hash": "647ca007ba587c3a3381c40b4ec2739dce8c0aace1b0d0f8c9ee9f0d3453e50f",
+      "act_name": "Loanaut Loan Authorisation Act 1975",
+      "pdf_path": "data\\legislation\\loanaut_loan_authorisation_act_1975.pdf",
+      "markdown_path": "data/markdown\\loanaut_loan_authorisation_act_1975.md",
+      "chunks": 10,
+      "last_processed": "2025-11-17T09:58:20.442576"
+    },
+    "lpa_law_practitioners_act_1993_94": {
+      "file_hash": "e249297ae1633cdcd3d92020d75137d4f1c61d1755f576ebd149dce89e1a19bd",
+      "act_name": "Lpa Law Practitioners Act 1993 94",
+      "pdf_path": "data\\legislation\\lpa_law_practitioners_act_1993_94.pdf",
+      "markdown_path": "data/markdown\\lpa_law_practitioners_act_1993_94.md",
+      "chunks": 365,
+      "last_processed": "2025-11-17T09:58:30.891941"
+    },
+    "lra68_law_reform_act_1968": {
+      "file_hash": "c974c464d1093e28ec5e02aac93307421f4b308fd62253ff1b2e784663501f1e",
+      "act_name": "Lra68 Law Reform Act 1968",
+      "pdf_path": "data\\legislation\\lra68_law_reform_act_1968.pdf",
+      "markdown_path": "data/markdown\\lra68_law_reform_act_1968.md",
+      "chunks": 64,
+      "last_processed": "2025-11-17T09:58:33.073115"
+    },
+    "lra76_leases_restrictions_act_1976": {
+      "file_hash": "f382607d31a673f42b9885758df09c8afd7c6c9e04ce0331eee0a68ed8f9ffed",
+      "act_name": "Lra76 Leases Restrictions Act 1976",
+      "pdf_path": "data\\legislation\\lra76_leases_restrictions_act_1976.pdf",
+      "markdown_path": "data/markdown\\lra76_leases_restrictions_act_1976.md",
+      "chunks": 218,
+      "last_processed": "2025-11-17T09:58:40.630094"
+    },
+    "manacab_manatua_cable_protection_act_2024": {
+      "file_hash": "5ca91dfafb94eedd9396a1e26d8b116bb2d2536feac1c17b3e580dbde7d69e68",
+      "act_name": "Manacab Manatua Cable Protection Act 2024",
+      "pdf_path": "data\\legislation\\manacab_manatua_cable_protection_act_2024.pdf",
+      "markdown_path": "data/markdown\\manacab_manatua_cable_protection_act_2024.md",
+      "chunks": 99,
+      "last_processed": "2025-11-17T09:58:44.800119"
+    },
+    "mara_marine_resources_act_2005": {
+      "file_hash": "113ce225ec5d65d96baeb00798527da1dddc267fc051773de5af9aa7d0809744",
+      "act_name": "Mara Marine Resources Act 2005",
+      "pdf_path": "data\\legislation\\mara_marine_resources_act_2005.pdf",
+      "markdown_path": "data/markdown\\mara_marine_resources_act_2005.md",
+      "chunks": 1675,
+      "last_processed": "2025-11-17T09:59:28.747211"
+    },
+    "mari_marine_insurance_act_1908": {
+      "file_hash": "c00c5c6ab0ff817e0cb200f8de6c8678d7935a4dbae3f28aad334747d8156f89",
+      "act_name": "Mari Marine Insurance Act 1908",
+      "pdf_path": "data\\legislation\\mari_marine_insurance_act_1908.pdf",
+      "markdown_path": "data/markdown\\mari_marine_insurance_act_1908.md",
+      "chunks": 348,
+      "last_processed": "2025-11-17T09:59:38.157460"
+    },
+    "marriage_marriage_act_1973": {
+      "file_hash": "d7ab9b61a5c653a12b68c7989088988fc83eae24b183f382de8de7509f2cbe54",
+      "act_name": "Marriage Marriage Act 1973",
+      "pdf_path": "data\\legislation\\marriage_marriage_act_1973.pdf",
+      "markdown_path": "data/markdown\\marriage_marriage_act_1973.md",
+      "chunks": 279,
+      "last_processed": "2025-11-17T09:59:45.427592"
+    },
+    "marz_maritime_zones_act_2018": {
+      "file_hash": "784d9123aa942429a44c1859934562bc80ff45f2ffe5b80f4fdfd3a5002b617a",
+      "act_name": "Marz Maritime Zones Act 2018",
+      "pdf_path": "data\\legislation\\marz_maritime_zones_act_2018.pdf",
+      "markdown_path": "data/markdown\\marz_maritime_zones_act_2018.md",
+      "chunks": 198,
+      "last_processed": "2025-11-17T10:00:13.254683"
+    },
+    "matprpnz_matrimonial_property_act_1976": {
+      "file_hash": "ebda84fb4e167297a7349b8a1e48ee885a828e52064f20e951825993c001f462",
+      "act_name": "Matprpnz Matrimonial Property Act 1976",
+      "pdf_path": "data\\legislation\\matprpnz_matrimonial_property_act_1976.pdf",
+      "markdown_path": "data/markdown\\matprpnz_matrimonial_property_act_1976.md",
+      "chunks": 516,
+      "last_processed": "2025-11-17T10:00:25.007612"
+    },
+    "matr_maritime_transport_act_2008": {
+      "file_hash": "469d4dbf7a41f41b5f7105e66b01c5e47e74de855eaf9b82f82e3f33480e07e2",
+      "act_name": "Matr Maritime Transport Act 2008",
+      "pdf_path": "data\\legislation\\matr_maritime_transport_act_2008.pdf",
+      "markdown_path": "data/markdown\\matr_maritime_transport_act_2008.md",
+      "chunks": 2215,
+      "last_processed": "2025-11-17T10:01:20.322484"
+    },
+    "mcda_ministry_of_cultural_development_act_1990": {
+      "file_hash": "3f90e41d56741d0ab1aa5a3d10ebbf5122c14c9ffbc0336b159a8c8a32f7b590",
+      "act_name": "Mcda Ministry Of Cultural Development Act 1990",
+      "pdf_path": "data\\legislation\\mcda_ministry_of_cultural_development_act_1990.pdf",
+      "markdown_path": "data/markdown\\mcda_ministry_of_cultural_development_act_1990.md",
+      "chunks": 151,
+      "last_processed": "2025-11-17T10:01:24.708328"
+    },
+    "mcrba_money_changing_and_remittance_businesses_act_2009": {
+      "file_hash": "b016aee7e85fd4fe0b8d1489040a5360e23f55822e574665a4f345e828e71164",
+      "act_name": "Mcrba Money Changing And Remittance Businesses Act 2009",
+      "pdf_path": "data\\legislation\\mcrba_money_changing_and_remittance_businesses_act_2009.pdf",
+      "markdown_path": "data/markdown\\mcrba_money_changing_and_remittance_businesses_act_2009.md",
+      "chunks": 236,
+      "last_processed": "2025-11-17T10:01:31.807424"
+    },
+    "meddent_medical_and_dental_practices_act_1976": {
+      "file_hash": "51cb4d7e5c2fd67377aca41f03aeb4bb3fd756461b8ee7f213cae1e3f5846352",
+      "act_name": "Meddent Medical And Dental Practices Act 1976",
+      "pdf_path": "data\\legislation\\meddent_medical_and_dental_practices_act_1976.pdf",
+      "markdown_path": "data/markdown\\meddent_medical_and_dental_practices_act_1976.md",
+      "chunks": 138,
+      "last_processed": "2025-11-17T10:01:36.378954"
+    },
+    "merc_mercantile_law_act_1908": {
+      "file_hash": "56cb26b48796925f5f4215cb25aebd66636e3e0dd7825c498d20308eca00f562",
+      "act_name": "Merc Mercantile Law Act 1908",
+      "pdf_path": "data\\legislation\\merc_mercantile_law_act_1908.pdf",
+      "markdown_path": "data/markdown\\merc_mercantile_law_act_1908.md",
+      "chunks": 144,
+      "last_processed": "2025-11-17T10:01:41.268981"
+    },
+    "mfem_ministry_of_finance_and_economic_management_act_1995_96": {
+      "file_hash": "7015ff93f756df2ee9e35838433da26ec2fd0f4565f9eae7e342113666a43520",
+      "act_name": "Mfem Ministry Of Finance And Economic Management Act 1995 96",
+      "pdf_path": "data\\legislation\\mfem_ministry_of_finance_and_economic_management_act_1995_96.pdf",
+      "markdown_path": "data/markdown\\mfem_ministry_of_finance_and_economic_management_act_1995_96.md",
+      "chunks": 408,
+      "last_processed": "2025-11-17T10:01:51.403712"
+    },
+    "mha_ministry_of_health_act_2013": {
+      "file_hash": "ca2c4d80163eeb275c131d2cc5b2f7d7e3218644a89027a0d449db15029826de",
+      "act_name": "Mha Ministry Of Health Act 2013",
+      "pdf_path": "data\\legislation\\mha_ministry_of_health_act_2013.pdf",
+      "markdown_path": "data/markdown\\mha_ministry_of_health_act_2013.md",
+      "chunks": 1839,
+      "last_processed": "2025-11-17T10:02:42.267491"
+    },
+    "mma_marae_moana_act_2017": {
+      "file_hash": "bab72473dbce6e2122673911c0076fc7ed8b938aba3581e904007a60e0ffb164",
+      "act_name": "Mma Marae Moana Act 2017",
+      "pdf_path": "data\\legislation\\mma_marae_moana_act_2017.pdf",
+      "markdown_path": "data/markdown\\mma_marae_moana_act_2017.md",
+      "chunks": 312,
+      "last_processed": "2025-11-17T10:02:50.344604"
+    },
+    "mmra_ministry_of_marine_resources_act_1984": {
+      "file_hash": "725a94528d3035bd209b62468944ae19c7030022ea35ca59fdb91566eac45856",
+      "act_name": "Mmra Ministry Of Marine Resources Act 1984",
+      "pdf_path": "data\\legislation\\mmra_ministry_of_marine_resources_act_1984.pdf",
+      "markdown_path": "data/markdown\\mmra_ministry_of_marine_resources_act_1984.md",
+      "chunks": 91,
+      "last_processed": "2025-11-17T10:02:53.377868"
+    },
+    "mocs_ministry_of_corrective_services_act_2019": {
+      "file_hash": "5eea76a7677dabbb56a4b7192ed6ad3f9d7697b459c51f00a91359b7fd5f2c09",
+      "act_name": "Mocs Ministry Of Corrective Services Act 2019",
+      "pdf_path": "data\\legislation\\mocs_ministry_of_corrective_services_act_2019.pdf",
+      "markdown_path": "data/markdown\\mocs_ministry_of_corrective_services_act_2019.md",
+      "chunks": 59,
+      "last_processed": "2025-11-17T10:02:55.466815"
+    },
+    "mofa_ministry_of_foreign_affairs_act_1984": {
+      "file_hash": "86b83b7b54f45c9cd8855416e9ab23dab7d60fd9ab7c894b2e41b9e55fe18f77",
+      "act_name": "Mofa Ministry Of Foreign Affairs Act 1984",
+      "pdf_path": "data\\legislation\\mofa_ministry_of_foreign_affairs_act_1984.pdf",
+      "markdown_path": "data/markdown\\mofa_ministry_of_foreign_affairs_act_1984.md",
+      "chunks": 78,
+      "last_processed": "2025-11-17T10:02:59.123533"
+    },
+    "momrl_ministry_of_marine_resources_legislation_act_2019": {
+      "file_hash": "c23b1e9f027e6ea1ffd834223a9e25c23a86d4e03436914e4b050ea43e103099",
+      "act_name": "Momrl Ministry Of Marine Resources Legislation Act 2019",
+      "pdf_path": "data\\legislation\\momrl_ministry_of_marine_resources_legislation_act_2019.pdf",
+      "markdown_path": "data/markdown\\momrl_ministry_of_marine_resources_legislation_act_2019.md",
+      "chunks": 61,
+      "last_processed": "2025-11-17T10:03:01.067656"
+    },
+    "mopea_ministry_of_statistics_act_1977": {
+      "file_hash": "a8fcbe921a5c806927a3ca39deef6ec6f21edea53bbc7b2706f3487483978482",
+      "act_name": "Mopea Ministry Of Statistics Act 1977",
+      "pdf_path": "data\\legislation\\mopea_ministry_of_statistics_act_1977.pdf",
+      "markdown_path": "data/markdown\\mopea_ministry_of_statistics_act_1977.md",
+      "chunks": 46,
+      "last_processed": "2025-11-17T10:03:02.859229"
+    },
+    "mped_planning_and_economic_development_act_1987": {
+      "file_hash": "4db02086332177f23742741d94279e6a4dc432f57405e5836c6024ebaa32ac7d",
+      "act_name": "Mped Planning And Economic Development Act 1987",
+      "pdf_path": "data\\legislation\\mped_planning_and_economic_development_act_1987.pdf",
+      "markdown_path": "data/markdown\\mped_planning_and_economic_development_act_1987.md",
+      "chunks": 51,
+      "last_processed": "2025-11-17T10:03:04.801040"
+    },
+    "mpsa_members_of_parliament_superannuation_act_2003": {
+      "file_hash": "eb581711e15ec1ff7daf571ded4dd1bbf6093598c2aed3ce5ee5fc93a895a827",
+      "act_name": "Mpsa Members Of Parliament Superannuation Act 2003",
+      "pdf_path": "data\\legislation\\mpsa_members_of_parliament_superannuation_act_2003.pdf",
+      "markdown_path": "data/markdown\\mpsa_members_of_parliament_superannuation_act_2003.md",
+      "chunks": 85,
+      "last_processed": "2025-11-17T10:03:08.247472"
+    },
+    "mrtta_medical_research_trust_termination_act_1980_81": {
+      "file_hash": "f95c6f4f30eef18e3a7b6532389695b34fd7f30fe1d6dc08a25cbb76dfa9ca1a",
+      "act_name": "Mrtta Medical Research Trust Termination Act 1980 81",
+      "pdf_path": "data\\legislation\\mrtta_medical_research_trust_termination_act_1980_81.pdf",
+      "markdown_path": "data/markdown\\mrtta_medical_research_trust_termination_act_1980_81.md",
+      "chunks": 81,
+      "last_processed": "2025-11-17T10:03:11.192797"
+    },
+    "ms_meteorological_services_act_1995_96": {
+      "file_hash": "20645de8e38c9bed08ee62d40b01ba00439a25558e00260533b48937c938391c",
+      "act_name": "Ms Meteorological Services Act 1995 96",
+      "pdf_path": "data\\legislation\\ms_meteorological_services_act_1995_96.pdf",
+      "markdown_path": "data/markdown\\ms_meteorological_services_act_1995_96.md",
+      "chunks": 19,
+      "last_processed": "2025-11-17T10:03:13.165474"
+    },
+    "mutual_mutual_assistance_in_criminal_matters_act_2003": {
+      "file_hash": "4b6f7ac40315a4a079d67d8afb68ff690642678f98f485ac5084bbef11b71708",
+      "act_name": "Mutual Mutual Assistance In Criminal Matters Act 2003",
+      "pdf_path": "data\\legislation\\mutual_mutual_assistance_in_criminal_matters_act_2003.pdf",
+      "markdown_path": "data/markdown\\mutual_mutual_assistance_in_criminal_matters_act_2003.md",
+      "chunks": 465,
+      "last_processed": "2025-11-17T10:03:25.498942"
+    },
+    "mvda_motor_vehicle_dealers_act_1986": {
+      "file_hash": "263c35a59e8d26a035bccf10e6b8557a19389875a627624a80739cf685dcae05",
+      "act_name": "Mvda Motor Vehicle Dealers Act 1986",
+      "pdf_path": "data\\legislation\\mvda_motor_vehicle_dealers_act_1986.pdf",
+      "markdown_path": "data/markdown\\mvda_motor_vehicle_dealers_act_1986.md",
+      "chunks": 770,
+      "last_processed": "2025-11-17T10:03:44.041952"
+    },
+    "na_nurses_act_1986": {
+      "file_hash": "abfe4450f06f1a23c2d0042da115022974a3dcd10f06b184a4148baf5a8f2048",
+      "act_name": "Na Nurses Act 1986",
+      "pdf_path": "data\\legislation\\na_nurses_act_1986.pdf",
+      "markdown_path": "data/markdown\\na_nurses_act_1986.md",
+      "chunks": 50,
+      "last_processed": "2025-11-17T10:04:14.801989"
+    },
+    "narc_narcotics_and_misuse_of_drugs_act_2004": {
+      "file_hash": "c80eb439d6afce183f80431f2cb1742bcfa51d46865da873cc84cd3f714f29aa",
+      "act_name": "Narc Narcotics And Misuse Of Drugs Act 2004",
+      "pdf_path": "data\\legislation\\narc_narcotics_and_misuse_of_drugs_act_2004.pdf",
+      "markdown_path": "data/markdown\\narc_narcotics_and_misuse_of_drugs_act_2004.md",
+      "chunks": 1015,
+      "last_processed": "2025-11-17T10:04:13.014362"
+    },
+    "nc_noise_control_act_1986": {
+      "file_hash": "feccbd11e9b60499430cfd4ed320a60668fc0a5868c147a78dbfaa8b0659bb52",
+      "act_name": "Nc Noise Control Act 1986",
+      "pdf_path": "data\\legislation\\nc_noise_control_act_1986.pdf",
+      "markdown_path": "data/markdown\\nc_noise_control_act_1986.md",
+      "chunks": 109,
+      "last_processed": "2025-11-17T10:04:18.541221"
+    },
+    "notpub_notaries_public_act_1992": {
+      "file_hash": "1555e57696dc5eb803db8b3ba590e054351ec1982c8d852343f6acda507c8f37",
+      "act_name": "Notpub Notaries Public Act 1992",
+      "pdf_path": "data\\legislation\\notpub_notaries_public_act_1992.pdf",
+      "markdown_path": "data/markdown\\notpub_notaries_public_act_1992.md",
+      "chunks": 39,
+      "last_processed": "2025-11-17T10:04:20.234728"
+    },
+    "nsa_cook_islands_national_superannuation_act_2000": {
+      "file_hash": "20a590449ef9406497a34514c4b3a15ccff88c16dad0416e5f3bfe9b543b609b",
+      "act_name": "Nsa Cook Islands National Superannuation Act 2000",
+      "pdf_path": "data\\legislation\\nsa_cook_islands_national_superannuation_act_2000.pdf",
+      "markdown_path": "data/markdown\\nsa_cook_islands_national_superannuation_act_2000.md",
+      "chunks": 521,
+      "last_processed": "2025-11-17T10:04:34.440809"
+    },
+    "ntb_nuclear_test_ban_act_2007": {
+      "file_hash": "464c13f6eb74c3c16349dbfbbf758981f00994ff7bb5c0d74ef026e8c2262ed3",
+      "act_name": "Ntb Nuclear Test Ban Act 2007",
+      "pdf_path": "data\\legislation\\ntb_nuclear_test_ban_act_2007.pdf",
+      "markdown_path": "data/markdown\\ntb_nuclear_test_ban_act_2007.md",
+      "chunks": 118,
+      "last_processed": "2025-11-17T10:04:38.207934"
+    },
+    "nzlaws66_new_zealand_laws_act_1966": {
+      "file_hash": "ea1ec3ca5e792ffaa35b72a154c2404aea769acf2c81db5c48929b2a3d6866a7",
+      "act_name": "Nzlaws66 New Zealand Laws Act 1966",
+      "pdf_path": "data\\legislation\\nzlaws66_new_zealand_laws_act_1966.pdf",
+      "markdown_path": "data/markdown\\nzlaws66_new_zealand_laws_act_1966.md",
+      "chunks": 102,
+      "last_processed": "2025-11-17T10:04:42.587500"
+    },
+    "nzra_new_zealand_representative_act_1980": {
+      "file_hash": "be3998f62aa7b4c50503fac5a06f118877ba3ac6e2b8531ffc73471902dca54a",
+      "act_name": "Nzra New Zealand Representative Act 1980",
+      "pdf_path": "data\\legislation\\nzra_new_zealand_representative_act_1980.pdf",
+      "markdown_path": "data/markdown\\nzra_new_zealand_representative_act_1980.md",
+      "chunks": 55,
+      "last_processed": "2025-11-17T10:04:44.758360"
+    },
+    "oia_official_information_act_2008": {
+      "file_hash": "4bbf6469d452752b994fef02cb01436d0021dc5db98cc52091abeaaf5703013f",
+      "act_name": "Oia Official Information Act 2008",
+      "pdf_path": "data\\legislation\\oia_official_information_act_2008.pdf",
+      "markdown_path": "data/markdown\\oia_official_information_act_2008.md",
+      "chunks": 444,
+      "last_processed": "2025-11-17T10:04:57.194897"
+    },
+    "oidala_outer_islands_development_accommodation_levy_act_1981": {
+      "file_hash": "59c4bde7fbb8e0ca47a268d3ca114c1a4c786520aadf6ce1fd7bda00d383bd2e",
+      "act_name": "Oidala Outer Islands Development Accommodation Levy Act 1981",
+      "pdf_path": "data\\legislation\\oidala_outer_islands_development_accommodation_levy_act_1981.pdf",
+      "markdown_path": "data/markdown\\oidala_outer_islands_development_accommodation_levy_act_1981.md",
+      "chunks": 95,
+      "last_processed": "2025-11-17T10:05:00.854195"
+    },
+    "ombud_ombudsman_act_1984": {
+      "file_hash": "5d821c38c290659ed4cc1b2cfd1fd6d07624563084b3e3c242875db115ba991b",
+      "act_name": "Ombud Ombudsman Act 1984",
+      "pdf_path": "data\\legislation\\ombud_ombudsman_act_1984.pdf",
+      "markdown_path": "data/markdown\\ombud_ombudsman_act_1984.md",
+      "chunks": 165,
+      "last_processed": "2025-11-17T10:05:05.922350"
+    },
+    "paa_ports_authority_act_1994_95": {
+      "file_hash": "dc5a26094912e7ccc258d04f7bc3028d5fbcf7dc4f8041ae4b06f9dff5076d76",
+      "act_name": "Paa Ports Authority Act 1994 95",
+      "pdf_path": "data\\legislation\\paa_ports_authority_act_1994_95.pdf",
+      "markdown_path": "data/markdown\\paa_ports_authority_act_1994_95.md",
+      "chunks": 711,
+      "last_processed": "2025-11-17T10:05:23.633291"
+    },
+    "pacrif_pacific_catastrophe_risk_insurance_facility_act_2021": {
+      "file_hash": "a845b4baa3d2b182ab8230ef2b42f51fc94ff9e0c516e89dd739ad1c57f642e7",
+      "act_name": "Pacrif Pacific Catastrophe Risk Insurance Facility Act 2021",
+      "pdf_path": "data\\legislation\\pacrif_pacific_catastrophe_risk_insurance_facility_act_2021.pdf",
+      "markdown_path": "data/markdown\\pacrif_pacific_catastrophe_risk_insurance_facility_act_2021.md",
+      "chunks": 610,
+      "last_processed": "2025-11-17T10:05:39.873079"
+    },
+    "part_partnership_act_1908": {
+      "file_hash": "07bf85abadb52dd2f04ecd2a9e56bb627f7570ea791af2b51279f57e39f12c93",
+      "act_name": "Part Partnership Act 1908",
+      "pdf_path": "data\\legislation\\part_partnership_act_1908.pdf",
+      "markdown_path": "data/markdown\\part_partnership_act_1908.md",
+      "chunks": 204,
+      "last_processed": "2025-11-17T10:05:45.388806"
+    },
+    "patent_patents_act_1953": {
+      "file_hash": "7aaa2b0bc5e5b410169e19e0e7b1f68632a2f5611ebcc89f53d39f4a0b0f3e6c",
+      "act_name": "Patent Patents Act 1953",
+      "pdf_path": "data\\legislation\\patent_patents_act_1953.pdf",
+      "markdown_path": "data/markdown\\patent_patents_act_1953.md",
+      "chunks": 1503,
+      "last_processed": "2025-11-17T10:06:28.857459"
+    },
+    "pca03_proceeds_of_crime_act_2003": {
+      "file_hash": "fb56316b73702b888849894afbd2fd599a2bcc203a3c5abba6656c5ed66c12fa",
+      "act_name": "Pca03 Proceeds Of Crime Act 2003",
+      "pdf_path": "data\\legislation\\pca03_proceeds_of_crime_act_2003.pdf",
+      "markdown_path": "data/markdown\\pca03_proceeds_of_crime_act_2003.md",
+      "chunks": 966,
+      "last_processed": "2025-11-17T10:06:54.956576"
+    },
+    "penr_penrhyn_naharakura_lease_facilitation_act_1992": {
+      "file_hash": "1156bb77e6127c0a3cd4fcac2a6629d316f4f85cd9e157e6f64fec6ca1bca384",
+      "act_name": "Penr Penrhyn Naharakura Lease Facilitation Act 1992",
+      "pdf_path": "data\\legislation\\penr_penrhyn_naharakura_lease_facilitation_act_1992.pdf",
+      "markdown_path": "data/markdown\\penr_penrhyn_naharakura_lease_facilitation_act_1992.md",
+      "chunks": 32,
+      "last_processed": "2025-11-17T10:06:56.433331"
+    },
+    "percaa_public_expenditure_review_committee_and_audit_act_1995_96": {
+      "file_hash": "990380470cefa674d8d7e712172f508fbb19c0b07c46a1f862aa30c271c6f1c0",
+      "act_name": "Percaa Public Expenditure Review Committee And Audit Act 1995 96",
+      "pdf_path": "data\\legislation\\percaa_public_expenditure_review_committee_and_audit_act_1995_96.pdf",
+      "markdown_path": "data/markdown\\percaa_public_expenditure_review_committee_and_audit_act_1995_96.md",
+      "chunks": 261,
+      "last_processed": "2025-11-17T10:07:03.896732"
+    },
+    "pesta_pesticides_act_1987": {
+      "file_hash": "35c6243c2f5a309e97f78a165e13c9b9f7114c11eb65147dddf0e8602c322b33",
+      "act_name": "Pesta Pesticides Act 1987",
+      "pdf_path": "data\\legislation\\pesta_pesticides_act_1987.pdf",
+      "markdown_path": "data/markdown\\pesta_pesticides_act_1987.md",
+      "chunks": 90,
+      "last_processed": "2025-11-17T10:07:06.858205"
+    },
+    "pha99_public_holidays_act_1999": {
+      "file_hash": "977d3d6b170a464678b834ead73f90876a8f5145b7f368e36f4f618c6139b5f5",
+      "act_name": "Pha99 Public Holidays Act 1999",
+      "pdf_path": "data\\legislation\\pha99_public_holidays_act_1999.pdf",
+      "markdown_path": "data/markdown\\pha99_public_holidays_act_1999.md",
+      "chunks": 15,
+      "last_processed": "2025-11-17T10:07:07.971088"
+    },
+    "pha_public_health_act_2004": {
+      "file_hash": "00612fa43779128475ee8d2748db77915d242736036bcbadb672fbc93cd91a48",
+      "act_name": "Pha Public Health Act 2004",
+      "pdf_path": "data\\legislation\\pha_public_health_act_2004.pdf",
+      "markdown_path": "data/markdown\\pha_public_health_act_2004.md",
+      "chunks": 1528,
+      "last_processed": "2025-11-17T10:07:44.486870"
+    },
+    "pjc_prevention_of_juvenile_crime_act_1968": {
+      "file_hash": "c0e43a688ebc159b83fdb3f330947a29bfdea91582d7bebaac3431e0612f896a",
+      "act_name": "Pjc Prevention Of Juvenile Crime Act 1968",
+      "pdf_path": "data\\legislation\\pjc_prevention_of_juvenile_crime_act_1968.pdf",
+      "markdown_path": "data/markdown\\pjc_prevention_of_juvenile_crime_act_1968.md",
+      "chunks": 226,
+      "last_processed": "2025-11-17T10:07:50.550271"
+    },
+    "pla_papua_lands_act_1989": {
+      "file_hash": "7916839d9c00b96c8e85248226d0b15adb42f1d481be9e0768c0386500dfef0e",
+      "act_name": "Pla Papua Lands Act 1989",
+      "pdf_path": "data\\legislation\\pla_papua_lands_act_1989.pdf",
+      "markdown_path": "data/markdown\\pla_papua_lands_act_1989.md",
+      "chunks": 7,
+      "last_processed": "2025-11-17T10:07:52.269902"
+    },
+    "pola12_police_act_2012": {
+      "file_hash": "02be3ecfc2bf4eaceae448babbf754f7204d22cf97451da3880e36f52ad78c38",
+      "act_name": "Pola12 Police Act 2012",
+      "pdf_path": "data\\legislation\\pola12_police_act_2012.pdf",
+      "markdown_path": "data/markdown\\pola12_police_act_2012.md",
+      "chunks": 759,
+      "last_processed": "2025-11-17T10:08:12.897161"
+    },
+    "pola_police_validation_of_reappointment_act_2020": {
+      "file_hash": "0839ec9b5748423c5644793c99d63cc68e623b68326b85909e317247054dc6b9",
+      "act_name": "Pola Police Validation Of Reappointment Act 2020",
+      "pdf_path": "data\\legislation\\pola_police_validation_of_reappointment_act_2020.pdf",
+      "markdown_path": "data/markdown\\pola_police_validation_of_reappointment_act_2020.md",
+      "chunks": 13,
+      "last_processed": "2025-11-17T10:08:14.086585"
+    },
+    "pompa_prevention_of_marine_pollution_act_1998": {
+      "file_hash": "777d4997fadfd4c51109b242445fe028d4d60ab6410a6e1ab923e09287b79109",
+      "act_name": "Pompa Prevention Of Marine Pollution Act 1998",
+      "pdf_path": "data\\legislation\\pompa_prevention_of_marine_pollution_act_1998.pdf",
+      "markdown_path": "data/markdown\\pompa_prevention_of_marine_pollution_act_1998.md",
+      "chunks": 277,
+      "last_processed": "2025-11-17T10:08:20.815582"
+    },
+    "ppfa_primary_producers_federation_act_1980": {
+      "file_hash": "6dd1f699564c30b43d3c48ae7658b76b8fc04c4b05a91138593b8402f9de05ec",
+      "act_name": "Ppfa Primary Producers Federation Act 1980",
+      "pdf_path": "data\\legislation\\ppfa_primary_producers_federation_act_1980.pdf",
+      "markdown_path": "data/markdown\\ppfa_primary_producers_federation_act_1980.md",
+      "chunks": 109,
+      "last_processed": "2025-11-17T10:08:24.985870"
+    },
+    "ppsa_personal_property_securities_act_2017": {
+      "file_hash": "ed93af9f54ca2dfab9c4ae3a97372814ca3e8b8b06f4e69a6184029ea88a0f52",
+      "act_name": "Ppsa Personal Property Securities Act 2017",
+      "pdf_path": "data\\legislation\\ppsa_personal_property_securities_act_2017.pdf",
+      "markdown_path": "data/markdown\\ppsa_personal_property_securities_act_2017.md",
+      "chunks": 924,
+      "last_processed": "2025-11-17T10:08:48.749892"
+    },
+    "premier_premiers_department_act_1973_74": {
+      "file_hash": "7fb6412c4a75ff2310f0bd0edf092d7495677c2d2623e6383adc29f40f4d47e0",
+      "act_name": "Premier Premiers Department Act 1973 74",
+      "pdf_path": "data\\legislation\\premier_premiers_department_act_1973_74.pdf",
+      "markdown_path": "data/markdown\\premier_premiers_department_act_1973_74.md",
+      "chunks": 87,
+      "last_processed": "2025-11-17T10:08:52.156367"
+    },
+    "pris67_prisons_act_1967": {
+      "file_hash": "d6f9c6555ebae2d81a6e97ef05fcdbaf2514f85a06817e5e0833f8240d1ae9cb",
+      "act_name": "Pris67 Prisons Act 1967",
+      "pdf_path": "data\\legislation\\pris67_prisons_act_1967.pdf",
+      "markdown_path": "data/markdown\\pris67_prisons_act_1967.md",
+      "chunks": 683,
+      "last_processed": "2025-11-17T10:09:11.056863"
+    },
+    "privcou_privy_council_judicial_committee_act_1984": {
+      "file_hash": "b48b56cbe03b21f7553b7770af4bfbc881b80141516618691fc3c768c7c34a23",
+      "act_name": "Privcou Privy Council Judicial Committee Act 1984",
+      "pdf_path": "data\\legislation\\privcou_privy_council_judicial_committee_act_1984.pdf",
+      "markdown_path": "data/markdown\\privcou_privy_council_judicial_committee_act_1984.md",
+      "chunks": 18,
+      "last_processed": "2025-11-17T10:09:13.491276"
+    },
+    "prohb_prohibition_of_forced_or_compulsory_labour_ordinance_1960": {
+      "file_hash": "4f2160e3a26d0d173194b8969610013b9073d5eceeb1b6214c861e97d5d52ce1",
+      "act_name": "Prohb Prohibition Of Forced Or Compulsory Labour Ordinance 1960",
+      "pdf_path": "data\\legislation\\prohb_prohibition_of_forced_or_compulsory_labour_ordinance_1960.pdf",
+      "markdown_path": "data/markdown\\prohb_prohibition_of_forced_or_compulsory_labour_ordinance_1960.md",
+      "chunks": 24,
+      "last_processed": "2025-11-17T10:09:15.386026"
+    },
+    "prop_property_law_act_1952": {
+      "file_hash": "061e9af849c12edb45dfe5ac711bd5e18072d077e7279a920a7fcb91895dab51",
+      "act_name": "Prop Property Law Act 1952",
+      "pdf_path": "data\\legislation\\prop_property_law_act_1952.pdf",
+      "markdown_path": "data/markdown\\prop_property_law_act_1952.md",
+      "chunks": 742,
+      "last_processed": "2025-11-17T10:09:33.260287"
+    },
+    "psa_public_service_act_2009": {
+      "file_hash": "8e6aa0d48c3c00b924bfed2b7db898ef53be29ba9ed6e1cdf25247fdb436fc5c",
+      "act_name": "Psa Public Service Act 2009",
+      "pdf_path": "data\\legislation\\psa_public_service_act_2009.pdf",
+      "markdown_path": "data/markdown\\psa_public_service_act_2009.md",
+      "chunks": 469,
+      "last_processed": "2025-11-17T10:09:44.513777"
+    },
+    "ptla_pool_tables_licensing_act_1972": {
+      "file_hash": "ecc2931beadf30c2db5aa2727034204912f4df4c328dcf454420145f277b1c9b",
+      "act_name": "Ptla Pool Tables Licensing Act 1972",
+      "pdf_path": "data\\legislation\\ptla_pool_tables_licensing_act_1972.pdf",
+      "markdown_path": "data/markdown\\ptla_pool_tables_licensing_act_1972.md",
+      "chunks": 22,
+      "last_processed": "2025-11-17T10:09:46.477979"
+    },
+    "pubrec_public_records_act_1984": {
+      "file_hash": "9a2ae50a31678f63668f17490b74fe0fe6ad533f37dca478d14b79bc3570b6d4",
+      "act_name": "Pubrec Public Records Act 1984",
+      "pdf_path": "data\\legislation\\pubrec_public_records_act_1984.pdf",
+      "markdown_path": "data/markdown\\pubrec_public_records_act_1984.md",
+      "chunks": 75,
+      "last_processed": "2025-11-17T10:09:49.213648"
+    },
+    "ralgr_rarotonga_local_government_repeal_act_2007": {
+      "file_hash": "d2bc91b069cd663e20e5f4836b46c8f7237b3d44da901ff6e276cf7b79bd6f66",
+      "act_name": "Ralgr Rarotonga Local Government Repeal Act 2007",
+      "pdf_path": "data\\legislation\\ralgr_rarotonga_local_government_repeal_act_2007.pdf",
+      "markdown_path": "data/markdown\\ralgr_rarotonga_local_government_repeal_act_2007.md",
+      "chunks": 10,
+      "last_processed": "2025-11-17T10:09:50.349819"
+    },
+    "rarow_rarotonga_waterworks_ordinance_1960": {
+      "file_hash": "c0d08ea595189f775453f446165de344773a9988719f803ab7060e017dd6a754",
+      "act_name": "Rarow Rarotonga Waterworks Ordinance 1960",
+      "pdf_path": "data\\legislation\\rarow_rarotonga_waterworks_ordinance_1960.pdf",
+      "markdown_path": "data/markdown\\rarow_rarotonga_waterworks_ordinance_1960.md",
+      "chunks": 60,
+      "last_processed": "2025-11-17T10:09:52.674139"
+    },
+    "rega71_regulations_act_1971_72": {
+      "file_hash": "3225c4c4c448ab08040f81038ca1b03adc84edfa436a6b5a6304362fe545fc10",
+      "act_name": "Rega71 Regulations Act 1971 72",
+      "pdf_path": "data\\legislation\\rega71_regulations_act_1971_72.pdf",
+      "markdown_path": "data/markdown\\rega71_regulations_act_1971_72.md",
+      "chunks": 38,
+      "last_processed": "2025-11-17T10:09:56.032422"
+    },
+    "remta_remuneration_tribunal_act_2005": {
+      "file_hash": "0e29f6b8a18ff34001c38df920c277f269a81cc446cbe4f4a2768520afc5a15e",
+      "act_name": "Remta Remuneration Tribunal Act 2005",
+      "pdf_path": "data\\legislation\\remta_remuneration_tribunal_act_2005.pdf",
+      "markdown_path": "data/markdown\\remta_remuneration_tribunal_act_2005.md",
+      "chunks": 159,
+      "last_processed": "2025-11-17T10:10:00.715884"
+    },
+    "repub_republic_and_commonwealth_legislation": {
+      "file_hash": "e9b4efd9344722d337019547c97d044dbd99bdf6c655caf09235f84b751cd1dd",
+      "act_name": "Repub Republic And Commonwealth Legislation",
+      "pdf_path": "data\\legislation\\repub_republic_and_commonwealth_legislation.pdf",
+      "markdown_path": "data/markdown\\repub_republic_and_commonwealth_legislation.md",
+      "chunks": 278,
+      "last_processed": "2025-11-17T10:10:08.693017"
+    },
+    "rmpla_rarotonga_motus_prohibition_of_leases_act_1981_82": {
+      "file_hash": "894f0e1b8609f8190695c07b38aa6d93b2663a02558e54b427bf7cdf6de1a540",
+      "act_name": "Rmpla Rarotonga Motus Prohibition Of Leases Act 1981 82",
+      "pdf_path": "data\\legislation\\rmpla_rarotonga_motus_prohibition_of_leases_act_1981_82.pdf",
+      "markdown_path": "data/markdown\\rmpla_rarotonga_motus_prohibition_of_leases_act_1981_82.md",
+      "chunks": 11,
+      "last_processed": "2025-11-17T10:10:10.255338"
+    },
+    "rob_re_use_of_bottles_act_1988": {
+      "file_hash": "495f4401b723eb6549e7a4e107f76373d4c8fd8a2e1a2f0714df348fac6b7155",
+      "act_name": "Rob Re Use Of Bottles Act 1988",
+      "pdf_path": "data\\legislation\\rob_re_use_of_bottles_act_1988.pdf",
+      "markdown_path": "data/markdown\\rob_re_use_of_bottles_act_1988.md",
+      "chunks": 9,
+      "last_processed": "2025-11-17T10:10:11.863394"
+    },
+    "ror_religious_organisations_restrictions_act_1975": {
+      "file_hash": "295e2e82c88c898415a9de0971523f5065d7eaf657daba11f13ce89bd6c4c42c",
+      "act_name": "Ror Religious Organisations Restrictions Act 1975",
+      "pdf_path": "data\\legislation\\ror_religious_organisations_restrictions_act_1975.pdf",
+      "markdown_path": "data/markdown\\ror_religious_organisations_restrictions_act_1975.md",
+      "chunks": 26,
+      "last_processed": "2025-11-17T10:10:13.694875"
+    },
+    "royal_royal_titles_act_1974": {
+      "file_hash": "dd87b311fa33ec1c4d8045558e0098276d14cebeb97eb49d97243ee4c9d7da11",
+      "act_name": "Royal Royal Titles Act 1974",
+      "pdf_path": "data\\legislation\\royal_royal_titles_act_1974.pdf",
+      "markdown_path": "data/markdown\\royal_royal_titles_act_1974.md",
+      "chunks": 10,
+      "last_processed": "2025-11-17T10:10:15.005249"
+    },
+    "rra_race_relations_act_1972": {
+      "file_hash": "4817587a6dd83d513019e48df83e380bf5f2bd5a7fcfaef0ea4e72620007762d",
+      "act_name": "Rra Race Relations Act 1972",
+      "pdf_path": "data\\legislation\\rra_race_relations_act_1972.pdf",
+      "markdown_path": "data/markdown\\rra_race_relations_act_1972.md",
+      "chunks": 118,
+      "last_processed": "2025-11-17T10:10:18.211175"
+    },
+    "rtpla_rehearing_of_te_puna_lands_act_1980": {
+      "file_hash": "c8e619873f0ebbd01cc4d2ba389d6c25fa4b454d653b7f269de0b7d61d73246f",
+      "act_name": "Rtpla Rehearing Of Te Puna Lands Act 1980",
+      "pdf_path": "data\\legislation\\rtpla_rehearing_of_te_puna_lands_act_1980.pdf",
+      "markdown_path": "data/markdown\\rtpla_rehearing_of_te_puna_lands_act_1980.md",
+      "chunks": 8,
+      "last_processed": "2025-11-17T10:10:19.669993"
+    },
+    "saleg_sale_of_goods_act_1908": {
+      "file_hash": "90a41a892d893ef70d9f2b5997bff9db340ced2609521b1c803596b100441c08",
+      "act_name": "Saleg Sale Of Goods Act 1908",
+      "pdf_path": "data\\legislation\\saleg_sale_of_goods_act_1908.pdf",
+      "markdown_path": "data/markdown\\saleg_sale_of_goods_act_1908.md",
+      "chunks": 236,
+      "last_processed": "2025-11-17T10:10:26.674259"
+    },
+    "sca_secret_commissions_act_1994_95": {
+      "file_hash": "e1f4f1d25bb142a4b36bbdb9f2a848e8444127398b69ec57a882e2c59ac56e5d",
+      "act_name": "Sca Secret Commissions Act 1994 95",
+      "pdf_path": "data\\legislation\\sca_secret_commissions_act_1994_95.pdf",
+      "markdown_path": "data/markdown\\sca_secret_commissions_act_1994_95.md",
+      "chunks": 48,
+      "last_processed": "2025-11-17T10:10:28.209315"
+    },
+    "scta08_small_claims_tribunal_act_2008": {
+      "file_hash": "9b4a7494e5996c59d9790e9701a2b023170435eee21a3421d11c525d259f490e",
+      "act_name": "Scta08 Small Claims Tribunal Act 2008",
+      "pdf_path": "data\\legislation\\scta08_small_claims_tribunal_act_2008.pdf",
+      "markdown_path": "data/markdown\\scta08_small_claims_tribunal_act_2008.md",
+      "chunks": 380,
+      "last_processed": "2025-11-17T10:10:36.982141"
+    },
+    "scta_small_claims_act_1986": {
+      "file_hash": "15433e6e243b1a3e04633ba43223f610cd46321f7f802e085409bd98e7cc48f7",
+      "act_name": "Scta Small Claims Act 1986",
+      "pdf_path": "data\\legislation\\scta_small_claims_act_1986.pdf",
+      "markdown_path": "data/markdown\\scta_small_claims_act_1986.md",
+      "chunks": 347,
+      "last_processed": "2025-11-17T10:10:45.393641"
+    },
+    "sea_seabed_minerals_act_2019": {
+      "file_hash": "941cf05fe99517f0fdd47c204084db69c2dfcda52f6b0d1079e6eeb0faaf2888",
+      "act_name": "Sea Seabed Minerals Act 2019",
+      "pdf_path": "data\\legislation\\sea_seabed_minerals_act_2019.pdf",
+      "markdown_path": "data/markdown\\sea_seabed_minerals_act_2019.md",
+      "chunks": 3999,
+      "last_processed": "2025-11-17T10:12:26.413536"
+    },
+    "sealnz_seal_of_new_zealand_act_1977": {
+      "file_hash": "4d4b4cb44b0c9dcd45f659b819b36ca87124a08c436d483b61db8997519d9068",
+      "act_name": "Sealnz Seal Of New Zealand Act 1977",
+      "pdf_path": "data\\legislation\\sealnz_seal_of_new_zealand_act_1977.pdf",
+      "markdown_path": "data/markdown\\sealnz_seal_of_new_zealand_act_1977.md",
+      "chunks": 24,
+      "last_processed": "2025-11-17T10:10:47.572556"
+    },
+    "shreg_ship_registration_act_2007": {
+      "file_hash": "5f6600ec79c048bc7c2e94d754325337da751abb9972738074a92f943282b3e3",
+      "act_name": "Shreg Ship Registration Act 2007",
+      "pdf_path": "data\\legislation\\shreg_ship_registration_act_2007.pdf",
+      "markdown_path": "data/markdown\\shreg_ship_registration_act_2007.md",
+      "chunks": 447,
+      "last_processed": "2025-11-17T10:12:35.975352"
+    },
+    "shw_solid_and_hazardous_waste_act_2025": {
+      "file_hash": "d3f43bef39e8576a246f5035ba65579bf18c5d10cab52ae1b630fd5ae5455b20",
+      "act_name": "Shw Solid And Hazardous Waste Act 2025",
+      "pdf_path": "data\\legislation\\shw_solid_and_hazardous_waste_act_2025.pdf",
+      "markdown_path": "data/markdown\\shw_solid_and_hazardous_waste_act_2025.md",
+      "chunks": 511,
+      "last_processed": "2025-11-17T10:12:46.498364"
+    },
+    "soliq_sale_of_liquor_act_1991_92": {
+      "file_hash": "22073dbb56381c134ed70545958448d930fa48f315252b04380c114904667895",
+      "act_name": "Soliq Sale Of Liquor Act 1991 92",
+      "pdf_path": "data\\legislation\\soliq_sale_of_liquor_act_1991_92.pdf",
+      "markdown_path": "data/markdown\\soliq_sale_of_liquor_act_1991_92.md",
+      "chunks": 695,
+      "last_processed": "2025-11-17T10:13:04.723745"
+    },
+    "spam_spam_act_2008": {
+      "file_hash": "4ed2f51e8fb03ad25be620cfc98a6ed64e24077f94df04de5a142536789957b8",
+      "act_name": "Spam Spam Act 2008",
+      "pdf_path": "data\\legislation\\spam_spam_act_2008.pdf",
+      "markdown_path": "data/markdown\\spam_spam_act_2008.md",
+      "chunks": 558,
+      "last_processed": "2025-11-17T10:13:19.287266"
+    },
+    "stats_statistics_act_2015_16": {
+      "file_hash": "6db6f9f3f1dc3806fdfc68b2a71df53c3787c733eb736e0ca7079fbf9dc38be8",
+      "act_name": "Stats Statistics Act 2015 16",
+      "pdf_path": "data\\legislation\\stats_statistics_act_2015_16.pdf",
+      "markdown_path": "data/markdown\\stats_statistics_act_2015_16.md",
+      "chunks": 175,
+      "last_processed": "2025-11-17T10:13:24.492286"
+    },
+    "stcla66_short_term_crop_leases_act_1966": {
+      "file_hash": "29105b11ad29845efd538856c1daeead545ae86640324ad571b1f18f384e17b3",
+      "act_name": "Stcla66 Short Term Crop Leases Act 1966",
+      "pdf_path": "data\\legislation\\stcla66_short_term_crop_leases_act_1966.pdf",
+      "markdown_path": "data/markdown\\stcla66_short_term_crop_leases_act_1966.md",
+      "chunks": 28,
+      "last_processed": "2025-11-17T10:13:26.544111"
+    },
+    "ta_totalizator_act_1973": {
+      "file_hash": "8e598843a7e71753f766a4ed30d6e89368f03a7ab169c987510be15520963eb9",
+      "act_name": "Ta Totalizator Act 1973",
+      "pdf_path": "data\\legislation\\ta_totalizator_act_1973.pdf",
+      "markdown_path": "data/markdown\\ta_totalizator_act_1973.md",
+      "chunks": 110,
+      "last_processed": "2025-11-17T10:13:29.984467"
+    },
+    "tca_trustee_companies_act_2014": {
+      "file_hash": "96cd96c36d59d038eb13b71a4fecc1c1326ef56e8ead68b4f26e6899c8bdfb16",
+      "act_name": "Tca Trustee Companies Act 2014",
+      "pdf_path": "data\\legislation\\tca_trustee_companies_act_2014.pdf",
+      "markdown_path": "data/markdown\\tca_trustee_companies_act_2014.md",
+      "chunks": 1603,
+      "last_processed": "2025-11-17T10:14:07.742593"
+    },
+    "teaponga_te_aponga_uira_o_tumu_te_varovaro_act_1991": {
+      "file_hash": "bd0f37a1f034c48d0998a4314f13498338ea88fc69653d2b627ed16dd126815c",
+      "act_name": "Teaponga Te Aponga Uira O Tumu Te Varovaro Act 1991",
+      "pdf_path": "data\\legislation\\teaponga_te_aponga_uira_o_tumu_te_varovaro_act_1991.pdf",
+      "markdown_path": "data/markdown\\teaponga_te_aponga_uira_o_tumu_te_varovaro_act_1991.md",
+      "chunks": 270,
+      "last_processed": "2025-11-17T10:14:15.739998"
+    },
+    "telco_telecommunications_act_2019": {
+      "file_hash": "a7893b8928c2e121811a886b595858d90c0ace507a72acd9a5d529d00822dcce",
+      "act_name": "Telco Telecommunications Act 2019",
+      "pdf_path": "data\\legislation\\telco_telecommunications_act_2019.pdf",
+      "markdown_path": "data/markdown\\telco_telecommunications_act_2019.md",
+      "chunks": 1691,
+      "last_processed": "2025-11-17T10:14:57.799256"
+    },
+    "terror_countering_terrorism_and_the_proliferation_of_weapons_of_mass_destruction_act_2004": {
+      "file_hash": "66f72367d8c41d546b1bb48b200f14bcfd9e408d7251b18c99c412d43a2318e1",
+      "act_name": "Terror Countering Terrorism And The Proliferation Of Weapons Of Mass Destruction Act 2004",
+      "pdf_path": "data\\legislation\\terror_countering_terrorism_and_the_proliferation_of_weapons_of_mass_destruction_act_2004.pdf",
+      "markdown_path": "data/markdown\\terror_countering_terrorism_and_the_proliferation_of_weapons_of_mass_destruction_act_2004.md",
+      "chunks": 693,
+      "last_processed": "2025-11-17T10:15:16.786781"
+    },
+    "tha93_trading_hours_act_1993_94": {
+      "file_hash": "f98b84eaf8dcfcc85251ead0397109b64fc2d5ab89beab231929c8754854ada1",
+      "act_name": "Tha93 Trading Hours Act 1993 94",
+      "pdf_path": "data\\legislation\\tha93_trading_hours_act_1993_94.pdf",
+      "markdown_path": "data/markdown\\tha93_trading_hours_act_1993_94.md",
+      "chunks": 145,
+      "last_processed": "2025-11-17T10:15:21.087843"
+    },
+    "time_time_act_1978": {
+      "file_hash": "49e44145680f3a442be42f0ac079caabd5e46a273707e8e53844d0e0a6fb3ac8",
+      "act_name": "Time Time Act 1978",
+      "pdf_path": "data\\legislation\\time_time_act_1978.pdf",
+      "markdown_path": "data/markdown\\time_time_act_1978.md",
+      "chunks": 16,
+      "last_processed": "2025-11-17T10:15:22.954716"
+    },
+    "tka_traditional_knowledge_act_2013": {
+      "file_hash": "757b91657841f388733540e65f1ce20e65213b605142d15ca2f938b2b5469882",
+      "act_name": "Tka Traditional Knowledge Act 2013",
+      "pdf_path": "data\\legislation\\tka_traditional_knowledge_act_2013.pdf",
+      "markdown_path": "data/markdown\\tka_traditional_knowledge_act_2013.md",
+      "chunks": 405,
+      "last_processed": "2025-11-17T10:15:31.545100"
+    },
+    "tla67_transport_licensing_act_1967": {
+      "file_hash": "66e5a7705c1c5dd429b2edb421cbc8a7127791bdc2b431a7d19d396ef3901253",
+      "act_name": "Tla67 Transport Licensing Act 1967",
+      "pdf_path": "data\\legislation\\tla67_transport_licensing_act_1967.pdf",
+      "markdown_path": "data/markdown\\tla67_transport_licensing_act_1967.md",
+      "chunks": 242,
+      "last_processed": "2025-11-17T10:15:37.634924"
+    },
+    "toa_transfer_of_offenders_act_1994": {
+      "file_hash": "73775d19762dca9403c69503cc3fbc89dccade92554ba6568275a6d3303ed949",
+      "act_name": "Toa Transfer Of Offenders Act 1994",
+      "pdf_path": "data\\legislation\\toa_transfer_of_offenders_act_1994.pdf",
+      "markdown_path": "data/markdown\\toa_transfer_of_offenders_act_1994.md",
+      "chunks": 57,
+      "last_processed": "2025-11-17T10:15:39.827700"
+    },
+    "totva_to_tatou_vai_act_2021": {
+      "file_hash": "e030a3a15a5a0f9683660669452212a65945729a9de87792c57409ee981af29c",
+      "act_name": "Totva To Tatou Vai Act 2021",
+      "pdf_path": "data\\legislation\\totva_to_tatou_vai_act_2021.pdf",
+      "markdown_path": "data/markdown\\totva_to_tatou_vai_act_2021.md",
+      "chunks": 511,
+      "last_processed": "2025-11-17T10:15:51.150985"
+    },
+    "tpca_tobacco_products_control_act_2007": {
+      "file_hash": "9cbba1e87de200f4530438667470e52a22aabf4989bad05daa7a810c40047511",
+      "act_name": "Tpca Tobacco Products Control Act 2007",
+      "pdf_path": "data\\legislation\\tpca_tobacco_products_control_act_2007.pdf",
+      "markdown_path": "data/markdown\\tpca_tobacco_products_control_act_2007.md",
+      "chunks": 516,
+      "last_processed": "2025-11-17T10:16:05.720684"
+    },
+    "tradm_trade_marks_act_1953": {
+      "file_hash": "cfdaa496b243106164be4c60de7b8a7f002530f4f97d8b8cbbb1e1593b48755f",
+      "act_name": "Tradm Trade Marks Act 1953",
+      "pdf_path": "data\\legislation\\tradm_trade_marks_act_1953.pdf",
+      "markdown_path": "data/markdown\\tradm_trade_marks_act_1953.md",
+      "chunks": 889,
+      "last_processed": "2025-11-17T10:16:32.794705"
+    },
+    "trans_transport_act_1966": {
+      "file_hash": "8cb122540203ec6a2b28f11e35f60a84602e8a4e0ca67a10271733ff35b3fca1",
+      "act_name": "Trans Transport Act 1966",
+      "pdf_path": "data\\legislation\\trans_transport_act_1966.pdf",
+      "markdown_path": "data/markdown\\trans_transport_act_1966.md",
+      "chunks": 1094,
+      "last_processed": "2025-11-17T10:16:58.389013"
+    },
+    "trma03_te_reo_maori_act_2003": {
+      "file_hash": "0bd7c83585c3f39482a7e68b21ba0b87bd3172f477b40424f4d5e7ad39a7b42b",
+      "act_name": "Trma03 Te Reo Maori Act 2003",
+      "pdf_path": "data\\legislation\\trma03_te_reo_maori_act_2003.pdf",
+      "markdown_path": "data/markdown\\trma03_te_reo_maori_act_2003.md",
+      "chunks": 155,
+      "last_processed": "2025-11-17T10:17:02.087902"
+    },
+    "trus_trustee_act_1956": {
+      "file_hash": "ad1951dd749fbc62ec15e8c44ea1d8bb34040546e9295b46081fac009a037ccf",
+      "act_name": "Trus Trustee Act 1956",
+      "pdf_path": "data\\legislation\\trus_trustee_act_1956.pdf",
+      "markdown_path": "data/markdown\\trus_trustee_act_1956.md",
+      "chunks": 670,
+      "last_processed": "2025-11-17T10:17:18.151277"
+    },
+    "ttra_te_tango_raumaire_o_avaiki_act_2025": {
+      "file_hash": "8147e8cfe7ea260908b16ce7e0cce1690aa0fccfb41816165fb3fcfb8aac3a94",
+      "act_name": "Ttra Te Tango Raumaire O Avaiki Act 2025",
+      "pdf_path": "data\\legislation\\ttra_te_tango_raumaire_o_avaiki_act_2025.pdf",
+      "markdown_path": "data/markdown\\ttra_te_tango_raumaire_o_avaiki_act_2025.md",
+      "chunks": 106,
+      "last_processed": "2025-11-17T10:17:20.739970"
+    },
+    "una_united_nations_security_council_resolutions_act_2003": {
+      "file_hash": "8a9f94c07ea3b380a149750b98513eff52e15e51ce7ade6be8792b7fdc6e8d97",
+      "act_name": "Una United Nations Security Council Resolutions Act 2003",
+      "pdf_path": "data\\legislation\\una_united_nations_security_council_resolutions_act_2003.pdf",
+      "markdown_path": "data/markdown\\una_united_nations_security_council_resolutions_act_2003.md",
+      "chunks": 124,
+      "last_processed": "2025-11-17T10:17:24.098802"
+    },
+    "unclaimed_unclaimed_moneys_act_1970": {
+      "file_hash": "738a5c1e557f8e2eaf798ef1fe8d4fabd539b5b119318d911ab8c59e29f5d632",
+      "act_name": "Unclaimed Unclaimed Moneys Act 1970",
+      "pdf_path": "data\\legislation\\unclaimed_unclaimed_moneys_act_1970.pdf",
+      "markdown_path": "data/markdown\\unclaimed_unclaimed_moneys_act_1970.md",
+      "chunks": 39,
+      "last_processed": "2025-11-17T10:17:25.758410"
+    },
+    "unitta_unit_titles_act_2005": {
+      "file_hash": "c0c1a788f3f5fa19fd1d73ba7df8abde7dff4c0d6ed22ffa1c389e67c4455c9f",
+      "act_name": "Unitta Unit Titles Act 2005",
+      "pdf_path": "data\\legislation\\unitta_unit_titles_act_2005.pdf",
+      "markdown_path": "data/markdown\\unitta_unit_titles_act_2005.md",
+      "chunks": 1257,
+      "last_processed": "2025-11-17T10:17:56.156037"
+    },
+    "vata_value_added_tax_act_1997": {
+      "file_hash": "cfaffa35c1c0439bc77e90eb04cd78ea30d06e1c899b1218c3f514649f13a77f",
+      "act_name": "Vata Value Added Tax Act 1997",
+      "pdf_path": "data\\legislation\\vata_value_added_tax_act_1997.pdf",
+      "markdown_path": "data/markdown\\vata_value_added_tax_act_1997.md",
+      "chunks": 699,
+      "last_processed": "2025-11-17T10:18:12.448562"
+    },
+    "visforce_visiting_forces_act_1992_93": {
+      "file_hash": "d78c413d4ba7bdab4928ec46879679346c9faea661f8679190dd61f8ab696f59",
+      "act_name": "Visforce Visiting Forces Act 1992 93",
+      "pdf_path": "data\\legislation\\visforce_visiting_forces_act_1992_93.pdf",
+      "markdown_path": "data/markdown\\visforce_visiting_forces_act_1992_93.md",
+      "chunks": 111,
+      "last_processed": "2025-11-17T10:18:15.526833"
+    },
+    "voa_victims_of_offences_act_1999": {
+      "file_hash": "204847af280dd743e380e11c385d0d49146bdb4ef0ef35ab4de619632ccd9755",
+      "act_name": "Voa Victims Of Offences Act 1999",
+      "pdf_path": "data\\legislation\\voa_victims_of_offences_act_1999.pdf",
+      "markdown_path": "data/markdown\\voa_victims_of_offences_act_1999.md",
+      "chunks": 41,
+      "last_processed": "2025-11-17T10:18:17.092326"
+    },
+    "wa_welfare_act_1989": {
+      "file_hash": "25bee064959203aa6dd986154ce1965f7521638d8fc55f01808663b962a5f5e4",
+      "act_name": "Wa Welfare Act 1989",
+      "pdf_path": "data\\legislation\\wa_welfare_act_1989.pdf",
+      "markdown_path": "data/markdown\\wa_welfare_act_1989.md",
+      "chunks": 273,
+      "last_processed": "2025-11-17T10:18:27.988944"
+    },
+    "wandam_wandering_animals_act_1976": {
+      "file_hash": "f62a5ed914a9cb8f56173f2bbeddd380b14699447fd636d95a254f17a9695b5f",
+      "act_name": "Wandam Wandering Animals Act 1976",
+      "pdf_path": "data\\legislation\\wandam_wandering_animals_act_1976.pdf",
+      "markdown_path": "data/markdown\\wandam_wandering_animals_act_1976.md",
+      "chunks": 56,
+      "last_processed": "2025-11-17T10:18:18.698385"
+    },
+    "wills_wills_amendment_act_1969": {
+      "file_hash": "23935922f5e479ac42500c93e8d8a7d96a528e5e3a77de4329a6052dc8a38623",
+      "act_name": "Wills Wills Amendment Act 1969",
+      "pdf_path": "data\\legislation\\wills_wills_amendment_act_1969.pdf",
+      "markdown_path": "data/markdown\\wills_wills_amendment_act_1969.md",
+      "chunks": 21,
+      "last_processed": "2025-11-17T10:18:29.138124"
+    },
+    "wmme73_weights_and_measures_metric_equivalents_act_1973_74": {
+      "file_hash": "db6fc860ae057b7c3fc2b03dfaa3db3939021fa3c6e4bfad636a32608c617771",
+      "act_name": "Wmme73 Weights And Measures Metric Equivalents Act 1973 74",
+      "pdf_path": "data\\legislation\\wmme73_weights_and_measures_metric_equivalents_act_1973_74.pdf",
+      "markdown_path": "data/markdown\\wmme73_weights_and_measures_metric_equivalents_act_1973_74.md",
+      "chunks": 13,
+      "last_processed": "2025-11-17T10:18:30.766866"
+    }
+  },
+  "last_scrape": "2025-11-17T05:45:50.508884",
+  "scrape_stats": {
+    "timestamp": "2025-11-17T05:45:50.508884",
+    "total_found": 0,
+    "downloaded": 0,
+    "failed": 0,
+    "downloaded_paths": []
+  }
+}

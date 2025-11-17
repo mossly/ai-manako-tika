@@ -1,0 +1,37 @@
+# Core web framework
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+jinja2
+
+# Utilities
+loguru
+filelock
+tenacity
+
+# AI/ML
+openai
+numpy
+
+# HTTP client
+httpx
+
+# Security
+itsdangerous
+
+# MCP server
+fastmcp
+
+# PDF processing
+pypdf
+pdf2image
+pillow
+
+# Web scraping
+playwright
+beautifulsoup4
+lxml
+
+# Note: Playwright also requires browser installation
+# Run after pip install: playwright install chromium

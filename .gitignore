@@ -1,6 +1,9 @@
 # Project-specific instructions (contains personal details)
 CLAUDE.md
 
+# Reference repository (existing implementation)
+narrative-assistant/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -47,3 +50,23 @@ Thumbs.db
 # Logs
 *.log
 logs/
+
+# Data directories (contain PDFs and embeddings)
+data/pdfs/
+data/legislation/
+data/rag_storage/embeddings.jsonl
+
+# Backup files
+*.backup
+*_old.*
+
+# Docker volumes
+docker-compose.override.yml
+
+# Temporary files
+*.tmp
+*.bak
+.cache/
+
+# Analysis output files
+pdf_analysis_results.txt

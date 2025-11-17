@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    container_name: ai-manako-tika
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "1905:8080"
+    volumes:
+      - ./data:/data
+    labels:
+      - com.centurylinklabs.watchtower.enable=true

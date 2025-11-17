@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git lfs install)",
+      "Bash(git lfs track \"data/rag_storage/embeddings.jsonl\")",
+      "Bash(git add .)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

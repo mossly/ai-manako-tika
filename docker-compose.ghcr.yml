@@ -1,0 +1,14 @@
+services:
+  app:
+    # Pull from GitHub Container Registry instead of building locally
+    image: ghcr.io/mossly/ai-manako-tika:latest
+    container_name: ai-manako-tika
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "1905:8080"
+    volumes:
+      - ./data:/data
+    labels:
+      - com.centurylinklabs.watchtower.enable=true

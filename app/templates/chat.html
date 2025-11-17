@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cook Islands Legislation Search</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏝️ Cook Islands Legislation Search</h1>
+            <p class="subtitle">Semantic search and AI chat for Cook Islands Acts and Regulations</p>
+            <div class="disclaimer">
+                <strong>⚠️ Demonstration Tool</strong> - This is a prototype for informational purposes only.
+                Not legal advice. Always consult official sources and legal professionals.
+            </div>
+        </header>
+
+        <main class="chat-container">
+            <div id="chat-messages" class="chat-messages">
+                <div class="message assistant-message">
+                    <div class="message-content">
+                        <p>Welcome! I can help you search and understand Cook Islands legislation.</p>
+                        <p>Ask me questions like:</p>
+                        <ul>
+                            <li>"What are the capital requirements for banks?"</li>
+                            <li>"Tell me about licensing requirements in the Banking Act"</li>
+                            <li>"What does the law say about corporate governance?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <textarea id="user-input" placeholder="Ask about Cook Islands legislation..." rows="3"></textarea>
+                <button id="send-btn" onclick="sendMessage()">Send</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by OpenAI GPT-5.1 and vector embeddings | Built for BCI Board Strategy Day</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js?v=7"></script>
+</body>
+</html>
