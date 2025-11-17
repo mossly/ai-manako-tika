@@ -95,24 +95,14 @@ else:
 @app.get('/', response_class=PlainTextResponse)
 async def index():
     """Root endpoint showing service status."""
-    chunks = len(store.chunks)
-    vectors = len(store.vectors) if store.vectors is not None else 0
-
-    # Get unique acts
-    act_names = set()
-    for chunk in store.chunks:
-        act_name = chunk.meta.get('act_name')
-        if act_name:
-            act_names.add(act_name)
-
-    unique_acts = len(act_names)
+    stats = store.get_stats()
 
     return f"""Cook Islands Legislation RAG Service
 
 Status:
-  Chunks: {chunks}
-  Vectors: {vectors}
-  Unique Acts: {unique_acts}
+  Chunks: {stats['total_chunks']}
+  Vectors: {stats['total_vectors']}
+  Unique Acts: {stats['unique_acts']}
 
 Endpoints:
   GET  /                   - This status page
@@ -360,30 +350,22 @@ async def api_scrape(limit: int = Form(None)):
 @app.get('/stats')
 async def api_stats():
     """Get RAG store statistics."""
-    # Get unique acts
-    act_names = set()
-    for chunk in store.chunks:
-        act_name = chunk.meta.get('act_name')
-        if act_name:
-            act_names.add(act_name)
-
+    stats = store.get_stats()
     return {
         "ok": True,
-        "total_chunks": len(store.chunks),
-        "total_vectors": len(store.vectors) if store.vectors else 0,
-        "unique_acts": len(act_names),
-        "sample_acts": sorted(list(act_names))[:20]
+        **stats
     }
 
 
 @app.get('/health')
 async def health():
     """Health check endpoint."""
+    stats = store.get_stats()
     return {
         "ok": True,
         "service": "cook-islands-legislation-rag",
-        "chunks": len(store.chunks),
-        "vectors": len(store.vectors) if store.vectors is not None else 0,
+        "chunks": stats['total_chunks'],
+        "vectors": stats['total_vectors'],
     }
 
 

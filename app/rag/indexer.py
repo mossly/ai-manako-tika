@@ -1,21 +1,26 @@
-"""RAG Store for Cook Islands legislation embeddings."""
+"""RAG Store for Cook Islands legislation embeddings using Pinecone."""
 from typing import List, Dict, Any, Optional
 from pydantic import BaseModel
 import os, json
 import hashlib
 from loguru import logger
 
-# Minimal local RAG store: embeddings via OpenAI, vectors in a simple list (upgradeable to FAISS/Qdrant later)
 import numpy as np
 from openai import AsyncOpenAI
+from pinecone import Pinecone, ServerlessSpec
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
 OPENAI_EMBED_MODEL = os.getenv('OPENAI_EMBED_MODEL', 'text-embedding-3-large')
 
-WORKING_DIR = os.getenv('WORKING_DIR', '/data/rag_storage')
-EMBED_PATH = os.path.join(WORKING_DIR, 'embeddings.jsonl')
+# Pinecone configuration
+PINECONE_API_KEY = os.getenv('PINECONE_API_KEY', '')
+PINECONE_INDEX_NAME = os.getenv('PINECONE_INDEX_NAME', 'cook-islands-legislation')
+PINECONE_CLOUD = os.getenv('PINECONE_CLOUD', 'aws')
+PINECONE_REGION = os.getenv('PINECONE_REGION', 'us-east-1')
 
-os.makedirs(WORKING_DIR, exist_ok=True)
+# Embedding dimension for text-embedding-3-large
+EMBEDDING_DIMENSION = 3072
+
 
 class Chunk(BaseModel):
     """Legislation chunk with hierarchical metadata."""
@@ -24,74 +29,74 @@ class Chunk(BaseModel):
     text: str
     meta: Dict[str, Any] = {}
 
+
 class RAGStore:
     def __init__(self):
         self.chunks: List[Chunk] = []
-        self.vectors: List[List[float]] = []
-        # indices for dedup + updates
         self._index: Dict[str, int] = {}
         self._fp: Dict[str, str] = {}
-        self._model: Dict[str, str] = {}
-        self._load()
+        self._pc_client = None
+        self._pc_index = None
+        self._init_pinecone()
+        self._load_metadata()
 
-    def _load(self):
-        if os.path.exists(EMBED_PATH):
-            try:
-                loaded = 0
-                logger.info(f"Loading embeddings from {EMBED_PATH}...")
-                with open(EMBED_PATH, 'r', encoding='utf-8') as f:
-                    for line in f:
-                        if not line.strip():
-                            continue
-                        try:
-                            o = json.loads(line)
-                            chunk_dict = o.get('chunk') or {}
-                            vec = o.get('vector')
-                            if not chunk_dict or vec is None:
-                                continue
-                            c = Chunk(**chunk_dict)
-                            fp = self._fingerprint(c)
-                            model = o.get('model') or OPENAI_EMBED_MODEL
-                            if c.id in self._index:
-                                idx = self._index[c.id]
-                                self.chunks[idx] = c
-                                self.vectors[idx] = vec
-                            else:
-                                self._index[c.id] = len(self.chunks)
-                                self.chunks.append(c)
-                                self.vectors.append(vec)
-                            self._fp[c.id] = fp
-                            self._model[c.id] = model
-                            loaded += 1
+    def _init_pinecone(self):
+        """Initialize Pinecone client and index."""
+        if not PINECONE_API_KEY:
+            logger.warning("PINECONE_API_KEY not set - running in degraded mode")
+            return
 
-                            # Progress logging every 10K chunks
-                            if loaded % 10000 == 0:
-                                logger.info(f"Loading progress: {loaded:,} chunks processed...")
-                        except Exception:
-                            logger.exception("Malformed embeddings line encountered; skipping")
-                            continue
-                logger.info(f"Loaded {len(self.chunks)} unique chunks from store (lines={loaded})")
-            except Exception:
-                logger.exception(f"Failed to load embeddings file at {EMBED_PATH}")
-
-    def _save_append(self, chunk: Chunk, vector: List[float]):
         try:
-            with open(EMBED_PATH, 'a', encoding='utf-8') as f:
-                record = {
-                    "chunk": chunk.dict(),
-                    "vector": vector,
-                    "model": OPENAI_EMBED_MODEL,
-                }
-                f.write(json.dumps(record) + "\n")
-        except Exception:
-            logger.exception(f"Failed to append embedding for chunk_id='{chunk.id}' to {EMBED_PATH}")
+            self._pc_client = Pinecone(api_key=PINECONE_API_KEY)
+
+            # Check if index exists, create if not
+            existing_indexes = [idx.name for idx in self._pc_client.list_indexes()]
+
+            if PINECONE_INDEX_NAME not in existing_indexes:
+                logger.info(f"Creating Pinecone index: {PINECONE_INDEX_NAME}")
+                self._pc_client.create_index(
+                    name=PINECONE_INDEX_NAME,
+                    dimension=EMBEDDING_DIMENSION,
+                    metric='cosine',
+                    spec=ServerlessSpec(
+                        cloud=PINECONE_CLOUD,
+                        region=PINECONE_REGION
+                    )
+                )
+                logger.info(f"Pinecone index created: {PINECONE_INDEX_NAME}")
+
+            self._pc_index = self._pc_client.Index(PINECONE_INDEX_NAME)
+            logger.info(f"Connected to Pinecone index: {PINECONE_INDEX_NAME}")
+
+        except Exception as e:
+            logger.exception(f"Failed to initialize Pinecone: {e}")
             raise
 
-    def _fingerprint(self, chunk: Chunk) -> str:
-        """Stable fingerprint for a chunk's identity + content.
+    def _load_metadata(self):
+        """Load chunk metadata from Pinecone.
 
-        Combines chunk.id, file_hash (if present), and text to detect changes.
+        Note: We fetch metadata on-demand during search rather than loading all chunks
+        into memory. This keeps memory usage low.
         """
+        if not self._pc_index:
+            logger.warning("Pinecone not initialized - no metadata to load")
+            return
+
+        try:
+            # Get index stats to populate chunks count
+            stats = self._pc_index.describe_index_stats()
+            total_vectors = stats.get('total_vector_count', 0)
+            logger.info(f"Pinecone index has {total_vectors:,} vectors")
+
+            # We don't load all chunks into memory anymore
+            # Just keep track of the count for status endpoints
+            self.chunks = []  # Empty list, populated on-demand
+
+        except Exception as e:
+            logger.exception(f"Failed to load metadata from Pinecone: {e}")
+
+    def _fingerprint(self, chunk: Chunk) -> str:
+        """Stable fingerprint for a chunk's identity + content."""
         file_hash = ""
         try:
             file_hash = str((chunk.meta or {}).get('file_hash', ''))
@@ -106,53 +111,63 @@ class RAGStore:
         return h.hexdigest()
 
     def _needs_embedding(self, chunk: Chunk) -> bool:
-        """Return True if the chunk is new, changed, or model changed."""
-        old_fp = self._fp.get(chunk.id)
-        if old_fp is None:
+        """Return True if the chunk is new or changed.
+
+        Checks Pinecone metadata to see if chunk exists and matches fingerprint.
+        """
+        if not self._pc_index:
             return True
-        if old_fp != self._fingerprint(chunk):
-            return True
-        if self._model.get(chunk.id) != OPENAI_EMBED_MODEL:
-            return True
-        return False
+
+        try:
+            # Fetch existing vector metadata
+            result = self._pc_index.fetch(ids=[chunk.id])
+
+            if chunk.id not in result.get('vectors', {}):
+                return True  # New chunk
+
+            # Check fingerprint
+            existing_meta = result['vectors'][chunk.id].get('metadata', {})
+            existing_fp = existing_meta.get('fingerprint')
+            current_fp = self._fingerprint(chunk)
+
+            if existing_fp != current_fp:
+                return True  # Changed chunk
+
+            # Check if model changed
+            if existing_meta.get('model') != OPENAI_EMBED_MODEL:
+                return True
+
+            return False
+
+        except Exception as e:
+            logger.warning(f"Error checking if chunk needs embedding: {e}")
+            return True  # Re-embed on error
 
     async def embed_texts(self, texts: List[str]) -> List[List[float]]:
-        """Create embeddings for a list of texts.
-
-        - Ensures inputs are plain strings (no None/objects)
-        - Splits overly-long texts into smaller slices, then averages their vectors
-        - Sends requests in small batches to avoid payload issues
-        """
+        """Create embeddings for a list of texts using OpenAI."""
         if not OPENAI_API_KEY:
             raise RuntimeError("OPENAI_API_KEY is not set; cannot create embeddings.")
 
-        # Helper: sanitize a single text value into a safe string
         def _to_safe_str(x: Any) -> str:
             try:
                 s = x if isinstance(x, str) else ("" if x is None else str(x))
             except Exception:
                 s = ""
-            # Remove problematic NULLs and normalize whitespace
             s = s.replace("\x00", "").strip()
-            # Collapse excessive whitespace
             s = " ".join(s.split())
             return s
 
-        # Maximum characters per slice (heuristic; keeps under token limits)
         MAX_CHARS = 4000
         BATCH = 64
 
-        # Build a flattened list of sanitized slices and a mapping back to originals
         sanitized_slices: List[str] = []
-        mapping: List[tuple[int, int]] = []  # (start_idx_in_sanitized, count)
+        mapping: List[tuple[int, int]] = []
 
         for t in texts:
             s = _to_safe_str(t)
             if not s:
-                # Keep alignment by embedding a minimal placeholder
                 s = "."
             if len(s) > MAX_CHARS:
-                # Split deterministically on character windows
                 parts = [s[i:i+MAX_CHARS] for i in range(0, len(s), MAX_CHARS)]
                 start = len(sanitized_slices)
                 sanitized_slices.extend(parts)
@@ -168,14 +183,12 @@ class RAGStore:
                 f"Creating embeddings: inputs={len(texts)}, slices={len(sanitized_slices)}, model='{OPENAI_EMBED_MODEL}'"
             )
 
-            # Batch over sanitized_slices
             all_slice_vecs: List[List[float]] = []
             for i in range(0, len(sanitized_slices), BATCH):
                 batch = sanitized_slices[i:i+BATCH]
                 resp = await client.embeddings.create(model=OPENAI_EMBED_MODEL, input=batch)
                 all_slice_vecs.extend([d.embedding for d in resp.data])
 
-            # Fold slices back to one vector per original input (average if split)
             result_vecs: List[List[float]] = []
             for start, count in mapping:
                 if count == 1:
@@ -192,14 +205,20 @@ class RAGStore:
             raise
 
     async def ingest_chunks(self, chunks: List[Chunk]):
+        """Ingest chunks into Pinecone."""
         if not chunks:
             logger.warning("ingest_chunks called with empty chunk list")
             return
+
+        if not self._pc_index:
+            raise RuntimeError("Pinecone not initialized")
+
         # Partition into new/changed vs unchanged
         to_embed: List[Chunk] = []
         for c in chunks:
             if self._needs_embedding(c):
                 to_embed.append(c)
+
         skipped = len(chunks) - len(to_embed)
         if skipped:
             logger.info(f"Skipping {skipped} unchanged chunks (already embedded)")
@@ -207,218 +226,212 @@ class RAGStore:
             logger.info("No new/changed chunks to embed")
             return
 
-        logger.info(f"Embedding and persisting chunks: to_embed={len(to_embed)} of total={len(chunks)}")
+        logger.info(f"Embedding and upserting chunks: to_embed={len(to_embed)} of total={len(chunks)}")
         vectors = await self.embed_texts([c.text for c in to_embed])
+
+        # Prepare vectors for Pinecone upsert
+        upsert_data = []
         for c, v in zip(to_embed, vectors):
             fp = self._fingerprint(c)
-            if c.id in self._index:
-                idx = self._index[c.id]
-                self.chunks[idx] = c
-                self.vectors[idx] = v
-            else:
-                self._index[c.id] = len(self.chunks)
-                self.chunks.append(c)
-                self.vectors.append(v)
-            self._fp[c.id] = fp
-            self._model[c.id] = OPENAI_EMBED_MODEL
-            self._save_append(c, v)
-        logger.info(f"Ingested/updated {len(to_embed)} chunks; total_unique_chunks={len(self.chunks)}")
+
+            # Prepare metadata (Pinecone has size limits, so store essentials)
+            metadata = {
+                'heading_path': c.heading_path,
+                'text': c.text[:1000],  # Truncate text for metadata storage
+                'fingerprint': fp,
+                'model': OPENAI_EMBED_MODEL,
+                **{k: v for k, v in c.meta.items() if isinstance(v, (str, int, float, bool))}
+            }
+
+            upsert_data.append({
+                'id': c.id,
+                'values': v,
+                'metadata': metadata
+            })
+
+        # Batch upsert to Pinecone (max 100 per batch)
+        batch_size = 100
+        for i in range(0, len(upsert_data), batch_size):
+            batch = upsert_data[i:i+batch_size]
+            self._pc_index.upsert(vectors=batch)
+            logger.info(f"Upserted batch {i//batch_size + 1}/{(len(upsert_data)-1)//batch_size + 1}")
+
+        logger.info(f"Ingested/updated {len(to_embed)} chunks into Pinecone")
 
     def search(self, query_vec: List[float], k: int = 5, filter_act: Optional[str] = None) -> List[Dict[str, Any]]:
-        """Search for chunks by vector similarity with optional filtering.
-
-        Args:
-            query_vec: Query embedding vector
-            k: Number of results to return
-            filter_act: Optional act name filter (case-insensitive partial match)
-
-        Returns:
-            List of dicts with chunk_id, heading_path, text, score, and metadata
-        """
-        if not self.vectors:
+        """Search for chunks by vector similarity with optional filtering."""
+        if not self._pc_index:
+            logger.warning("Pinecone not initialized - cannot search")
             return []
 
-        # Apply filtering if requested
-        if filter_act:
-            filter_act_lower = filter_act.lower()
-            filtered_indices = [
-                i for i, chunk in enumerate(self.chunks)
-                if filter_act_lower in chunk.meta.get('act_name', '').lower()
-            ]
-            if not filtered_indices:
-                logger.warning(f"No chunks match filter act='{filter_act}'")
-                return []
-            mat = np.array([self.vectors[i] for i in filtered_indices])
-            chunk_map = filtered_indices
-        else:
-            mat = np.array(self.vectors)
-            chunk_map = list(range(len(self.chunks)))
+        try:
+            # Build filter if act name provided
+            filter_dict = None
+            if filter_act:
+                filter_dict = {
+                    'act_name': {'$eq': filter_act}
+                }
 
-        q = np.array(query_vec)
-        sims = mat @ q / (np.linalg.norm(mat, axis=1) * (np.linalg.norm(q) + 1e-8) + 1e-8)
-        idx = np.argsort(-sims)[:k]
-        results = []
-        for i in idx:
-            chunk_idx = chunk_map[i]
-            chunk = self.chunks[chunk_idx]
-            results.append({
-                'chunk_id': chunk.id,
-                'heading_path': chunk.heading_path,
-                'text': chunk.text,
-                'score': float(sims[i]),
-                'meta': chunk.meta
-            })
-        return results
+            # Query Pinecone
+            results = self._pc_index.query(
+                vector=query_vec,
+                top_k=k,
+                filter=filter_dict,
+                include_metadata=True
+            )
+
+            # Format results
+            formatted_results = []
+            for match in results.get('matches', []):
+                metadata = match.get('metadata', {})
+                formatted_results.append({
+                    'chunk_id': match['id'],
+                    'heading_path': metadata.get('heading_path', ''),
+                    'text': metadata.get('text', ''),
+                    'score': float(match.get('score', 0.0)),
+                    'meta': {k: v for k, v in metadata.items()
+                            if k not in ['heading_path', 'text', 'fingerprint', 'model']}
+                })
+
+            return formatted_results
+
+        except Exception as e:
+            logger.exception(f"Pinecone search failed: {e}")
+            return []
 
     async def embed_query(self, text: str) -> List[float]:
+        """Embed a query text."""
         vecs = await self.embed_texts([text])
         return vecs[0]
 
     def get_section(self, section_id: str, include_subsections: bool = True) -> List[Dict[str, Any]]:
-        """Retrieve a complete section with all its subsections.
-
-        Args:
-            section_id: Section identifier (e.g., 'banking_act_1996-section-5')
-            include_subsections: Whether to include subsections (default True)
-
-        Returns:
-            List of chunks belonging to this section
-        """
-        results = []
-        for chunk in self.chunks:
-            chunk_section_id = chunk.meta.get('section_id')
-            if chunk_section_id == section_id:
-                if include_subsections:
-                    results.append({
-                        'chunk_id': chunk.id,
-                        'heading_path': chunk.heading_path,
-                        'text': chunk.text,
-                        'meta': chunk.meta
-                    })
-                elif chunk.meta.get('element_type') == 'section':
-                    # Only the section itself, not subsections
-                    results.append({
-                        'chunk_id': chunk.id,
-                        'heading_path': chunk.heading_path,
-                        'text': chunk.text,
-                        'meta': chunk.meta
-                    })
-
-        logger.info(f"get_section({section_id}): found {len(results)} chunks")
-        return results
-
-    def get_subsections(self, section_id: str, subsection_numbers: List[str]) -> List[Dict[str, Any]]:
-        """Retrieve specific subsections from a section.
-
-        Args:
-            section_id: Section identifier
-            subsection_numbers: List of subsection numbers (e.g., ['1', '2', '3'])
-
-        Returns:
-            List of matching subsection chunks
-        """
-        results = []
-        for chunk in self.chunks:
-            if chunk.meta.get('section_id') == section_id:
-                subsection_num = chunk.meta.get('subsection_number')
-                if subsection_num in subsection_numbers:
-                    results.append({
-                        'chunk_id': chunk.id,
-                        'heading_path': chunk.heading_path,
-                        'text': chunk.text,
-                        'meta': chunk.meta
-                    })
-
-        logger.info(f"get_subsections({section_id}, {subsection_numbers}): found {len(results)} chunks")
-        return results
-
-    def get_adjacent_sections(self, section_id: str, direction: str = "both", count: int = 1) -> List[Dict[str, Any]]:
-        """Get adjacent sections (previous/next) for broader context.
-
-        Args:
-            section_id: Current section identifier (e.g., 'banking_act_1996-section-5')
-            direction: 'previous', 'next', or 'both'
-            count: Number of adjacent sections to retrieve in each direction
-
-        Returns:
-            List of chunks from adjacent sections
-        """
-        # Extract doc_id and section number from section_id
-        # Format: {doc_id}-section-{number}
-        import re
-        match = re.match(r'(.+)-section-(.+)', section_id)
-        if not match:
-            logger.warning(f"Invalid section_id format: {section_id}")
+        """Retrieve a complete section with all its subsections from Pinecone."""
+        if not self._pc_index:
+            logger.warning("Pinecone not initialized")
             return []
 
-        doc_id = match.group(1)
-        section_num_str = match.group(2).replace('-', '.')  # Convert back from '5-1' to '5.1'
-
-        # Parse section number (handle 5, 5A, 5.1, etc.)
         try:
-            # Try to extract base number
-            base_match = re.match(r'(\d+)([A-Z])?(?:\.(\d+))?', section_num_str)
-            if not base_match:
-                logger.warning(f"Could not parse section number: {section_num_str}")
-                return []
+            # Query by metadata filter
+            filter_dict = {'section_id': {'$eq': section_id}}
 
-            base_num = int(base_match.group(1))
-            suffix = base_match.group(2) or ''
-            sub_num = base_match.group(3) or ''
-        except ValueError:
-            logger.warning(f"Could not parse section number: {section_num_str}")
-            return []
+            # Pinecone doesn't support pure metadata queries without a vector
+            # We'll use a dummy vector and filter, then ignore scores
+            dummy_vec = [0.0] * EMBEDDING_DIMENSION
 
-        # Collect all sections from the same document
-        all_sections = {}
-        for chunk in self.chunks:
-            if chunk.meta.get('doc_id') == doc_id and chunk.meta.get('section_number'):
-                sec_id = chunk.meta.get('section_id')
-                sec_num = chunk.meta.get('section_number')
-                if sec_id not in all_sections:
-                    all_sections[sec_id] = {
-                        'section_id': sec_id,
-                        'section_number': sec_num,
-                        'chunks': []
-                    }
-                all_sections[sec_id]['chunks'].append({
-                    'chunk_id': chunk.id,
-                    'heading_path': chunk.heading_path,
-                    'text': chunk.text,
-                    'meta': chunk.meta
+            results = self._pc_index.query(
+                vector=dummy_vec,
+                top_k=10000,  # Get all matching
+                filter=filter_dict,
+                include_metadata=True
+            )
+
+            formatted_results = []
+            for match in results.get('matches', []):
+                metadata = match.get('metadata', {})
+
+                # Filter by element_type if not including subsections
+                if not include_subsections and metadata.get('element_type') != 'section':
+                    continue
+
+                formatted_results.append({
+                    'chunk_id': match['id'],
+                    'heading_path': metadata.get('heading_path', ''),
+                    'text': metadata.get('text', ''),
+                    'meta': {k: v for k, v in metadata.items()
+                            if k not in ['heading_path', 'text', 'fingerprint', 'model']}
                 })
 
-        # Sort sections by number
-        sorted_sections = sorted(all_sections.values(), key=lambda x: x['section_number'])
+            logger.info(f"get_section({section_id}): found {len(formatted_results)} chunks")
+            return formatted_results
 
-        # Find current section index
-        current_idx = None
-        for idx, sec in enumerate(sorted_sections):
-            if sec['section_id'] == section_id:
-                current_idx = idx
-                break
-
-        if current_idx is None:
-            logger.warning(f"Section {section_id} not found in document")
+        except Exception as e:
+            logger.exception(f"Failed to get section from Pinecone: {e}")
             return []
 
-        # Collect adjacent sections
-        results = []
+    def get_subsections(self, section_id: str, subsection_numbers: List[str]) -> List[Dict[str, Any]]:
+        """Retrieve specific subsections from a section."""
+        if not self._pc_index:
+            logger.warning("Pinecone not initialized")
+            return []
 
-        if direction in ['previous', 'both']:
-            for i in range(1, count + 1):
-                prev_idx = current_idx - i
-                if prev_idx >= 0:
-                    results.extend(sorted_sections[prev_idx]['chunks'])
+        try:
+            filter_dict = {
+                'section_id': {'$eq': section_id},
+                'subsection_number': {'$in': subsection_numbers}
+            }
 
-        if direction in ['next', 'both']:
-            for i in range(1, count + 1):
-                next_idx = current_idx + i
-                if next_idx < len(sorted_sections):
-                    results.extend(sorted_sections[next_idx]['chunks'])
+            dummy_vec = [0.0] * EMBEDDING_DIMENSION
+            results = self._pc_index.query(
+                vector=dummy_vec,
+                top_k=10000,
+                filter=filter_dict,
+                include_metadata=True
+            )
 
-        logger.info(f"get_adjacent_sections({section_id}, {direction}, {count}): found {len(results)} chunks")
-        return results
+            formatted_results = []
+            for match in results.get('matches', []):
+                metadata = match.get('metadata', {})
+                formatted_results.append({
+                    'chunk_id': match['id'],
+                    'heading_path': metadata.get('heading_path', ''),
+                    'text': metadata.get('text', ''),
+                    'meta': {k: v for k, v in metadata.items()
+                            if k not in ['heading_path', 'text', 'fingerprint', 'model']}
+                })
+
+            logger.info(f"get_subsections({section_id}, {subsection_numbers}): found {len(formatted_results)} chunks")
+            return formatted_results
+
+        except Exception as e:
+            logger.exception(f"Failed to get subsections from Pinecone: {e}")
+            return []
+
+    def get_adjacent_sections(self, section_id: str, direction: str = "both", count: int = 1) -> List[Dict[str, Any]]:
+        """Get adjacent sections for broader context.
+
+        Note: This is complex with Pinecone. For now, return empty list.
+        This feature can be implemented if needed by storing section ordering in metadata.
+        """
+        logger.warning("get_adjacent_sections not yet implemented for Pinecone backend")
+        return []
+
+    @property
+    def vectors(self):
+        """Compatibility property - returns None since vectors are in Pinecone."""
+        return None
+
+    def get_stats(self) -> Dict[str, Any]:
+        """Get statistics from Pinecone index."""
+        if not self._pc_index:
+            return {
+                'total_vectors': 0,
+                'total_chunks': 0,
+                'unique_acts': 0,
+                'sample_acts': []
+            }
+
+        try:
+            stats = self._pc_index.describe_index_stats()
+            total_vectors = stats.get('total_vector_count', 0)
+
+            # Get unique acts from namespaces if available
+            # For now, return basic stats
+            return {
+                'total_vectors': total_vectors,
+                'total_chunks': total_vectors,  # Same as vectors in Pinecone
+                'unique_acts': 'N/A (query Pinecone metadata)',
+                'sample_acts': []
+            }
+
+        except Exception as e:
+            logger.exception(f"Failed to get stats from Pinecone: {e}")
+            return {
+                'total_vectors': 0,
+                'total_chunks': 0,
+                'unique_acts': 0,
+                'sample_acts': []
+            }
+
 
 # Singleton instance
 store = RAGStore()

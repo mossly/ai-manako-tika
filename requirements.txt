@@ -13,6 +13,7 @@ tenacity
 # AI/ML
 openai
 numpy
+pinecone
 
 # HTTP client
 httpx
