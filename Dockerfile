@@ -31,6 +31,7 @@ COPY fix_pdf_location.sh /app/
 COPY verify_indexed_pdfs.py /app/
 COPY sync_all_pdfs.py /app/
 COPY rebuild_metadata.py /app/
+COPY index_missing_pdfs.py /app/
 
 # Make scripts executable
 RUN chmod +x /app/fix_failed_downloads.sh /app/fix_pdf_location.sh
