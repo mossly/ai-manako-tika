@@ -60,21 +60,14 @@ async def backfill_from_pdfs(legislation_dir: str = None, limit: int = None):
         try:
             logger.info(f"Processing: {pdf_path.name}")
 
-            # Calculate file hash
-            file_hash = get_file_hash(str(pdf_path))
-
             # Extract act name from filename
             # Format: "banking_act_1996.pdf" -> "Banking Act 1996"
-            act_name_guess = pdf_path.stem.replace('_', ' ').title()
+            act_name = pdf_path.stem.replace('_', ' ').title()
 
-            # Process PDF to markdown
-            markdown_text, extracted_act_name = await process_pdf_to_markdown(
-                str(pdf_path),
-                act_name=None  # Let it auto-extract
+            # Process PDF to markdown (returns markdown_text, file_hash, page_map)
+            markdown_text, file_hash, page_map = await process_pdf_to_markdown(
+                str(pdf_path)
             )
-
-            # Use extracted name if available, otherwise use filename-based guess
-            act_name = extracted_act_name or act_name_guess
 
             # Extract year
             year = extract_year_from_act_name(act_name)
@@ -98,6 +91,7 @@ async def backfill_from_pdfs(legislation_dir: str = None, limit: int = None):
                 doc_id=doc_id,
                 act_name=act_name,
                 markdown_text=markdown_text,
+                page_map=page_map,
                 metadata={
                     'pdf_path': str(pdf_path),
                     'pdf_filename': pdf_path.name,
