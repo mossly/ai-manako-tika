@@ -75,3 +75,5 @@ states that applications must be submitted with...
 **Legal Disclaimer**: This is informational only and does not constitute legal advice. For specific legal guidance, consult a qualified legal professional.
 
 **Citation Quality**: Prefer text fragment links for precision, but page-only links are acceptable when appropriate.
+
+**Filename Conventions**: Legislation filenames contain metadata prefixes (e.g., `ba_`, `intefaa_`) and are NOT authoritative sources for Act titles. Always extract the official Act title from the document content itself, not from the filename.

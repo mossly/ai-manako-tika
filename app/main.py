@@ -199,7 +199,7 @@ async def chat_websocket(websocket: WebSocket):
                 tools = create_tool_definitions()
 
                 # Agentic loop: allow multiple tool calls before final response
-                max_iterations = 10
+                max_iterations = int(os.getenv('MAX_TOOL_ITERATIONS', '10'))
                 iteration = 0
 
                 while iteration < max_iterations:

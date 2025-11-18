@@ -114,38 +114,60 @@ class RAGStore:
         h.update((chunk.text or "").encode('utf-8'))
         return h.hexdigest()
 
-    def _needs_embedding(self, chunk: Chunk) -> bool:
-        """Return True if the chunk is new or changed.
+    def _batch_check_needs_embedding(self, chunks: List[Chunk]) -> List[bool]:
+        """Batch check if chunks need embedding.
 
-        Checks Pinecone metadata to see if chunk exists and matches fingerprint.
+        Returns list of booleans indicating which chunks need embedding.
+        Consolidates Pinecone fetch operations to reduce read quota usage.
         """
         if not self._pc_index:
-            return True
+            return [True] * len(chunks)
+
+        if not chunks:
+            return []
 
         try:
-            # Fetch existing vector metadata
-            result = self._pc_index.fetch(ids=[chunk.id])
+            # Batch fetch all chunk IDs at once (max 1000 per fetch)
+            chunk_ids = [c.id for c in chunks]
+            needs_embedding = [False] * len(chunks)
 
-            if chunk.id not in result.get('vectors', {}):
-                return True  # New chunk
+            # Process in batches of 1000 (Pinecone fetch limit)
+            batch_size = 1000
+            for batch_start in range(0, len(chunk_ids), batch_size):
+                batch_end = min(batch_start + batch_size, len(chunk_ids))
+                batch_ids = chunk_ids[batch_start:batch_end]
+                batch_chunks = chunks[batch_start:batch_end]
 
-            # Check fingerprint
-            existing_meta = result['vectors'][chunk.id].get('metadata', {})
-            existing_fp = existing_meta.get('fingerprint')
-            current_fp = self._fingerprint(chunk)
+                result = self._pc_index.fetch(ids=batch_ids)
+                existing_vectors = result.get('vectors', {})
 
-            if existing_fp != current_fp:
-                return True  # Changed chunk
+                # Check each chunk in this batch
+                for i, chunk in enumerate(batch_chunks):
+                    global_idx = batch_start + i
 
-            # Check if model changed
-            if existing_meta.get('model') != OPENAI_EMBED_MODEL:
-                return True
+                    if chunk.id not in existing_vectors:
+                        needs_embedding[global_idx] = True  # New chunk
+                        continue
 
-            return False
+                    # Check fingerprint
+                    existing_meta = existing_vectors[chunk.id].get('metadata', {})
+                    existing_fp = existing_meta.get('fingerprint')
+                    current_fp = self._fingerprint(chunk)
+
+                    if existing_fp != current_fp:
+                        needs_embedding[global_idx] = True  # Changed chunk
+                        continue
+
+                    # Check if model changed
+                    if existing_meta.get('model') != OPENAI_EMBED_MODEL:
+                        needs_embedding[global_idx] = True
+                        continue
+
+            return needs_embedding
 
         except Exception as e:
-            logger.warning(f"Error checking if chunk needs embedding: {e}")
-            return True  # Re-embed on error
+            logger.warning(f"Error batch checking chunks for embedding: {e}")
+            return [True] * len(chunks)  # Re-embed all on error
 
     async def embed_texts(self, texts: List[str]) -> List[List[float]]:
         """Create embeddings for a list of texts using OpenAI."""
@@ -217,11 +239,9 @@ class RAGStore:
         if not self._pc_index:
             raise RuntimeError("Pinecone not initialized")
 
-        # Partition into new/changed vs unchanged
-        to_embed: List[Chunk] = []
-        for c in chunks:
-            if self._needs_embedding(c):
-                to_embed.append(c)
+        # Batch check which chunks need embedding (consolidates Pinecone reads)
+        needs_embedding_flags = self._batch_check_needs_embedding(chunks)
+        to_embed: List[Chunk] = [c for c, needs in zip(chunks, needs_embedding_flags) if needs]
 
         skipped = len(chunks) - len(to_embed)
         if skipped:
@@ -253,8 +273,10 @@ class RAGStore:
                 'metadata': metadata
             })
 
-        # Batch upsert to Pinecone (max 100 per batch)
-        batch_size = 100
+        # Batch upsert to Pinecone
+        # Note: Pinecone supports up to 1000 vectors per upsert, but we use smaller batches
+        # to reduce memory usage and provide better progress feedback
+        batch_size = 200  # Increased from 100 to reduce number of write operations
         for i in range(0, len(upsert_data), batch_size):
             batch = upsert_data[i:i+batch_size]
             self._pc_index.upsert(vectors=batch)
