@@ -14,16 +14,30 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-from .tools.ingest import ingest_pdf, ingest_all_pdfs, ingest_from_url
-from .tools.scraper import scrape_legislation
-from .tools.legislation_tools import create_tool_definitions, execute_tool
-from .rag.indexer import store
-from .config import legislation_config
-from .mcp_server import mcp
+# Use absolute imports that work both locally and in Docker
+try:
+    from .tools.ingest import ingest_pdf, ingest_all_pdfs, ingest_from_url
+    from .tools.scraper import scrape_legislation
+    from .tools.legislation_tools import create_tool_definitions, execute_tool
+    from .rag.indexer import store
+    from .config import legislation_config
+    from .mcp_server import mcp
+    from .db.metadata import metadata_db
+except ImportError:
+    # Fallback for running directly as a script (local development)
+    from tools.ingest import ingest_pdf, ingest_all_pdfs, ingest_from_url
+    from tools.scraper import scrape_legislation
+    from tools.legislation_tools import create_tool_definitions, execute_tool
+    from rag.indexer import store
+    from config import legislation_config
+    from mcp_server import mcp
+    from db.metadata import metadata_db
 
 # Import OpenAI-compatible client for OpenRouter
 from openai import AsyncOpenAI
 from pathlib import Path
+import secrets
+from datetime import datetime, timedelta
 
 # Load system prompt from markdown file
 def load_system_prompt() -> str:
@@ -133,6 +147,165 @@ async def chat_page():
     return templates.TemplateResponse("chat.html", {"request": {}})
 
 
+class AuthRequest(BaseModel):
+    code: str
+
+
+class SessionResponse(BaseModel):
+    session_id: str
+    expires_at: str
+
+
+@app.post('/auth/login', response_model=SessionResponse)
+async def login(auth_request: AuthRequest):
+    """Authenticate with code and create session."""
+    # Check auth code
+    expected_code = os.getenv('AUTH_CODE', 'strategyday')
+
+    if auth_request.code != expected_code:
+        raise HTTPException(status_code=401, detail="Invalid authentication code")
+
+    # Generate session
+    session_id = secrets.token_urlsafe(32)
+    expires_at = datetime.utcnow() + timedelta(hours=24)
+
+    # Store session in database
+    metadata_db.create_session(
+        session_id=session_id,
+        auth_code=auth_request.code,
+        expires_at=expires_at.isoformat()
+    )
+
+    logger.info(f"Created session {session_id}")
+
+    return SessionResponse(
+        session_id=session_id,
+        expires_at=expires_at.isoformat()
+    )
+
+
+@app.post('/auth/validate')
+async def validate_session(session_id: str = Form(...)):
+    """Validate a session token."""
+    session = metadata_db.get_session(session_id)
+
+    if not session:
+        raise HTTPException(status_code=401, detail="Invalid or expired session")
+
+    return {"valid": True, "session_id": session_id}
+
+
+class ConversationCreate(BaseModel):
+    session_id: str
+    title: Optional[str] = None
+
+
+class ConversationUpdate(BaseModel):
+    title: Optional[str] = None
+
+
+@app.post('/conversations')
+async def create_conversation(conversation: ConversationCreate):
+    """Create a new conversation."""
+    # Validate session
+    session = metadata_db.get_session(conversation.session_id)
+    if not session:
+        raise HTTPException(status_code=401, detail="Invalid or expired session")
+
+    # Generate conversation ID
+    conversation_id = secrets.token_urlsafe(16)
+
+    # Create conversation
+    metadata_db.create_conversation(
+        conversation_id=conversation_id,
+        session_id=conversation.session_id,
+        title=conversation.title
+    )
+
+    return {
+        "conversation_id": conversation_id,
+        "title": conversation.title or "New Conversation"
+    }
+
+
+@app.get('/conversations')
+async def list_conversations(session_id: str):
+    """List all conversations for a session."""
+    # Validate session
+    session = metadata_db.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=401, detail="Invalid or expired session")
+
+    conversations = metadata_db.list_conversations(session_id)
+    return {"conversations": conversations}
+
+
+@app.get('/conversations/{conversation_id}')
+async def get_conversation(conversation_id: str, session_id: str):
+    """Get a specific conversation."""
+    # Validate session
+    session = metadata_db.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=401, detail="Invalid or expired session")
+
+    conversation = metadata_db.get_conversation(conversation_id)
+    if not conversation:
+        raise HTTPException(status_code=404, detail="Conversation not found")
+
+    # Verify conversation belongs to this session
+    if conversation['session_id'] != session_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+
+    return conversation
+
+
+@app.patch('/conversations/{conversation_id}')
+async def update_conversation_title(conversation_id: str, update: ConversationUpdate, session_id: str = Form(...)):
+    """Update conversation title."""
+    # Validate session
+    session = metadata_db.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=401, detail="Invalid or expired session")
+
+    conversation = metadata_db.get_conversation(conversation_id)
+    if not conversation:
+        raise HTTPException(status_code=404, detail="Conversation not found")
+
+    # Verify conversation belongs to this session
+    if conversation['session_id'] != session_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+
+    # Update title
+    if update.title:
+        metadata_db.update_conversation(
+            conversation_id=conversation_id,
+            messages=conversation['messages'],
+            title=update.title
+        )
+
+    return {"success": True}
+
+
+@app.delete('/conversations/{conversation_id}')
+async def delete_conversation(conversation_id: str, session_id: str):
+    """Delete a conversation."""
+    # Validate session
+    session = metadata_db.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=401, detail="Invalid or expired session")
+
+    conversation = metadata_db.get_conversation(conversation_id)
+    if not conversation:
+        raise HTTPException(status_code=404, detail="Conversation not found")
+
+    # Verify conversation belongs to this session
+    if conversation['session_id'] != session_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+
+    metadata_db.delete_conversation(conversation_id)
+    return {"success": True}
+
+
 class ChatMessage(BaseModel):
     role: str
     content: str
@@ -143,6 +316,66 @@ async def chat_websocket(websocket: WebSocket):
     """WebSocket endpoint for real-time chat with OpenRouter models and legislation RAG."""
     await websocket.accept()
     logger.info("WebSocket chat connection established")
+
+    # Wait for initial message with session and conversation ID
+    try:
+        initial_data = await websocket.receive_json()
+        session_id = initial_data.get('session_id')
+        conversation_id = initial_data.get('conversation_id')
+
+        if not session_id:
+            await websocket.send_json({
+                'type': 'error',
+                'content': 'Session ID required'
+            })
+            await websocket.close()
+            return
+
+        # Validate session
+        session = metadata_db.get_session(session_id)
+        if not session:
+            await websocket.send_json({
+                'type': 'error',
+                'content': 'Invalid or expired session'
+            })
+            await websocket.close()
+            return
+
+        logger.info(f"Session validated: {session_id}")
+
+        # If no conversation ID provided, create a new one
+        if not conversation_id:
+            conversation_id = secrets.token_urlsafe(16)
+            metadata_db.create_conversation(
+                conversation_id=conversation_id,
+                session_id=session_id,
+                title="New Conversation"
+            )
+            logger.info(f"Created new conversation: {conversation_id}")
+            # Send conversation ID to client
+            await websocket.send_json({
+                'type': 'conversation_created',
+                'conversation_id': conversation_id
+            })
+        else:
+            # Validate conversation exists and belongs to session
+            conversation = metadata_db.get_conversation(conversation_id)
+            if not conversation or conversation['session_id'] != session_id:
+                await websocket.send_json({
+                    'type': 'error',
+                    'content': 'Invalid conversation'
+                })
+                await websocket.close()
+                return
+
+    except Exception as e:
+        logger.error(f"Session validation failed: {e}")
+        await websocket.send_json({
+            'type': 'error',
+            'content': 'Authentication required'
+        })
+        await websocket.close()
+        return
 
     # Get OpenRouter configuration
     openrouter_api_key = os.getenv('OPENROUTER_API_KEY')
@@ -157,7 +390,7 @@ async def chat_websocket(websocket: WebSocket):
         return
 
     # Default model (will be overridden by client selection)
-    default_model = os.getenv('OPENROUTER_CHAT_MODEL', 'openai/gpt-4o')
+    default_model = os.getenv('OPENROUTER_CHAT_MODEL', 'google/gemini-3-pro-preview')
 
     # Initialize OpenRouter client (OpenAI-compatible)
     client = AsyncOpenAI(
@@ -169,18 +402,36 @@ async def chat_websocket(websocket: WebSocket):
     system_prompt = load_system_prompt()
     logger.info(f"Loaded system prompt: {len(system_prompt)} characters")
 
-    # Conversation history
-    messages: List[Dict[str, str]] = [
-        {
-            "role": "system",
-            "content": system_prompt
-        }
-    ]
+    # Restore or initialize conversation history
+    saved_messages = metadata_db.get_conversation_messages(conversation_id)
+    if saved_messages and saved_messages != "[]":
+        messages = json.loads(saved_messages)
+        logger.info(f"Restored {len(messages)} messages from conversation {conversation_id}")
+        # Send restored history to client
+        await websocket.send_json({
+            'type': 'history_restored',
+            'messages': messages
+        })
+    else:
+        # New conversation - initialize with system prompt
+        messages: List[Dict[str, str]] = [
+            {
+                "role": "system",
+                "content": system_prompt
+            }
+        ]
 
     try:
         while True:
             # Receive message from client
             data = await websocket.receive_json()
+
+            # Handle ping/pong for keep-alive
+            if data.get('type') == 'ping':
+                await websocket.send_json({'type': 'pong'})
+                metadata_db.update_session_activity(session_id)
+                continue
+
             user_message = data.get('content', '')
             selected_model = data.get('model', default_model)  # Get model from client
 
@@ -275,6 +526,23 @@ async def chat_websocket(websocket: WebSocket):
 
                         # Add to history
                         messages.append({"role": "assistant", "content": full_response})
+
+                        # Save conversation to database
+                        # Generate title from first user message if this is the first response
+                        conversation = metadata_db.get_conversation(conversation_id)
+                        title = conversation['title']
+                        if title == "New Conversation" and len(messages) >= 3:
+                            # Use first user message as title (truncated)
+                            first_user_msg = next((m['content'] for m in messages if m['role'] == 'user'), None)
+                            if first_user_msg:
+                                title = first_user_msg[:50] + ('...' if len(first_user_msg) > 50 else '')
+
+                        metadata_db.update_conversation(
+                            conversation_id=conversation_id,
+                            messages=json.dumps(messages),
+                            title=title
+                        )
+                        metadata_db.update_session_activity(session_id=session_id)
 
                         # Signal completion
                         await websocket.send_json({'type': 'done'})
@@ -379,3 +647,8 @@ async def health():
 
 # Mount MCP server at /mcp (must be last to avoid catching other routes)
 app.mount("/mcp", mcp_app)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=5500)
