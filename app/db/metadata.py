@@ -21,8 +21,14 @@ class MetadataDB:
     def _get_connection(self) -> sqlite3.Connection:
         """Get thread-local database connection."""
         if not hasattr(self._local, 'conn'):
-            self._local.conn = sqlite3.connect(self.db_path, check_same_thread=False)
+            self._local.conn = sqlite3.connect(
+                self.db_path,
+                check_same_thread=False,
+                timeout=30.0  # Wait up to 30 seconds for lock
+            )
             self._local.conn.row_factory = sqlite3.Row
+            # Enable WAL mode for better concurrent access
+            self._local.conn.execute('PRAGMA journal_mode=WAL')
         return self._local.conn
 
     @contextmanager
@@ -153,6 +159,71 @@ class MetadataDB:
                 SET chunk_count = (SELECT COUNT(*) FROM chunks WHERE doc_id = ?)
                 WHERE doc_id = ?
             ''', (doc_id, doc_id))
+
+    def upsert_document_with_chunks(self, doc_id: str, act_name: str,
+                                     chunks: List[Dict[str, Any]],
+                                     year: Optional[int] = None,
+                                     pdf_filename: Optional[str] = None,
+                                     pdf_path: Optional[str] = None,
+                                     file_hash: Optional[str] = None) -> None:
+        """Insert/update document and all its chunks in a single transaction.
+
+        This is more efficient and prevents database locking issues when processing
+        many documents, as all operations happen atomically.
+        """
+        with self._transaction() as conn:
+            # Insert/update document
+            conn.execute('''
+                INSERT INTO documents (doc_id, act_name, year, pdf_filename, pdf_path, file_hash, last_processed)
+                VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                ON CONFLICT(doc_id) DO UPDATE SET
+                    act_name = excluded.act_name,
+                    year = excluded.year,
+                    pdf_filename = excluded.pdf_filename,
+                    pdf_path = excluded.pdf_path,
+                    file_hash = excluded.file_hash,
+                    last_processed = CURRENT_TIMESTAMP
+            ''', (doc_id, act_name, year, pdf_filename, pdf_path, file_hash))
+
+            # Insert/update all chunks
+            for chunk in chunks:
+                metadata = chunk.get('meta', {})
+                conn.execute('''
+                    INSERT INTO chunks (
+                        chunk_id, doc_id, section_number, section_title, section_id,
+                        subsection_number, element_type, page_number, heading_path, chunk_index
+                    )
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(chunk_id) DO UPDATE SET
+                        section_number = excluded.section_number,
+                        section_title = excluded.section_title,
+                        section_id = excluded.section_id,
+                        subsection_number = excluded.subsection_number,
+                        element_type = excluded.element_type,
+                        page_number = excluded.page_number,
+                        heading_path = excluded.heading_path,
+                        chunk_index = excluded.chunk_index
+                ''', (
+                    chunk['id'],
+                    doc_id,
+                    metadata.get('section_number'),
+                    metadata.get('section_title'),
+                    metadata.get('section_id'),
+                    metadata.get('subsection_number'),
+                    metadata.get('element_type'),
+                    metadata.get('page_number'),
+                    metadata.get('heading_path'),
+                    metadata.get('chunk_index')
+                ))
+
+            # Update chunk count
+            conn.execute('''
+                UPDATE documents
+                SET chunk_count = (SELECT COUNT(*) FROM chunks WHERE doc_id = ?)
+                WHERE doc_id = ?
+            ''', (doc_id, doc_id))
+
+        logger.debug(f"Upserted document {doc_id} with {len(chunks)} chunks in single transaction")
 
     def get_all_documents(self, sort_by: str = 'name', limit: Optional[int] = None) -> List[Dict[str, Any]]:
         """Get all documents with optional sorting."""

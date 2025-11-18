@@ -75,15 +75,6 @@ async def backfill_from_pdfs(legislation_dir: str = None, limit: int = None):
             # Generate doc_id (consistent with Pinecone naming)
             doc_id = pdf_path.stem.lower().replace(' ', '_')
 
-            # Insert document
-            metadata_db.upsert_document(
-                doc_id=doc_id,
-                act_name=act_name,
-                year=year,
-                pdf_filename=pdf_path.name,
-                pdf_path=str(pdf_path),
-                file_hash=file_hash
-            )
             logger.info(f"  → Document: {act_name} (year: {year})")
 
             # Chunk the markdown
@@ -99,16 +90,17 @@ async def backfill_from_pdfs(legislation_dir: str = None, limit: int = None):
                 }
             )
 
-            # Insert chunks
-            for chunk in chunks_data:
-                metadata_db.upsert_chunk(
-                    chunk_id=chunk['id'],
-                    doc_id=doc_id,
-                    metadata=chunk['meta']
-                )
-
-            # Update chunk count
-            metadata_db.update_document_chunk_count(doc_id)
+            # Insert document and all chunks in a single transaction
+            # This prevents database locking issues
+            metadata_db.upsert_document_with_chunks(
+                doc_id=doc_id,
+                act_name=act_name,
+                chunks=chunks_data,
+                year=year,
+                pdf_filename=pdf_path.name,
+                pdf_path=str(pdf_path),
+                file_hash=file_hash
+            )
 
             logger.info(f"  → Inserted {len(chunks_data)} chunks")
             processed += 1
