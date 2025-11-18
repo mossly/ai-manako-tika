@@ -24,6 +24,12 @@ RUN playwright install chromium && \
 # Copy application code
 COPY app /app/app
 COPY backfill_metadata.py /app/
+COPY find_download_ids.py /app/
+COPY download_legislation.py /app/
+COPY fix_failed_downloads.sh /app/
+
+# Make scripts executable
+RUN chmod +x /app/fix_failed_downloads.sh
 
 # Create data directories
 RUN mkdir -p /data/rag_storage \

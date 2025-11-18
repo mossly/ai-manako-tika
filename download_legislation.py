@@ -4,6 +4,7 @@ import httpx
 import os
 import re
 import sys
+import json
 import logging
 from pathlib import Path
 from datetime import datetime
@@ -250,6 +251,11 @@ async def download_all_legislation(limit: Optional[int] = None):
             print("Failed downloads:")
             for item in failed:
                 print(f"  - {item['act_name']} ({item['legal_id']})")
+            print()
+
+            # Output JSON for piping to find_download_ids.py
+            print("JSON format (for find_download_ids.py):")
+            print(json.dumps(failed, indent=2))
             print()
 
 
