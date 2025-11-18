@@ -23,6 +23,7 @@ RUN playwright install chromium && \
 
 # Copy application code
 COPY app /app/app
+COPY backfill_metadata.py /app/
 
 # Create data directories
 RUN mkdir -p /data/rag_storage \
