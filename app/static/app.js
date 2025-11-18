@@ -3,9 +3,31 @@
 let ws = null;
 let currentAssistantMessage = null;
 let isWaitingForResponse = false;
+let isAuthenticated = false;
+const AUTH_CODE = 'strategyday';  // This will be checked client-side for presentation
+
+// Authentication function
+function authenticate() {
+    const input = document.getElementById('auth-code');
+    const errorDiv = document.getElementById('auth-error');
+    const code = input.value.trim();
+
+    if (code === AUTH_CODE) {
+        isAuthenticated = true;
+        document.getElementById('auth-gate').style.display = 'none';
+        document.getElementById('main-app').style.display = 'block';
+        initWebSocket();
+    } else {
+        errorDiv.textContent = 'Invalid access code';
+        input.value = '';
+        input.focus();
+    }
+}
 
 // Initialize WebSocket connection
 function initWebSocket() {
+    if (!isAuthenticated) return;
+
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     const wsUrl = `${protocol}//${window.location.host}/ws/chat`;
 
@@ -92,6 +114,8 @@ function handleWebSocketMessage(data) {
 function sendMessage() {
     const input = document.getElementById('user-input');
     const message = input.value.trim();
+    const modelSelect = document.getElementById('model-select');
+    const selectedModel = modelSelect.value;
 
     if (!message || isWaitingForResponse) {
         return;
@@ -108,9 +132,10 @@ function sendMessage() {
     // Clear input
     input.value = '';
 
-    // Send to WebSocket
+    // Send to WebSocket with selected model
     ws.send(JSON.stringify({
-        content: message
+        content: message,
+        model: selectedModel
     }));
 
     // Disable input while waiting
@@ -339,7 +364,17 @@ function formatMarkdown(text) {
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     initializeMarked();
-    initWebSocket();
+
+    // Focus on auth input on load
+    document.getElementById('auth-code').focus();
+
+    // Enter key to authenticate
+    document.getElementById('auth-code').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            authenticate();
+        }
+    });
 
     // Send button click
     document.getElementById('send-btn').addEventListener('click', sendMessage);

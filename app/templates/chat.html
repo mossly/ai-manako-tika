@@ -8,10 +8,28 @@
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <!-- Authentication Gate -->
+    <div id="auth-gate" class="auth-gate">
+        <div class="auth-container">
+            <h2>🏝️ Cook Islands Legislation Search</h2>
+            <p>Enter access code to continue</p>
+            <input type="password" id="auth-code" placeholder="Access code">
+            <button onclick="authenticate()">Continue</button>
+            <div id="auth-error" class="auth-error"></div>
+        </div>
+    </div>
+
+    <div class="container" id="main-app" style="display: none;">
         <header>
             <h1>🏝️ Cook Islands Legislation Search</h1>
             <p class="subtitle">Semantic search and AI chat for Cook Islands Acts and Regulations</p>
+            <div class="model-selector">
+                <label for="model-select">AI Model:</label>
+                <select id="model-select">
+                    <option value="openai/gpt-4o">OpenAI: GPT-4o</option>
+                    <option value="google/gemini-3-pro-preview">Google: Gemini 3 Pro</option>
+                </select>
+            </div>
             <div class="disclaimer">
                 <strong>⚠️ Demonstration Tool</strong> - This is a prototype for informational purposes only.
                 Not legal advice. Always consult official sources and legal professionals.
@@ -40,10 +58,10 @@
         </main>
 
         <footer>
-            <p>Powered by OpenAI GPT-5.1 and vector embeddings | Built for BCI Board Strategy Day</p>
+            <p>Powered by OpenRouter AI models and vector embeddings | Built for BCI Board Strategy Day</p>
         </footer>
     </div>
 
-    <script src="/static/app.js?v=7"></script>
+    <script src="/static/app.js?v=8"></script>
 </body>
 </html>

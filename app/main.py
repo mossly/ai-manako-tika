@@ -21,7 +21,7 @@ from .rag.indexer import store
 from .config import legislation_config
 from .mcp_server import mcp
 
-# Import OpenAI for chat
+# Import OpenAI-compatible client for OpenRouter
 from openai import AsyncOpenAI
 from pathlib import Path
 
@@ -140,24 +140,30 @@ class ChatMessage(BaseModel):
 
 @app.websocket("/ws/chat")
 async def chat_websocket(websocket: WebSocket):
-    """WebSocket endpoint for real-time chat with GPT-5.1 and legislation RAG."""
+    """WebSocket endpoint for real-time chat with OpenRouter models and legislation RAG."""
     await websocket.accept()
     logger.info("WebSocket chat connection established")
 
-    # Get OpenAI configuration
-    openai_api_key = os.getenv('OPENAI_API_KEY')
-    logger.info(f"OpenAI API key loaded: {bool(openai_api_key)}")
-    if not openai_api_key:
-        logger.error("OPENAI_API_KEY not found in environment")
+    # Get OpenRouter configuration
+    openrouter_api_key = os.getenv('OPENROUTER_API_KEY')
+    logger.info(f"OpenRouter API key loaded: {bool(openrouter_api_key)}")
+    if not openrouter_api_key:
+        logger.error("OPENROUTER_API_KEY not found in environment")
         await websocket.send_json({
             'type': 'error',
-            'content': 'OPENAI_API_KEY not configured'
+            'content': 'OPENROUTER_API_KEY not configured'
         })
         await websocket.close()
         return
 
-    openai_model = os.getenv('OPENAI_CHAT_MODEL', 'GPT-5.1')
-    client = AsyncOpenAI(api_key=openai_api_key)
+    # Default model (will be overridden by client selection)
+    default_model = os.getenv('OPENROUTER_CHAT_MODEL', 'openai/gpt-4o')
+
+    # Initialize OpenRouter client (OpenAI-compatible)
+    client = AsyncOpenAI(
+        api_key=openrouter_api_key,
+        base_url="https://openrouter.ai/api/v1"
+    )
 
     # Load system prompt from file
     system_prompt = load_system_prompt()
@@ -176,11 +182,13 @@ async def chat_websocket(websocket: WebSocket):
             # Receive message from client
             data = await websocket.receive_json()
             user_message = data.get('content', '')
+            selected_model = data.get('model', default_model)  # Get model from client
 
             if not user_message.strip():
                 continue
 
             logger.info(f"User message: {user_message}")
+            logger.info(f"Selected model: {selected_model}")
 
             # Add to conversation history
             messages.append({"role": "user", "content": user_message})
@@ -200,7 +208,7 @@ async def chat_websocket(websocket: WebSocket):
 
                     # API call with tools
                     response = await client.chat.completions.create(
-                        model=openai_model,
+                        model=selected_model,
                         messages=messages,
                         tools=tools,
                         tool_choice="auto",
@@ -250,7 +258,7 @@ async def chat_websocket(websocket: WebSocket):
                         # No more tool calls - model is ready to respond
                         # Stream final response
                         final_response = await client.chat.completions.create(
-                            model=openai_model,
+                            model=selected_model,
                             messages=messages,
                             stream=True
                         )
