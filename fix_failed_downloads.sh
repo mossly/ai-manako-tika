@@ -39,12 +39,28 @@ echo ""
 echo "Step 3: Finding correct download IDs using Playwright..."
 echo ""
 
-python find_download_ids.py "$FAILED_JSON"
+python find_download_ids.py "$FAILED_JSON" > /tmp/find_ids_output.txt 2>&1
+
+# Show output
+cat /tmp/find_ids_output.txt
+
+# Step 4: Extract corrected IDs and retry
+echo ""
+echo "Step 4: Retrying downloads with corrected IDs..."
+echo ""
+
+# Extract comma-separated list from output
+CORRECTED_IDS=$(grep -A 1 "python download_legislation.py --retry" /tmp/find_ids_output.txt | tail -1 | sed 's/.*--retry //')
+
+if [ -n "$CORRECTED_IDS" ]; then
+    echo "Retrying with: $CORRECTED_IDS"
+    echo ""
+    python download_legislation.py --retry "$CORRECTED_IDS"
+else
+    echo "✗ No corrected IDs found. Manual intervention required."
+fi
 
 echo ""
 echo "============================================================"
-echo "Next steps:"
-echo "  1. Review the ID mappings above"
-echo "  2. Manually download using the correct IDs, or"
-echo "  3. Update download_legislation.py with an ID mapping table"
+echo "Complete! Check the summary above for final status."
 echo "============================================================"

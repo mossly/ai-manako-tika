@@ -138,6 +138,79 @@ async def download_pdf_with_retry(
         return None
 
 
+async def download_specific_ids(legal_ids: List[str]):
+    """Download specific acts by Legal IDs (for retrying failures with corrected IDs)."""
+    os.makedirs(LEGISLATION_DIR, exist_ok=True)
+
+    print(f"\n{'='*60}")
+    print("Retry Failed Downloads with Corrected IDs")
+    print(f"{'='*60}\n")
+
+    async with httpx.AsyncClient(timeout=60.0, follow_redirects=True) as session:
+        # Get full act list to lookup metadata
+        all_acts = await get_all_acts(session)
+        acts_by_id = {act.get('LegalId', ''): act for act in all_acts}
+
+        downloaded = []
+        failed = []
+        start_time = datetime.now()
+
+        for i, legal_id in enumerate(legal_ids, 1):
+            # Try to find act metadata (might not match if using corrected ID)
+            act = acts_by_id.get(legal_id, {})
+            act_name = act.get('ActName', 'Unknown Act')
+            year = act.get('Year', 'unknown')
+
+            # Create filename - use Legal ID if no metadata found
+            if act:
+                filename = sanitize_filename(act_name, legal_id)
+            else:
+                # Fallback: use legal_id as filename
+                filename = f"{legal_id.replace('LOCI.', '').lower()}.pdf"
+
+            print(f"[{i}/{len(legal_ids)}] ↓ {act_name} ({year})")
+            print(f"    Legal ID: {legal_id}")
+
+            result = await download_pdf_with_retry(session, legal_id, filename)
+
+            if result:
+                downloaded.append({
+                    'path': result,
+                    'act_name': act_name,
+                    'year': year,
+                    'legal_id': legal_id
+                })
+            else:
+                failed.append({
+                    'act_name': act_name,
+                    'legal_id': legal_id
+                })
+
+            # Rate limiting
+            if i < len(legal_ids):
+                await asyncio.sleep(INITIAL_DELAY)
+
+        # Summary
+        end_time = datetime.now()
+        duration = (end_time - start_time).total_seconds()
+
+        print(f"\n{'='*60}")
+        print("Retry Summary")
+        print(f"{'='*60}")
+        print(f"Attempted:      {len(legal_ids)}")
+        print(f"Downloaded:     {len(downloaded)} ✓")
+        print(f"Failed:         {len(failed)} ✗")
+        print(f"Duration:       {duration:.1f} seconds")
+        print(f"Output dir:     {os.path.abspath(LEGISLATION_DIR)}")
+        print(f"{'='*60}\n")
+
+        if failed:
+            print("Still failed:")
+            for item in failed:
+                print(f"  - {item['act_name']} ({item['legal_id']})")
+            print()
+
+
 async def download_all_legislation(limit: Optional[int] = None):
     """Download all legislation PDFs with rate limiting."""
     # Create output directory
@@ -260,21 +333,44 @@ async def download_all_legislation(limit: Optional[int] = None):
 
 
 def main():
-    """Entry point."""
+    """Entry point.
+
+    Usage:
+        python download_legislation.py              # Download all
+        python download_legislation.py 50           # Download first 50
+        python download_legislation.py --retry LOCI.STCLA66,LOCI.WANDAM,...
+        python download_legislation.py --retry-json '[{"old":"LOCI.STCLA","new":"LOCI.STCLA66"},...]'
+    """
     import sys
+    import argparse
 
-    # Check for limit argument
-    limit = None
-    if len(sys.argv) > 1:
+    parser = argparse.ArgumentParser(description='Download Cook Islands legislation PDFs')
+    parser.add_argument('limit', nargs='?', type=int, default=None,
+                       help='Limit number of acts to download')
+    parser.add_argument('--retry', type=str,
+                       help='Comma-separated Legal IDs to retry (e.g., LOCI.STCLA66,LOCI.WANDAM)')
+    parser.add_argument('--retry-json', type=str,
+                       help='JSON array of ID mappings from find_download_ids.py')
+
+    args = parser.parse_args()
+
+    # Handle retry with ID mappings
+    if args.retry_json:
         try:
-            limit = int(sys.argv[1])
-            print(f"Using limit: {limit}")
-        except ValueError:
-            print(f"Invalid limit: {sys.argv[1]}")
-            print("Usage: python download_legislation.py [limit]")
+            import json
+            mappings = json.loads(args.retry_json)
+            retry_ids = [m['new'] for m in mappings if 'new' in m]
+            print(f"Retrying {len(retry_ids)} failed downloads with corrected IDs...")
+            asyncio.run(download_specific_ids(retry_ids))
+        except json.JSONDecodeError as e:
+            print(f"Invalid JSON: {e}")
             sys.exit(1)
-
-    asyncio.run(download_all_legislation(limit=limit))
+    elif args.retry:
+        retry_ids = [id.strip() for id in args.retry.split(',')]
+        print(f"Retrying {len(retry_ids)} specific Legal IDs...")
+        asyncio.run(download_specific_ids(retry_ids))
+    else:
+        asyncio.run(download_all_legislation(limit=args.limit))
 
 
 if __name__ == "__main__":

@@ -84,29 +84,37 @@ python find_download_ids.py '[{"act_name":"SHORT TERM CROP LEASES ACT 1966","leg
 
 ### Step 3: Use the correct IDs
 
-The script will output mappings like:
+The script will output mappings and ready-to-run commands:
 
 ```
 Results:
-  LOCI.STCLA -> LOCI.STCL66
-  LOCI.WANDA -> LOCI.WA76
+  LOCI.STCLA -> LOCI.STCLA66
+  LOCI.WANDA -> LOCI.WANDAM
+
+============================================================
+
+To retry downloads with corrected IDs:
+------------------------------------------------------------
+
+python download_legislation.py --retry LOCI.STCLA66,LOCI.WANDAM,...
 ```
 
-You can then:
+**Just copy and run the command!** The script will:
+- Download only the specified Legal IDs
+- Use the corrected IDs that actually work
+- Show success/failure summary
 
-1. **Manual download** - Update the Legal IDs and re-run
-2. **Create ID mapping** - Add a mapping table to download_legislation.py:
+## Retry Options
 
-```python
-# Known ID mismatches
-ID_MAPPINGS = {
-    'LOCI.STCLA': 'LOCI.STCL66',
-    'LOCI.WANDA': 'LOCI.WA76',
-    # ... add more as discovered
-}
+```bash
+# Option 1: Comma-separated list (easiest)
+python download_legislation.py --retry LOCI.STCLA66,LOCI.WANDAM,LOCI.COPA70
 
-# In download_pdf_with_retry():
-legal_id = ID_MAPPINGS.get(legal_id, legal_id)
+# Option 2: JSON format (for automation)
+python download_legislation.py --retry-json '[{"old":"LOCI.STCLA","new":"LOCI.STCLA66"}]'
+
+# Option 3: Automated workflow (one command does everything)
+./fix_failed_downloads.sh
 ```
 
 ## Input Formats Supported

@@ -152,6 +152,19 @@ async def main():
     if results:
         for old_id, new_id in results.items():
             print(f"  {old_id} -> {new_id}")
+
+        print("\n" + "="*60)
+        print("\nTo retry downloads with corrected IDs:")
+        print("-"*60)
+
+        # Option 1: Comma-separated list
+        corrected_ids = ','.join(results.values())
+        print(f"\npython download_legislation.py --retry {corrected_ids}")
+
+        # Option 2: JSON format (for future automation)
+        print("\nOr with JSON:")
+        mappings = [{"old": old, "new": new} for old, new in results.items()]
+        print(f'python download_legislation.py --retry-json \'{json.dumps(mappings)}\'')
     else:
         print("  No successful mappings found.")
 
