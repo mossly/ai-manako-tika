@@ -351,13 +351,38 @@ class RAGStore:
         return vecs[0]
 
     def get_section(self, section_id: str, include_subsections: bool = True) -> List[Dict[str, Any]]:
-        """Retrieve a complete section with all its subsections from Pinecone."""
+        """Retrieve a complete section with all its subsections from Pinecone.
+
+        Also handles Parts and other structural elements by ID.
+        """
         if not self._pc_index:
             logger.warning("Pinecone not initialized")
             return []
 
         try:
-            # Query by metadata filter
+            # First try to fetch by ID directly (for Parts, Schedules, etc.)
+            # These elements use their ID as the chunk ID but don't populate section_id
+            try:
+                fetch_result = self._pc_index.fetch(ids=[section_id])
+                if fetch_result.get('vectors') and section_id in fetch_result['vectors']:
+                    # Found by direct ID lookup
+                    vector_data = fetch_result['vectors'][section_id]
+                    metadata = vector_data.get('metadata', {})
+
+                    formatted_results = [{
+                        'chunk_id': section_id,
+                        'heading_path': metadata.get('heading_path', ''),
+                        'text': metadata.get('text', ''),
+                        'meta': {k: v for k, v in metadata.items()
+                                if k not in ['heading_path', 'text', 'fingerprint', 'model']}
+                    }]
+
+                    logger.info(f"get_section({section_id}): found by direct ID fetch")
+                    return formatted_results
+            except Exception as fetch_err:
+                logger.debug(f"Direct ID fetch failed (will try metadata filter): {fetch_err}")
+
+            # If not found by ID, try metadata filter (for regular Sections)
             filter_dict = {'section_id': {'$eq': section_id}}
 
             # Pinecone doesn't support pure metadata queries without a vector
@@ -387,7 +412,7 @@ class RAGStore:
                             if k not in ['heading_path', 'text', 'fingerprint', 'model']}
                 })
 
-            logger.info(f"get_section({section_id}): found {len(formatted_results)} chunks")
+            logger.info(f"get_section({section_id}): found {len(formatted_results)} chunks via metadata filter")
             return formatted_results
 
         except Exception as e:

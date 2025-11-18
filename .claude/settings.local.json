@@ -3,7 +3,11 @@
     "allow": [
       "Bash(git lfs install)",
       "Bash(git lfs track \"data/rag_storage/embeddings.jsonl\")",
-      "Bash(git add .)"
+      "Bash(git add .)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nMigrate to Pinecone vector storage for TrueNAS deployment\n\n- Replace local embeddings storage with Pinecone integration\n- Reduce memory footprint from 1-2.5GB to 250-400MB\n- Add Pinecone configuration to environment variables\n- Update RAG indexer to use Pinecone API for vector operations\n- Maintain backward compatibility with existing API endpoints\n- Add comprehensive TrueNAS deployment guide\n- Update .gitignore to exclude .claude/ directory\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
