@@ -9,6 +9,10 @@ import numpy as np
 from openai import AsyncOpenAI
 from pinecone import Pinecone, ServerlessSpec
 
+# Import metadata DB and year extraction
+from ..db.metadata import metadata_db
+from ..utils.extract_year import extract_year_from_act_name
+
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
 OPENAI_EMBED_MODEL = os.getenv('OPENAI_EMBED_MODEL', 'text-embedding-3-large')
 
@@ -205,7 +209,7 @@ class RAGStore:
             raise
 
     async def ingest_chunks(self, chunks: List[Chunk]):
-        """Ingest chunks into Pinecone."""
+        """Ingest chunks into Pinecone and SQLite metadata database."""
         if not chunks:
             logger.warning("ingest_chunks called with empty chunk list")
             return
@@ -257,6 +261,48 @@ class RAGStore:
             logger.info(f"Upserted batch {i//batch_size + 1}/{(len(upsert_data)-1)//batch_size + 1}")
 
         logger.info(f"Ingested/updated {len(to_embed)} chunks into Pinecone")
+
+        # Also update SQLite metadata database
+        try:
+            # Get document info from first chunk
+            if to_embed:
+                first_chunk = to_embed[0]
+                doc_id = first_chunk.meta.get('doc_id')
+                act_name = first_chunk.meta.get('act_name')
+                pdf_path = first_chunk.meta.get('pdf_path')
+                pdf_filename = first_chunk.meta.get('pdf_filename')
+                file_hash = first_chunk.meta.get('file_hash')
+
+                if doc_id and act_name:
+                    # Extract year
+                    year = extract_year_from_act_name(act_name)
+
+                    # Upsert document
+                    metadata_db.upsert_document(
+                        doc_id=doc_id,
+                        act_name=act_name,
+                        year=year,
+                        pdf_filename=pdf_filename,
+                        pdf_path=pdf_path,
+                        file_hash=file_hash
+                    )
+
+                    # Upsert all chunks
+                    for chunk in to_embed:
+                        metadata_db.upsert_chunk(
+                            chunk_id=chunk.id,
+                            doc_id=doc_id,
+                            metadata=chunk.meta
+                        )
+
+                    # Update chunk count
+                    metadata_db.update_document_chunk_count(doc_id)
+
+                    logger.info(f"Updated SQLite metadata for {doc_id}: {len(to_embed)} chunks")
+
+        except Exception as e:
+            # Don't fail the entire ingestion if SQLite update fails
+            logger.exception(f"Failed to update SQLite metadata (non-fatal): {e}")
 
     def search(self, query_vec: List[float], k: int = 5, filter_act: Optional[str] = None) -> List[Dict[str, Any]]:
         """Search for chunks by vector similarity with optional filtering."""
