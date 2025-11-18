@@ -28,6 +28,9 @@ COPY find_download_ids.py /app/
 COPY download_legislation.py /app/
 COPY fix_failed_downloads.sh /app/
 COPY fix_pdf_location.sh /app/
+COPY verify_indexed_pdfs.py /app/
+COPY sync_all_pdfs.py /app/
+COPY rebuild_metadata.py /app/
 
 # Make scripts executable
 RUN chmod +x /app/fix_failed_downloads.sh /app/fix_pdf_location.sh
