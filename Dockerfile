@@ -27,9 +27,10 @@ COPY backfill_metadata.py /app/
 COPY find_download_ids.py /app/
 COPY download_legislation.py /app/
 COPY fix_failed_downloads.sh /app/
+COPY fix_pdf_location.sh /app/
 
 # Make scripts executable
-RUN chmod +x /app/fix_failed_downloads.sh
+RUN chmod +x /app/fix_failed_downloads.sh /app/fix_pdf_location.sh
 
 # Create data directories
 RUN mkdir -p /data/rag_storage \

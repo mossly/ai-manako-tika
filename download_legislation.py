@@ -26,7 +26,7 @@ if sys.platform == 'win32':
     sys.stdout.reconfigure(encoding='utf-8')
 
 # Configuration
-LEGISLATION_DIR = "data/legislation"
+LEGISLATION_DIR = "/data/legislation"  # Absolute path for Docker volume
 API_BASE = "https://cookislandslaws.gov.ck/api"
 RETRIEVE_ALL_ACTS_URL = f"{API_BASE}/retrieve_all_act"
 DOWNLOAD_PDF_URL = f"{API_BASE}/download_pdf_consolidated_law"
