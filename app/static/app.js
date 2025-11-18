@@ -233,7 +233,11 @@ function displaySearchResults(results) {
 
         const score = document.createElement('div');
         score.className = 'search-result-score';
-        score.textContent = `Relevance: ${(result.score * 100).toFixed(1)}%`;
+        // Handle missing or invalid scores gracefully
+        const scoreValue = result.score != null && !isNaN(result.score)
+            ? (result.score * 100).toFixed(1)
+            : 'N/A';
+        score.textContent = `Relevance: ${scoreValue}${scoreValue !== 'N/A' ? '%' : ''}`;
 
         const text = document.createElement('div');
         text.className = 'search-result-text';

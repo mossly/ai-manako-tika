@@ -395,6 +395,7 @@ class RAGStore:
                         'chunk_id': section_id,
                         'heading_path': metadata.get('heading_path', ''),
                         'text': metadata.get('text', ''),
+                        'score': None,  # No relevance score for direct ID lookup
                         'meta': {k: v for k, v in metadata.items()
                                 if k not in ['heading_path', 'text', 'fingerprint', 'model']}
                     }]
@@ -430,6 +431,7 @@ class RAGStore:
                     'chunk_id': match['id'],
                     'heading_path': metadata.get('heading_path', ''),
                     'text': metadata.get('text', ''),
+                    'score': None,  # No relevance score for metadata-only queries
                     'meta': {k: v for k, v in metadata.items()
                             if k not in ['heading_path', 'text', 'fingerprint', 'model']}
                 })
@@ -468,6 +470,7 @@ class RAGStore:
                     'chunk_id': match['id'],
                     'heading_path': metadata.get('heading_path', ''),
                     'text': metadata.get('text', ''),
+                    'score': None,  # No relevance score for metadata-only queries
                     'meta': {k: v for k, v in metadata.items()
                             if k not in ['heading_path', 'text', 'fingerprint', 'model']}
                 })
