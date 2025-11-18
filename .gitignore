@@ -71,3 +71,6 @@ docker-compose.override.yml
 
 # Analysis output files
 pdf_analysis_results.txt
+
+# Implementation documentation
+docs/implementation/
