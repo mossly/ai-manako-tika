@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from app.db.metadata import metadata_db
 from app.utils.extract_year import extract_year_from_act_name
-from app.rag.chunking import chunk_legislation_markdown
+from app.rag.chunking import from_legislation_markdown
 from app.tools.pdf_processor import process_pdf_to_markdown
 
 
@@ -94,26 +94,29 @@ async def backfill_from_pdfs(legislation_dir: str = None, limit: int = None):
             logger.info(f"  → Document: {act_name} (year: {year})")
 
             # Chunk the markdown
-            chunks = chunk_legislation_markdown(
-                markdown_text=markdown_text,
+            chunks_data = from_legislation_markdown(
                 doc_id=doc_id,
                 act_name=act_name,
-                pdf_path=str(pdf_path),
-                file_hash=file_hash
+                markdown_text=markdown_text,
+                metadata={
+                    'pdf_path': str(pdf_path),
+                    'pdf_filename': pdf_path.name,
+                    'file_hash': file_hash
+                }
             )
 
             # Insert chunks
-            for chunk in chunks:
+            for chunk in chunks_data:
                 metadata_db.upsert_chunk(
-                    chunk_id=chunk.id,
+                    chunk_id=chunk['id'],
                     doc_id=doc_id,
-                    metadata=chunk.meta
+                    metadata=chunk['meta']
                 )
 
             # Update chunk count
             metadata_db.update_document_chunk_count(doc_id)
 
-            logger.info(f"  → Inserted {len(chunks)} chunks")
+            logger.info(f"  → Inserted {len(chunks_data)} chunks")
             processed += 1
 
         except Exception as e:
