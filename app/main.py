@@ -1,4 +1,5 @@
 """FastAPI app for Cook Islands Legislation RAG Chat Service."""
+import asyncio
 from fastapi import FastAPI, Form, WebSocket, WebSocketDisconnect, HTTPException, Header, Depends, Request
 from fastapi.responses import JSONResponse, PlainTextResponse, HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -413,6 +414,12 @@ async def chat_websocket(websocket: WebSocket):
     if saved_messages and saved_messages != "[]":
         messages = json.loads(saved_messages)
         logger.info(f"Restored {len(messages)} messages from conversation {conversation_id}")
+
+        # Ensure system prompt is always present as first message
+        if not messages or messages[0].get('role') != 'system':
+            messages.insert(0, {"role": "system", "content": system_prompt})
+            logger.info("Prepended system prompt to restored conversation")
+
         # Send restored history to client
         await websocket.send_json({
             'type': 'history_restored',
@@ -544,10 +551,22 @@ async def chat_websocket(websocket: WebSocket):
                             # Model didn't provide content - request final response
                             logger.info("No content in assistant message, requesting final response")
 
+                            # Reinject system prompt to ensure formatting guidelines are fresh in context
+                            # Create a copy of messages with updated system prompt at the start
+                            final_messages = messages.copy()
+                            if final_messages and final_messages[0].get('role') == 'system':
+                                # Replace existing system prompt with fresh one
+                                final_messages[0] = {"role": "system", "content": system_prompt}
+                                logger.info("Reinjected system prompt for final answer")
+                            else:
+                                # Insert system prompt if somehow missing
+                                final_messages.insert(0, {"role": "system", "content": system_prompt})
+                                logger.info("Inserted system prompt for final answer")
+
                             # Request final response without adding empty assistant message
                             final_response = await client.chat.completions.create(
                                 model=selected_model,
-                                messages=messages,
+                                messages=final_messages,
                                 stream=True,
                                 temperature=0.7,
                                 max_tokens=8000
