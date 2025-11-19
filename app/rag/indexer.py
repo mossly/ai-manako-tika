@@ -274,9 +274,9 @@ class RAGStore:
             })
 
         # Batch upsert to Pinecone
-        # Note: Pinecone supports up to 1000 vectors per upsert, but we use smaller batches
-        # to reduce memory usage and provide better progress feedback
-        batch_size = 200  # Increased from 100 to reduce number of write operations
+        # Note: Pinecone supports up to 1000 vectors per upsert, but we limit to 100
+        # to stay under the 2MB request size limit (3072-dim vectors + metadata = ~15KB each)
+        batch_size = 100  # ~1.5MB per batch, safely under 2MB limit
         for i in range(0, len(upsert_data), batch_size):
             batch = upsert_data[i:i+batch_size]
             self._pc_index.upsert(vectors=batch)
