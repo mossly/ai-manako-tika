@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         if (!mainApp) {
             return;
         }
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1300) {
             mainApp.classList.add('sidebar-collapsed');
             mainApp.classList.add('right-sidebar-collapsed');
         } else {
@@ -295,6 +295,34 @@ function handleWebSocketMessage(data) {
     }
 }
 
+function extractTextContent(rawContent) {
+    if (rawContent === null || rawContent === undefined) {
+        return '';
+    }
+
+    if (typeof rawContent === 'string') {
+        return rawContent;
+    }
+
+    if (Array.isArray(rawContent)) {
+        return rawContent.map(part => {
+            if (typeof part === 'string') {
+                return part;
+            }
+            if (part && typeof part.text === 'string') {
+                return part.text;
+            }
+            return '';
+        }).join('');
+    }
+
+    if (typeof rawContent === 'object' && typeof rawContent.text === 'string') {
+        return rawContent.text;
+    }
+
+    return '';
+}
+
 // Restore conversation history from previous session
 function restoreConversationHistory(messages) {
     console.log('Restoring conversation history:', messages.length, 'messages');
@@ -304,9 +332,23 @@ function restoreConversationHistory(messages) {
         const msg = messages[i];
 
         if (msg.role === 'user') {
-            addUserMessage(msg.content);
+            const userText = extractTextContent(msg.content);
+            if (!userText || !userText.trim()) {
+                continue;
+            }
+            addUserMessage(userText);
         } else if (msg.role === 'assistant') {
-            appendAssistantMessage(msg.content);
+            const assistantText = extractTextContent(msg.content);
+            const hasToolCalls = Array.isArray(msg.tool_calls)
+                ? msg.tool_calls.length > 0
+                : Boolean(msg.tool_calls);
+
+            // Tool call turns have no useful content when replayed, so skip them to avoid blank bubbles
+            if (hasToolCalls || !assistantText.trim()) {
+                continue;
+            }
+
+            appendAssistantMessage(assistantText);
         }
         // Skip tool messages as they're internal
     }

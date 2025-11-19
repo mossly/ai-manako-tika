@@ -971,9 +971,9 @@ footer {
     padding: 20px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    /* On mobile, always use overlay mode (no margin adjustment) */
+/* Responsive Overlay Mode */
+@media (max-width: 1300px) {
+    /* Below 1300px, always use overlay mode (no margin adjustment) */
     #main-app .main-content {
         margin-left: 0 !important;
         margin-right: 0 !important;

@@ -476,8 +476,17 @@ async def chat_websocket(websocket: WebSocket):
 
                     # Check if model wants to call tools
                     if assistant_message.tool_calls:
+                        # Log if model incorrectly included content with tool calls
+                        if assistant_message.content:
+                            logger.warning(f"Model returned content with tool_calls (will be stripped): {assistant_message.content[:200]}")
+
                         # Add assistant message to history
-                        messages.append(assistant_message.model_dump())
+                        # Clear content field to prevent tool call leakage into output
+                        assistant_dict = assistant_message.model_dump()
+                        assistant_dict['content'] = None  # Tool-calling messages should have no content
+                        messages.append(assistant_dict)
+
+                        logger.info(f"Processing {len(assistant_message.tool_calls)} tool call(s)")
 
                         # Execute all tool calls for this turn
                         for tool_call in assistant_message.tool_calls:
@@ -513,6 +522,12 @@ async def chat_websocket(websocket: WebSocket):
 
                     else:
                         # No more tool calls - model is ready to respond
+                        logger.info("No tool calls detected, generating final response")
+
+                        # Check if assistant message has content (edge case handling)
+                        if assistant_message.content:
+                            logger.info(f"Assistant message has content: {assistant_message.content[:100]}")
+
                         # Stream final response
                         final_response = await client.chat.completions.create(
                             model=selected_model,
