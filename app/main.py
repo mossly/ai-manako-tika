@@ -469,7 +469,9 @@ async def chat_websocket(websocket: WebSocket):
                         messages=messages,
                         tools=tools,
                         tool_choice="auto",
-                        stream=False
+                        stream=False,
+                        temperature=0.7,
+                        max_tokens=8000
                     )
 
                     assistant_message = response.choices[0].message
@@ -524,29 +526,45 @@ async def chat_websocket(websocket: WebSocket):
                         # No more tool calls - model is ready to respond
                         logger.info("No tool calls detected, generating final response")
 
-                        # Check if assistant message has content (edge case handling)
+                        # Check if assistant message already has content
                         if assistant_message.content:
-                            logger.info(f"Assistant message has content: {assistant_message.content[:100]}")
+                            # Model provided response in same message - use it directly
+                            logger.info(f"Assistant message has content (using directly): {assistant_message.content[:100]}")
 
-                        # Stream final response
-                        final_response = await client.chat.completions.create(
-                            model=selected_model,
-                            messages=messages,
-                            stream=True
-                        )
+                            # Stream the existing content to client
+                            full_response = assistant_message.content
+                            await websocket.send_json({
+                                'type': 'content_delta',
+                                'content': full_response
+                            })
 
-                        full_response = ""
-                        async for chunk in final_response:
-                            if chunk.choices[0].delta.content:
-                                content = chunk.choices[0].delta.content
-                                full_response += content
-                                await websocket.send_json({
-                                    'type': 'content_delta',
-                                    'content': content
-                                })
+                            # Add to history
+                            messages.append({"role": "assistant", "content": full_response})
+                        else:
+                            # Model didn't provide content - request final response
+                            logger.info("No content in assistant message, requesting final response")
 
-                        # Add to history
-                        messages.append({"role": "assistant", "content": full_response})
+                            # Request final response without adding empty assistant message
+                            final_response = await client.chat.completions.create(
+                                model=selected_model,
+                                messages=messages,
+                                stream=True,
+                                temperature=0.7,
+                                max_tokens=8000
+                            )
+
+                            full_response = ""
+                            async for chunk in final_response:
+                                if chunk.choices[0].delta.content:
+                                    content = chunk.choices[0].delta.content
+                                    full_response += content
+                                    await websocket.send_json({
+                                        'type': 'content_delta',
+                                        'content': content
+                                    })
+
+                            # Add the completed response to history
+                            messages.append({"role": "assistant", "content": full_response})
 
                         # Save conversation to database
                         # Generate title from first user message if this is the first response
