@@ -1,6 +1,6 @@
 """FastAPI app for Cook Islands Legislation RAG Chat Service."""
-from fastapi import FastAPI, Form, WebSocket, WebSocketDisconnect, HTTPException, Header, Depends
-from fastapi.responses import JSONResponse, PlainTextResponse, HTMLResponse
+from fastapi import FastAPI, Form, WebSocket, WebSocketDisconnect, HTTPException, Header, Depends, Request
+from fastapi.responses import JSONResponse, PlainTextResponse, HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
@@ -106,12 +106,18 @@ else:
     logger.warning(f"PDF directory not found: {LEGISLATION_DIR}")
 
 
-@app.get('/', response_class=PlainTextResponse)
-async def index():
-    """Root endpoint showing service status."""
-    stats = store.get_stats()
+@app.get('/')
+async def index(request: Request):
+    """Root endpoint - redirects browsers to /chat, shows status for API clients."""
+    # Check if request is from a browser
+    accept_header = request.headers.get('accept', '')
+    if 'text/html' in accept_header:
+        # Browser request - redirect to chat
+        return RedirectResponse(url='/chat', status_code=302)
 
-    return f"""Cook Islands Legislation RAG Service
+    # API request - return status as plain text
+    stats = store.get_stats()
+    return PlainTextResponse(f"""Cook Islands Legislation RAG Service
 
 Status:
   Chunks: {stats['total_chunks']}
@@ -136,7 +142,7 @@ MCP Tools:
 
 Web Interface:
   Visit /chat for interactive chat with legislation RAG
-"""
+""")
 
 
 @app.get('/chat', response_class=HTMLResponse)

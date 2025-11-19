@@ -6,26 +6,67 @@ let isWaitingForResponse = false;
 let isAuthenticated = false;
 let sessionId = null;
 let pingInterval = null;
+let reconnectTimeout = null;
+let manualReconnectPending = false;
 let conversationId = null;
 let conversations = [];
 let userHasScrolledUp = false;
+const DEMO_DISCLAIMER_KEY = 'demo_disclaimer_dismissed';
+const LAST_CONVERSATION_KEY = 'last_conversation_id';
+
+function getStoredConversationId() {
+    if (typeof localStorage === 'undefined') {
+        return null;
+    }
+    try {
+        return localStorage.getItem(LAST_CONVERSATION_KEY);
+    } catch (error) {
+        console.warn('Unable to read stored conversation preference:', error);
+        return null;
+    }
+}
+
+function persistConversationId(id) {
+    if (typeof localStorage === 'undefined') {
+        return;
+    }
+    try {
+        if (id) {
+            localStorage.setItem(LAST_CONVERSATION_KEY, id);
+        } else {
+            localStorage.removeItem(LAST_CONVERSATION_KEY);
+        }
+    } catch (error) {
+        console.warn('Unable to persist conversation preference:', error);
+    }
+}
+
+function setConversationId(newId) {
+    conversationId = newId;
+    persistConversationId(newId);
+}
 
 // Check for existing session on page load
 window.addEventListener('DOMContentLoaded', async () => {
     // Initialize sidebar state based on screen size
     const mainApp = document.getElementById('main-app');
-    if (window.innerWidth <= 768) {
-        mainApp.classList.add('sidebar-collapsed');
-    }
-
-    // Handle window resize
-    window.addEventListener('resize', () => {
+    const syncSidebarLayout = () => {
+        if (!mainApp) {
+            return;
+        }
         if (window.innerWidth <= 768) {
             mainApp.classList.add('sidebar-collapsed');
+            mainApp.classList.add('right-sidebar-collapsed');
         } else {
             mainApp.classList.remove('sidebar-collapsed');
+            mainApp.classList.remove('right-sidebar-collapsed');
         }
-    });
+    };
+
+    syncSidebarLayout();
+
+    // Handle window resize
+    window.addEventListener('resize', syncSidebarLayout);
 
     const storedSession = localStorage.getItem('session_id');
     const storedExpiry = localStorage.getItem('session_expires_at');
@@ -40,7 +81,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('main-app').style.display = 'flex';
 
             // Load conversations list
-            await loadConversations();
+            await loadConversations({ preserveSelection: false });
 
             // Connect to WebSocket
             initWebSocket();
@@ -81,7 +122,7 @@ async function authenticate() {
             document.getElementById('main-app').style.display = 'flex';
 
             // Load conversations before initializing WebSocket
-            await loadConversations();
+            await loadConversations({ preserveSelection: false });
             initWebSocket();
         } else {
             errorDiv.textContent = 'Invalid access code';
@@ -98,19 +139,23 @@ async function authenticate() {
 function initWebSocket() {
     if (!isAuthenticated || !sessionId) return;
 
+    if (reconnectTimeout) {
+        clearTimeout(reconnectTimeout);
+        reconnectTimeout = null;
+    }
+
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     const wsUrl = `${protocol}//${window.location.host}/ws/chat`;
 
     ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {
-        console.log('WebSocket connected');
+        console.log('WebSocket connected - legislation search service ready');
         // Send session ID and conversation ID
         ws.send(JSON.stringify({
             session_id: sessionId,
             conversation_id: conversationId
         }));
-        addSystemMessage('Connected to legislation search service');
 
         // Start ping interval to keep connection alive (every 30 seconds)
         if (pingInterval) {
@@ -140,10 +185,42 @@ function initWebSocket() {
             clearInterval(pingInterval);
             pingInterval = null;
         }
+        ws = null;
+
+        if (manualReconnectPending) {
+            manualReconnectPending = false;
+            initWebSocket();
+            return;
+        }
+
         addSystemMessage('Disconnected from server. Reconnecting...', true);
-        // Attempt to reconnect after 2 seconds
-        setTimeout(initWebSocket, 2000);
+        // Attempt to reconnect after 2 seconds, but avoid stacking timers
+        if (!reconnectTimeout) {
+            reconnectTimeout = setTimeout(() => {
+                reconnectTimeout = null;
+                initWebSocket();
+            }, 2000);
+        }
     };
+}
+
+function resetWebSocketConnection() {
+    if (!isAuthenticated || !sessionId) {
+        return;
+    }
+
+    if (reconnectTimeout) {
+        clearTimeout(reconnectTimeout);
+        reconnectTimeout = null;
+    }
+
+    if (ws && ws.readyState !== WebSocket.CLOSED) {
+        manualReconnectPending = true;
+        ws.close();
+        return;
+    }
+
+    initWebSocket();
 }
 
 // Handle different types of WebSocket messages
@@ -157,7 +234,7 @@ function handleWebSocketMessage(data) {
 
         case 'conversation_created':
             // New conversation created by server
-            conversationId = data.conversation_id;
+            setConversationId(data.conversation_id);
             // Only reload conversations if we don't already have this one
             if (!conversations.find(c => c.conversation_id === conversationId)) {
                 loadConversations();
@@ -505,12 +582,17 @@ function formatMarkdown(text) {
 
 // Conversation Management Functions
 
-async function loadConversations() {
+async function loadConversations(options = {}) {
+    const { preserveSelection = true } = options;
     try {
         const response = await fetch(`/conversations?session_id=${sessionId}`);
         if (response.ok) {
             const data = await response.json();
             conversations = data.conversations;
+            const activeConversationExists = conversationId && conversations.some(c => c.conversation_id === conversationId);
+            if (!preserveSelection || !activeConversationExists) {
+                ensureConversationSelected();
+            }
             renderConversations();
         }
     } catch (error) {
@@ -566,6 +648,24 @@ function renderConversations() {
     });
 }
 
+function ensureConversationSelected() {
+    if (conversationId && conversations.some(c => c.conversation_id === conversationId)) {
+        return;
+    }
+
+    const storedId = getStoredConversationId();
+    if (storedId && conversations.some(c => c.conversation_id === storedId)) {
+        setConversationId(storedId);
+        return;
+    }
+
+    if (conversations.length > 0) {
+        setConversationId(conversations[0].conversation_id);
+    } else {
+        setConversationId(null);
+    }
+}
+
 async function createNewConversation() {
     // Check if current conversation is empty (only has welcome message)
     const chatMessages = document.getElementById('chat-messages');
@@ -577,29 +677,19 @@ async function createNewConversation() {
         return;
     }
 
-    // Close existing WebSocket
-    if (ws) {
-        ws.close();
-    }
-
     // Clear current conversation ID - server will create new one when WebSocket connects
-    conversationId = null;
+    setConversationId(null);
     clearChatMessages();
 
     // Connect with new conversation (server creates it automatically)
-    initWebSocket();
+    resetWebSocketConnection();
 }
 
 async function switchConversation(newConversationId) {
     if (newConversationId === conversationId) return;
 
-    // Close existing WebSocket
-    if (ws) {
-        ws.close();
-    }
-
     // Set new conversation ID
-    conversationId = newConversationId;
+    setConversationId(newConversationId);
 
     // Clear chat
     clearChatMessages();
@@ -608,7 +698,7 @@ async function switchConversation(newConversationId) {
     renderConversations();
 
     // Reconnect with new conversation
-    initWebSocket();
+    resetWebSocketConnection();
 }
 
 async function deleteConversation(convId) {
@@ -636,7 +726,31 @@ async function deleteConversation(convId) {
 
 function toggleSidebar() {
     const mainApp = document.getElementById('main-app');
+    if (!mainApp) {
+        return;
+    }
     mainApp.classList.toggle('sidebar-collapsed');
+}
+
+function toggleRightSidebar() {
+    const mainApp = document.getElementById('main-app');
+    if (!mainApp) {
+        return;
+    }
+    mainApp.classList.toggle('right-sidebar-collapsed');
+}
+
+function dismissDisclaimer() {
+    const disclaimer = document.getElementById('demo-disclaimer');
+    if (!disclaimer) {
+        return;
+    }
+    disclaimer.style.display = 'none';
+    try {
+        localStorage.setItem(DEMO_DISCLAIMER_KEY, 'true');
+    } catch (error) {
+        console.warn('Unable to persist disclaimer preference:', error);
+    }
 }
 
 function clearChatMessages() {
@@ -681,6 +795,14 @@ function formatDate(dateString) {
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     initializeMarked();
+    const disclaimer = document.getElementById('demo-disclaimer');
+    try {
+        if (disclaimer && localStorage.getItem(DEMO_DISCLAIMER_KEY) === 'true') {
+            disclaimer.style.display = 'none';
+        }
+    } catch (error) {
+        console.warn('Unable to read disclaimer preference:', error);
+    }
 
     // Focus on auth input on load
     document.getElementById('auth-code').focus();

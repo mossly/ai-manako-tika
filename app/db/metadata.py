@@ -467,7 +467,15 @@ class MetadataDB:
             SELECT * FROM conversations WHERE conversation_id = ?
         ''', (conversation_id,))
         row = cursor.fetchone()
-        return dict(row) if row else None
+        if not row:
+            return None
+        conv = dict(row)
+        # Convert SQLite timestamps to ISO 8601 UTC format for JavaScript
+        if conv.get('created_at'):
+            conv['created_at'] = conv['created_at'].replace(' ', 'T') + 'Z'
+        if conv.get('updated_at'):
+            conv['updated_at'] = conv['updated_at'].replace(' ', 'T') + 'Z'
+        return conv
 
     def list_conversations(self, session_id: str, limit: int = 50) -> List[Dict[str, Any]]:
         """List all conversations for a session, ordered by most recent."""
@@ -479,7 +487,16 @@ class MetadataDB:
             ORDER BY updated_at DESC
             LIMIT ?
         ''', (session_id, limit))
-        return [dict(row) for row in cursor.fetchall()]
+        conversations = []
+        for row in cursor.fetchall():
+            conv = dict(row)
+            # Convert SQLite timestamps to ISO 8601 UTC format for JavaScript
+            if conv.get('created_at'):
+                conv['created_at'] = conv['created_at'].replace(' ', 'T') + 'Z'
+            if conv.get('updated_at'):
+                conv['updated_at'] = conv['updated_at'].replace(' ', 'T') + 'Z'
+            conversations.append(conv)
+        return conversations
 
     def update_conversation(self, conversation_id: str, messages: str, title: Optional[str] = None) -> None:
         """Update conversation messages and optionally title."""

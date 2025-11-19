@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cook Islands Legislation Search</title>
+    <title>Cook Islands Legislation Agent</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -18,7 +18,7 @@
     <!-- Authentication Gate -->
     <div id="auth-gate" class="auth-gate">
         <div class="auth-container">
-            <h2>🏝️ Cook Islands Legislation Search</h2>
+            <h2>Cook Islands Legislation Agent</h2>
             <p>Enter access code to continue</p>
             <input type="password" id="auth-code" placeholder="Access code">
             <button onclick="authenticate()">Continue</button>
@@ -36,23 +36,18 @@
             <div id="conversations-list" class="conversations-list">
                 <!-- Conversations will be loaded here -->
             </div>
-            <button id="sidebar-toggle" class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
         </aside>
+        <button id="sidebar-toggle" class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle conversation sidebar">&#9776;</button>
 
         <div class="main-content">
             <header>
-                <h1>🏝️ Cook Islands Legislation Search</h1>
-                <p class="subtitle">Semantic search and AI chat for Cook Islands Acts and Regulations</p>
-                <div class="model-selector">
-                    <label for="model-select">AI Model:</label>
-                    <select id="model-select">
-                        <option value="google/gemini-3-pro-preview">Google: Gemini 3 Pro</option>
-                        <option value="openai/gpt-5.1">OpenAI: GPT-5.1</option>
-                    </select>
-                </div>
-                <div class="disclaimer">
+                <h1>Cook Islands Legislation Agent</h1>
+                <div class="disclaimer" id="demo-disclaimer">
+                    <span class="disclaimer-text">
                     <strong>⚠️ Demonstration Tool</strong> - This is a prototype for informational purposes only.
                     Not legal advice. Always consult official sources and legal professionals.
+                    </span>
+                    <button type="button" class="disclaimer-dismiss" aria-label="Dismiss demonstration notice" onclick="dismissDisclaimer()">&times;</button>
                 </div>
             </header>
 
@@ -60,7 +55,7 @@
                 <div id="chat-messages" class="chat-messages">
                 <div class="message assistant-message">
                     <div class="message-content">
-                        <p>Welcome! I can help you search and understand Cook Islands legislation.</p>
+                        <p>Kia orana, I can help you search and understand Cook Islands legislation.</p>
                         <p>Ask me questions like:</p>
                         <ul>
                             <li>"What are the capital requirements for banks?"</li>
@@ -78,9 +73,24 @@
             </main>
 
             <footer>
-                <p>Powered by OpenRouter AI models and vector embeddings | Built for BCI Board Strategy Day</p>
+                <p>Powered by <a href="https://openai.com" target="_blank">OpenAI</a>, <a href="https://openrouter.ai" target="_blank">OpenRouter,</a> and <a href="https://www.pinecone.io" target="_blank">Pinecone</a> | Built for BCI Strategy Day</p>
             </footer>
         </div>
+        <aside id="right-sidebar" class="sidebar sidebar-right">
+            <div class="sidebar-header">
+                <h3>Settings</h3>
+            </div>
+            <div class="sidebar-section">
+                <div class="model-selector">
+                    <label for="model-select">Model:</label>
+                    <select id="model-select">
+                        <option value="google/gemini-3-pro-preview">Google: Gemini 3 Pro</option>
+                        <option value="openai/gpt-5.1">OpenAI: GPT-5.1</option>
+                    </select>
+                </div>
+            </div>
+        </aside>
+        <button id="right-sidebar-toggle" class="sidebar-toggle" onclick="toggleRightSidebar()" aria-label="Toggle settings sidebar">&#9881;</button>
     </div>
 
     <!-- Bootstrap 5 JS Bundle (includes Popper) -->
