@@ -285,9 +285,23 @@ function handleWebSocketMessage(data) {
             // Error occurred
             addSystemMessage(data.content, true);
             currentAssistantMessage = null;
+            currentMessageText = '';
             isWaitingForResponse = false;
             removeTypingIndicator();
             enableInput();
+            break;
+
+        case 'stopped':
+            // Generation cancelled by user
+            const wasWaiting = isWaitingForResponse;
+            currentAssistantMessage = null;
+            currentMessageText = '';
+            isWaitingForResponse = false;
+            removeTypingIndicator();
+            enableInput();
+            if (wasWaiting) {
+                addSystemMessage('Response stopped', false);
+            }
             break;
 
         default:
@@ -356,6 +370,14 @@ function restoreConversationHistory(messages) {
     addSystemMessage('Previous conversation restored');
 }
 
+function handleSendButtonClick() {
+    if (isWaitingForResponse) {
+        stopGeneration();
+    } else {
+        sendMessage();
+    }
+}
+
 // Send user message
 function sendMessage() {
     const input = document.getElementById('user-input');
@@ -395,6 +417,18 @@ function sendMessage() {
     showTypingIndicator();
 }
 
+function stopGeneration() {
+    if (!isWaitingForResponse) {
+        return;
+    }
+
+    if (!ws || ws.readyState !== WebSocket.OPEN) {
+        return;
+    }
+
+    ws.send(JSON.stringify({ type: 'stop' }));
+}
+
 // UI Helper Functions
 
 function addUserMessage(text) {
@@ -413,6 +447,7 @@ function appendAssistantMessage(text) {
     const messageDiv = createAssistantMessageElement();
     const contentDiv = messageDiv.querySelector('.message-content');
     contentDiv.innerHTML = formatMarkdown(text);
+    contentDiv.dataset.rawText = text; // Store raw text for copying
     appendToChat(messageDiv);
 }
 
@@ -423,7 +458,17 @@ function createAssistantMessageElement() {
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
 
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-message-btn';
+    copyBtn.innerHTML = '📋';
+    copyBtn.title = 'Copy message';
+    copyBtn.onclick = (e) => {
+        e.stopPropagation();
+        copyMessageToClipboard(contentDiv);
+    };
+
     messageDiv.appendChild(contentDiv);
+    messageDiv.appendChild(copyBtn);
     return messageDiv;
 }
 
@@ -439,6 +484,7 @@ function appendToCurrentMessage(text) {
     // Format the complete text and update display
     const contentDiv = currentAssistantMessage.querySelector('.message-content');
     contentDiv.innerHTML = formatMarkdown(currentMessageText);
+    contentDiv.dataset.rawText = currentMessageText; // Store raw text for copying
 
     scrollToBottom();
 }
@@ -453,6 +499,15 @@ function showToolNotification(text) {
 
     notificationDiv.appendChild(contentDiv);
     appendToChat(notificationDiv);
+}
+
+// Remove act name prefixes (e.g., "Compa ", "Iga12 ", "Eleca ")
+function cleanActNamePrefix(headingPath) {
+    if (!headingPath) return headingPath;
+
+    // Match pattern: word characters followed by digits (optional), then space, then the actual act name
+    // Examples: "Compa Companies Act", "Iga12 Island Government Act", "Eleca Electoral Act"
+    return headingPath.replace(/^[A-Za-z]+\d*\s+/, '');
 }
 
 function displaySearchResults(results) {
@@ -481,7 +536,8 @@ function displaySearchResults(results) {
 
         const heading = document.createElement('span');
         heading.className = 'search-result-heading';
-        heading.textContent = result.heading_path || 'Unknown Section';
+        // Prefer server-cleaned name, fallback to client-side cleaning for backward compatibility
+        heading.textContent = result.heading_path_clean || cleanActNamePrefix(result.heading_path) || 'Unknown Section';
 
         const score = document.createElement('span');
         score.className = 'search-result-score';
@@ -569,16 +625,33 @@ function checkScrollPosition() {
 
 function enableInput() {
     const input = document.getElementById('user-input');
-    const button = document.getElementById('send-btn');
     input.disabled = false;
-    button.disabled = false;
+    updateSendButtonState(false);
 }
 
 function disableInput() {
     const input = document.getElementById('user-input');
-    const button = document.getElementById('send-btn');
     input.disabled = true;
-    button.disabled = true;
+    updateSendButtonState(true);
+}
+
+function updateSendButtonState(isRunning) {
+    const button = document.getElementById('send-btn');
+    if (!button) {
+        return;
+    }
+
+    button.disabled = false;
+
+    if (isRunning) {
+        button.classList.add('stop');
+        button.textContent = 'Stop';
+        button.setAttribute('aria-label', 'Stop response');
+    } else {
+        button.classList.remove('stop');
+        button.textContent = 'Send';
+        button.setAttribute('aria-label', 'Send message');
+    }
 }
 
 // Configure marked.js for proper markdown rendering
@@ -771,6 +844,16 @@ function toggleSidebar() {
     if (!mainApp) {
         return;
     }
+
+    // On small screens, close the right sidebar when opening left sidebar
+    if (window.innerWidth <= 1300) {
+        const isOpening = mainApp.classList.contains('sidebar-collapsed');
+        if (isOpening) {
+            // About to open left sidebar, so close right sidebar
+            mainApp.classList.add('right-sidebar-collapsed');
+        }
+    }
+
     mainApp.classList.toggle('sidebar-collapsed');
 }
 
@@ -779,6 +862,16 @@ function toggleRightSidebar() {
     if (!mainApp) {
         return;
     }
+
+    // On small screens, close the left sidebar when opening right sidebar
+    if (window.innerWidth <= 1300) {
+        const isOpening = mainApp.classList.contains('right-sidebar-collapsed');
+        if (isOpening) {
+            // About to open right sidebar, so close left sidebar
+            mainApp.classList.add('sidebar-collapsed');
+        }
+    }
+
     mainApp.classList.toggle('right-sidebar-collapsed');
 }
 
@@ -800,11 +893,9 @@ function clearChatMessages() {
     chatMessages.innerHTML = `
         <div class="message assistant-message">
             <div class="message-content">
-                <p>Welcome! I can help you search and understand Cook Islands legislation.</p>
-                <p>Ask me questions like:</p>
+                <p>Kia orana, I can help you search and understand Cook Islands legislation. Ask me questions like:</p>
                 <ul>
                     <li>"What are the capital requirements for banks?"</li>
-                    <li>"Tell me about licensing requirements in the Banking Act"</li>
                     <li>"What does the law say about corporate governance?"</li>
                 </ul>
             </div>
@@ -834,6 +925,50 @@ function formatDate(dateString) {
     }
 }
 
+function copyMessageToClipboard(contentDiv) {
+    // Get raw text from data attribute if available, otherwise extract from HTML
+    const text = contentDiv.dataset.rawText || contentDiv.innerText;
+
+    navigator.clipboard.writeText(text).then(() => {
+        // Visual feedback - briefly change button appearance
+        const btn = contentDiv.parentElement.querySelector('.copy-message-btn');
+        if (btn) {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✓';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('copied');
+            }, 1500);
+        }
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            const btn = contentDiv.parentElement.querySelector('.copy-message-btn');
+            if (btn) {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✓';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 1500);
+            }
+        } catch (e) {
+            console.error('Fallback copy failed:', e);
+        }
+        document.body.removeChild(textarea);
+    });
+}
+
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     initializeMarked();
@@ -857,8 +992,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Send button click
-    document.getElementById('send-btn').addEventListener('click', sendMessage);
+    // Initialize send button state and click handler
+    updateSendButtonState(false);
+    document.getElementById('send-btn').addEventListener('click', handleSendButtonClick);
 
     // Enter key to send (Shift+Enter for new line)
     document.getElementById('user-input').addEventListener('keydown', (e) => {

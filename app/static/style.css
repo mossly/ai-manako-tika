@@ -131,6 +131,7 @@ header h1 {
     flex-direction: column;
     max-width: 80%;
     animation: fadeIn 0.3s ease-in;
+    position: relative;
 }
 
 @keyframes fadeIn {
@@ -150,6 +151,43 @@ header h1 {
 
 .assistant-message {
     align-self: flex-start;
+}
+
+.copy-message-btn {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.assistant-message:hover .copy-message-btn {
+    opacity: 1;
+}
+
+.copy-message-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: scale(1.05);
+}
+
+.copy-message-btn:active {
+    transform: scale(0.95);
+}
+
+.copy-message-btn.copied {
+    background: var(--success);
+    color: white;
+    border-color: var(--success);
 }
 
 .message-content {
@@ -472,6 +510,18 @@ header h1 {
 #send-btn:disabled {
     background: var(--text-muted);
     cursor: not-allowed;
+}
+
+#send-btn.stop {
+    background: #c0392b;
+}
+
+#send-btn.stop:hover {
+    background: #a93226;
+}
+
+#send-btn.stop:active {
+    background: #922b21;
 }
 
 /* Authentication Gate */
